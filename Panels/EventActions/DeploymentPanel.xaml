@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Saga_Translator.DeploymentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saga_Translator"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
+			<!--LEFT-->
+			<StackPanel Margin="0,0,5,0">
+				<TextBlock Text="Enemy Deployment" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
+
+				<!--custom name-->
+				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translated.enemyName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="0"/>
+
+				<!--custom instructions-->
+				<TextBlock Text="Custom Instructions" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translated.enemyGroupData.customText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="1"/>
+
+				<!--modification-->
+				<TextBlock Text="Modification" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translated.modification}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="2"/>
+
+				<!--reposition-->
+				<TextBlock Text="Reposition Instructions" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translated.repositionInstructions}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="3"/>
+			</StackPanel>
+
+			<!--RIGHT-->
+			<StackPanel Margin="5,0,0,0" IsEnabled="False">
+				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
+
+				<!--custom name-->
+				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding source.enemyName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+
+				<!--custom instructions-->
+				<TextBlock Text="Custom Instructions" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding source.enemyGroupData.customText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+
+				<!--modification-->
+				<TextBlock Text="Modification" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding source.modification}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+
+				<!--reposition-->
+				<TextBlock Text="Reposition Instructions" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding source.repositionInstructions}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+			</StackPanel>
+		</UniformGrid>
+	</ScrollViewer>
+</UserControl>

@@ -1,0 +1,48 @@
+﻿<Window x:Class="Saga_Translator.FindReplace"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saga_Translator"
+        mc:Ignorable="d"
+        Title="FindReplace" Width="500" Background="{StaticResource WndBG}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="Height">
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+		</Grid.RowDefinitions>
+		<UniformGrid Columns="2">
+			<!--LEFT-->
+			<StackPanel Margin="0,0,5,0">
+				<TextBlock Text="Find:" Foreground="White" FontWeight="Bold"/>
+				<TextBox x:Name="findText" BorderThickness="2" Margin="0,3,0,0"/>
+			</StackPanel>
+
+			<!--RIGHT-->
+			<StackPanel Margin="5,0,0,0">
+				<TextBlock Text="Replace With:" Foreground="White" FontWeight="Bold"/>
+				<TextBox x:Name="replaceText" BorderThickness="2" Margin="0,3,0,0"/>
+			</StackPanel>
+		</UniformGrid>
+
+		<CheckBox x:Name="useRegEx" Content="Use Regular Expression" Grid.Row="1" Foreground="White" Margin="0,5,0,0" Visibility="Collapsed"/>
+
+		<!--RESULTS-->
+		<Border Margin="0,10,0,10" Background="{StaticResource MenuDarkBG}" BorderBrush="White" Grid.Row="2" BorderThickness="1" CornerRadius="3">
+			<StackPanel Grid.Row="1" Margin="10">
+				<TextBlock Text="Results" Foreground="White" FontWeight="Bold" Margin="0,0,0,10"/>
+				<StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+					<TextBlock Text="Matches Found:" Foreground="White"/>
+					<TextBlock x:Name="foundText" Text="0" Foreground="White" Margin="20,0,0,0"/>
+				</StackPanel>
+			</StackPanel>
+		</Border>
+
+		<StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right">
+			<Button x:Name="doItBtn" Content="Execute" Foreground="White" Click="doItBtn_Click" Style="{StaticResource greenHover}" IsDefault="True"/>
+			<Button x:Name="closeBtn" Content="Close" Foreground="White" Click="closeBtn_Click" Style="{StaticResource redHover}" Margin="10,0,0,0" IsCancel="True"/>
+		</StackPanel>
+	</Grid>
+</Window>

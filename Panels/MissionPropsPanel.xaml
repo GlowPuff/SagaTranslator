@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Saga_Translator.MissionPropsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saga_Translator"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
+			<!--LEFT-->
+			<StackPanel Margin="0,0,5,0">
+				<TextBlock Text="Mission Properties" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
+
+				<!--name-->
+				<TextBlock Text="Mission Name" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedProps.missionName}" KeyDown="TextBox_KeyDown" TabIndex="0"/>
+				<!--description-->
+				<TextBlock Text="Mission Description" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedProps.missionDescription}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="1"/>
+				<!--info-->
+				<TextBlock Text="Mission Info" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedProps.missionInfo}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="2"/>
+				<!--campaign name-->
+				<TextBlock Text="Campaign Name" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedProps.campaignName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="3"/>
+				<!--objective-->
+				<TextBlock Text="Starting Objective" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedProps.startingObjective}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="4"/>
+				<!--reposition-->
+				<TextBlock Text="Reposition Override" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedProps.changeRepositionOverride.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="5"/>
+				<!--addtl info-->
+				<TextBlock Text="Additional Mission Info" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedProps.additionalMissionInfo}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="6"/>
+			</StackPanel>
+
+			<!--RIGHT-->
+			<StackPanel Margin="5,0,0,0" IsEnabled="False">
+				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
+				<!--name-->
+				<TextBlock Text="Mission Name" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceProps.missionName}"/>
+				<!--description-->
+				<TextBlock Text="Mission Description" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceProps.missionDescription}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<!--info-->
+				<TextBlock Text="Mission Info" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceProps.missionInfo}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<!--campaign name-->
+				<TextBlock Text="Campaign Name" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceProps.campaignName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<!--objective-->
+				<TextBlock Text="Starting Objective" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceProps.startingObjective}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<!--reposition-->
+				<TextBlock Text="Reposition Override" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceProps.changeRepositionOverride.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<!--addtl info-->
+				<TextBlock Text="Additional Mission Info" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceProps.additionalMissionInfo}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+			</StackPanel>
+		</UniformGrid>
+	</ScrollViewer>
+</UserControl>
