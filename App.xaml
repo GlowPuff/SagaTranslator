@@ -25,6 +25,9 @@
 
 			<Style TargetType="TextBox" x:Key="multi">
 				<Setter Property="Padding" Value="5"/>
+				<Setter Property="BorderThickness" Value="2"/>
+				<Setter Property="AcceptsReturn" Value="True"/>
+				<Setter Property="TextWrapping" Value="Wrap"/>
 			</Style>
 
 			<Style TargetType="Button" x:Key="greenHover">

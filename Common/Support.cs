@@ -54,6 +54,12 @@ namespace Imperial_Commander_Editor
 		public Guid GUID { get; set; }
 	}
 
+	public class GitHubResponse
+	{
+		public string tag_name;
+		public string body;
+	}
+
 	public class EnemyGroupData : INotifyPropertyChanged
 	{
 		CustomInstructionType _customInstructionType;

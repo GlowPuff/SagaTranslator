@@ -6,6 +6,20 @@
              xmlns:local="clr-namespace:Saga_Translator"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<DataTemplate x:Key="inputs">
+			<StackPanel Margin="0,0,0,5" Background="{StaticResource MenuBG}">
+				<StackPanel Orientation="Horizontal" Margin="5">
+					<TextBlock Text="Range:" Margin="0,0,10,0" Foreground="White"/>
+					<TextBlock Text="{Binding fromValue}" Foreground="White"/>
+					<TextBlock Text="-" Margin="5,0" Foreground="White"/>
+					<TextBlock Text="{Binding toValue}" Foreground="White"/>
+				</StackPanel>
+				<TextBox Text="{Binding theText}" Style="{StaticResource multi}" Margin="5"/>
+			</StackPanel>
+		</DataTemplate>
+	</UserControl.Resources>
+
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<!--LEFT-->
@@ -17,6 +31,8 @@
 
 				<TextBlock Text="Fail Text" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding translated.failText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="1"/>
+
+				<ListBox ItemTemplate="{StaticResource inputs}" ItemsSource="{Binding translated.inputList}" d:ItemsSource="{d:SampleData ItemCount=3}" Margin="0,10,0,0" KeyboardNavigation.TabNavigation="Cycle" HorizontalContentAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -28,6 +44,8 @@
 
 				<TextBlock Text="Fail Text" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding source.failText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+
+				<ListBox ItemTemplate="{StaticResource inputs}" ItemsSource="{Binding source.inputList}" d:ItemsSource="{d:SampleData ItemCount=3}" Margin="0,10,0,0" KeyboardNavigation.TabNavigation="Cycle" HorizontalContentAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

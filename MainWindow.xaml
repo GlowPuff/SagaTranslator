@@ -55,6 +55,7 @@
 					<!--LANGUAGE-->
 					<ComboBox x:Name="languageCB" Width="200" VerticalAlignment="Center" ToolTip="Target Language" SelectedValue="{Binding translatedMission.languageID}" SelectedValuePath="Content" IsEnabled="False">
 						<ComboBoxItem Content="Select Target Language"/>
+						<ComboBoxItem Content="English (EN)"/>
 						<ComboBoxItem Content="German (DE)"/>
 						<ComboBoxItem Content="Spanish (ES)"/>
 						<ComboBoxItem Content="French (FR)"/>
@@ -94,12 +95,16 @@
 			</ToolBarTray>-->
 
 			<Border DockPanel.Dock="Bottom" BorderBrush="Black" BorderThickness="0,1,0,0" Height="30" Background="{StaticResource MenuBG}" Style="{StaticResource whiteText}">
-				<UniformGrid Columns="3">
+				<UniformGrid Columns="4">
 					<!--format version-->
 					<StackPanel Margin="5" HorizontalAlignment="Center" Orientation="Horizontal">
 						<TextBlock Text="Version:  "/>
 						<TextBlock x:Name="appVersion"/>
 						<TextBlock Text="{Binding appModel.AppVersion}"/>
+					</StackPanel>
+					<!--format version-->
+					<StackPanel Margin="5" HorizontalAlignment="Center" Orientation="Horizontal">
+						<TextBlock x:Name="updateCheck" Text="Checking For Update..."/>
 					</StackPanel>
 					<!--app version-->
 					<StackPanel Margin="5" HorizontalAlignment="Center" Orientation="Horizontal">

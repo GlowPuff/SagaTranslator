@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,7 +22,7 @@ namespace Saga_Translator
 	/// </summary>
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
-		//private AppModel _appModel;
+		private GitHubResponse gitHubResponse = null;
 		private ITranslationPanel _translationObject;
 		private bool hasSaved = false, canSave = false;
 		private Mission _translatedMission, _sourceMission;
@@ -43,6 +47,14 @@ namespace Saga_Translator
 
 			translationObject = new WelcomePanel();
 			appModel.NothingSelected = false;
+
+			if ( NetworkInterface.GetIsNetworkAvailable() )
+				Task.Run( StartVersionCheck );
+			else
+			{
+				updateCheck.Text = "Error Checking For Update";
+			}
+
 
 			Utils.Init( this );
 		}
@@ -224,6 +236,51 @@ namespace Saga_Translator
 		private void helpButton_Click( object sender, RoutedEventArgs e )
 		{
 			translationObject = new WelcomePanel();
+		}
+
+		private async void StartVersionCheck()
+		{
+			//first check if internet is available
+			var ping = new Ping();
+			var reply = ping.Send( new IPAddress( new byte[] { 8, 8, 8, 8 } ), 5000 );
+			if ( reply.Status == IPStatus.Success )
+			{
+				//internet available, check for latest version
+				await CheckVersion();
+			}
+			else
+			{
+				gitHubResponse = null;
+			}
+		}
+
+		private async Task CheckVersion()
+		{
+			// /repos/{owner}/{repo}/releases
+			var web = new HttpClient();
+			web.DefaultRequestHeaders.Add( "User-Agent", "request" );
+			var result = await web.GetAsync( "https://api.github.com/repos/GlowPuff/SagaTranslator/releases/latest" );
+
+			if ( !result.IsSuccessStatusCode )
+			{
+				//Debug.Log( "network error" );
+				gitHubResponse = null;
+			}
+			else
+			{
+				var response = await result.Content.ReadAsStringAsync();
+				//parse JSON response
+				gitHubResponse = JsonConvert.DeserializeObject<GitHubResponse>( response );
+
+				if ( gitHubResponse.tag_name.Substring( 2 ) == appModel.AppVersion )//remove beginning "v."
+				{
+					Dispatcher.Invoke( () => updateCheck.Text = "Latest Version" );
+				}
+				else
+				{
+					Dispatcher.Invoke( () => updateCheck.Text = "Update Available: " + gitHubResponse.tag_name );
+				}
+			}
 		}
 
 		//private void ToolBar_Loaded( object sender, RoutedEventArgs e )
