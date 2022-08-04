@@ -27,7 +27,7 @@ namespace Saga_Translator.Models
 		public AppModel( MainWindow main )
 		{
 			mainWindow = main;
-			AppVersion = "1.2";
+			AppVersion = "1.3";
 			FormatVersion = "18";
 			InfoText = "";
 			NothingSelected = true;
