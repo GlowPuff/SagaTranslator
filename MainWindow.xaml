@@ -60,7 +60,7 @@
 						<ComboBoxItem Content="Spanish (ES)"/>
 						<ComboBoxItem Content="French (FR)"/>
 						<ComboBoxItem Content="Italian (IT)"/>
-						<ComboBoxItem Content="Polska (PL)"/>
+						<ComboBoxItem Content="Polski (PL)"/>
 					</ComboBox>
 				</StackPanel>
 
