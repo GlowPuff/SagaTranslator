@@ -27,8 +27,8 @@ namespace Saga_Translator.Models
 		public AppModel( MainWindow main )
 		{
 			mainWindow = main;
-			AppVersion = "1.3";
-			FormatVersion = "18";
+			AppVersion = Imperial_Commander_Editor.Utils.appVersion;
+			FormatVersion = Imperial_Commander_Editor.Utils.formatVersion;
 			InfoText = "";
 			NothingSelected = true;
 			TranslatedFilePath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
