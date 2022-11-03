@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Saga_Translator"
         mc:Ignorable="d"
-        Title="Saga Translator" Height="650" Width="800" Background="{StaticResource WndBG}" ResizeMode="CanResizeWithGrip" PreviewKeyDown="Window_PreviewKeyDown" WindowStartupLocation="CenterScreen">
+        Title="Saga Translator [Mission]" Height="650" Width="800" Background="{StaticResource WndBG}" ResizeMode="CanResizeWithGrip" PreviewKeyDown="Window_PreviewKeyDown" WindowStartupLocation="CenterScreen">
 
 	<Window.Resources>
 		<BooleanToVisibilityConverter x:Key="b2v"/>
@@ -21,14 +21,19 @@
 				</Grid.ColumnDefinitions>
 				<!--LEFT-->
 				<StackPanel Orientation="Horizontal" Background="{StaticResource MenuDarkBG}">
+					<!--MODE SWITCH-->
+					<Button x:Name="modeToggle" ToolTip="Switch between translating a Mission or the UI" Click="modeToggle_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+						<Image Source="Assets/mode-toggle.png" Height="30"/>
+					</Button>
 					<!--OPEN SOURCE-->
-					<Button x:Name="openMissionButton" ToolTip="Open a Source Mission (English)" Click="openMissionButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+					<Button x:Name="openMissionButton" ToolTip="Open a Source File (English)" Click="openMissionButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
 						<Image Source="Assets/open.png" Height="30"/>
 					</Button>
 					<!--FILENAME-->
 					<StackPanel VerticalAlignment="Center" Margin="25,0,0,0">
-						<TextBlock Text="SOURCE MISSION (English)" Foreground="White" FontWeight="Bold"/>
+						<TextBlock Text="SOURCE (English)" Foreground="White" FontWeight="Bold"/>
 						<TextBlock x:Name="sourceText" Text="{Binding sourceMission.fileName}" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
+						<TextBlock x:Name="sourceUIText" Text="{Binding appModel.UiFileName}" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
 					</StackPanel>
 				</StackPanel>
 
@@ -45,15 +50,15 @@
 						</Separator.RenderTransform>
 					</Separator>
 					<!--OPEN TRANSLATED-->
-					<Button x:Name="openMissionTranslatedButton" ToolTip="Open an Existing Translated Mission" Click="openMissionTranslatedButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5" IsEnabled="False">
+					<Button x:Name="openMissionTranslatedButton" ToolTip="Open an Existing Translated File" Click="openMissionTranslatedButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5" IsEnabled="False">
 						<Image Source="Assets/open.png" Height="30"/>
 					</Button>
 					<!--SAVE-->
-					<Button x:Name="saveMissionButton" ToolTip="Save the Translated Mission" Click="saveMissionButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,10,0" IsEnabled="False">
+					<Button x:Name="saveMissionButton" ToolTip="Save the Translated File" Click="saveMissionButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,10,0" IsEnabled="False">
 						<Image Source="Assets/save.png" Height="30"/>
 					</Button>
 					<!--LANGUAGE-->
-					<ComboBox x:Name="languageCB" Width="200" VerticalAlignment="Center" ToolTip="Target Language" SelectedValue="{Binding translatedMission.languageID}" SelectedValuePath="Content" IsEnabled="False">
+					<ComboBox x:Name="languageCB" Width="200" VerticalAlignment="Center" ToolTip="Target Language" SelectedValuePath="Content" IsEnabled="False">
 						<ComboBoxItem Content="Select Target Language"/>
 						<ComboBoxItem Content="English (EN)"/>
 						<ComboBoxItem Content="German (DE)"/>
@@ -132,7 +137,7 @@
 						<RowDefinition Height="1*" />
 					</Grid.RowDefinitions>
 
-					<TextBlock Text="Mission Explorer" Foreground="White" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+					<TextBlock x:Name="explorerTitle" Text="Mission Explorer" Foreground="White" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
 					<TreeView Grid.Row="1" x:Name="mainTree" Background="{StaticResource WndBG }" SelectedItemChanged="mainTree_SelectedItemChanged">
 					</TreeView>
 				</Grid>

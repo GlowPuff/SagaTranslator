@@ -4,15 +4,16 @@ using System.Timers;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Saga_Translator.Models
+namespace Saga_Translator
 {
 	public class AppModel : ObservableObject
 	{
 		private MainWindow mainWindow;
 		private Timer infoTimer;
-		private string appVersion, formatVersion, infoText, translatedFilePath;
+		private string appVersion, formatVersion, infoText, translatedFilePath, uiFileName;
 		private bool nothingSelected;
 		private SolidColorBrush statusColor;
+		private TranslateMode translateMode;
 
 		public string AppVersion { get => appVersion; set => SetProperty( ref appVersion, value ); }
 		public string FormatVersion { get => formatVersion; set => SetProperty( ref formatVersion, value ); }
@@ -21,14 +22,17 @@ namespace Saga_Translator.Models
 		/// Folder path ONLY, EXCLUDING filename
 		/// </summary>
 		public string TranslatedFilePath { get => translatedFilePath; set => SetProperty( ref translatedFilePath, value ); }
+		public string UiFileName { get => uiFileName; set => SetProperty( ref uiFileName, value ); }
 		public bool NothingSelected { get => nothingSelected; set => SetProperty( ref nothingSelected, value ); }
 		public SolidColorBrush StatusColor { get => statusColor; set => SetProperty( ref statusColor, value ); }
+		public TranslateMode TranslateMode { get => translateMode; set => SetProperty( ref translateMode, value ); }
 
-		public AppModel( MainWindow main )
+		public AppModel( MainWindow main, TranslateMode tmode )
 		{
 			mainWindow = main;
 			AppVersion = Imperial_Commander_Editor.Utils.appVersion;
 			FormatVersion = Imperial_Commander_Editor.Utils.formatVersion;
+			TranslateMode = tmode == TranslateMode.Mission ? TranslateMode.Mission : TranslateMode.UI;
 			InfoText = "";
 			NothingSelected = true;
 			TranslatedFilePath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
@@ -43,7 +47,7 @@ namespace Saga_Translator.Models
 					StatusColor = new SolidColorBrush( Color.FromRgb( 69, 69, 69 ) );
 				} );
 			};
-			SetStatus( "Welcome!" );
+			SetStatus( tmode == TranslateMode.Mission ? "Mode: Mission" : "Mode: UI" );
 		}
 
 		public void SetStatus( string s )

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using Newtonsoft.Json;
+using Saga_Translator;
 
 namespace Imperial_Commander_Editor
 {
@@ -14,7 +15,7 @@ namespace Imperial_Commander_Editor
 		/// <summary>
 		/// saves a mission to base project folder
 		/// </summary>
-		public static bool Save( Mission mission, string path )
+		public static bool SaveMission( Mission mission, string path )
 		{
 			string basePath = path;
 
@@ -23,7 +24,7 @@ namespace Imperial_Commander_Editor
 				var di = Directory.CreateDirectory( basePath );
 				if ( di == null )
 				{
-					MessageBox.Show( "Could not create the Mission project folder.\r\nTried to create: " + basePath, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+					MessageBox.Show( "Could not create the folder.\r\nTried to create: " + basePath, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
 					return false;
 				}
 			}
@@ -48,7 +49,7 @@ namespace Imperial_Commander_Editor
 			}
 			catch ( Exception e )
 			{
-				MessageBox.Show( "Could not save the Mission.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "Could not save the Mission file.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
 				return false;
 			}
 			return true;
@@ -190,6 +191,58 @@ namespace Imperial_Commander_Editor
 			catch ( Exception e )
 			{
 				MessageBox.Show( "Could not load the Mission.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+				return null;
+			}
+		}
+
+		public static bool SaveUI( UILanguage ui, string filename, string path )
+		{
+			string basePath = path;
+
+			if ( !Directory.Exists( basePath ) )
+			{
+				var di = Directory.CreateDirectory( basePath );
+				if ( di == null )
+				{
+					MessageBox.Show( "Could not create the folder.\r\nTried to create: " + basePath, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+					return false;
+				}
+			}
+
+			string outpath = Path.Combine( basePath, filename );
+
+			string output = JsonConvert.SerializeObject( ui, Formatting.Indented );
+			Utils.Log( outpath );
+			try
+			{
+				using ( var stream = File.CreateText( outpath ) )
+				{
+					stream.Write( output );
+				}
+			}
+			catch ( Exception e )
+			{
+				MessageBox.Show( "Could not save the UI file.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+				return false;
+			}
+			return true;
+		}
+
+		public static UILanguage LoadUI( string filename )
+		{
+			try
+			{
+				string json = "";
+				string basePath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
+				using ( StreamReader sr = new( filename ) )
+				{
+					json = sr.ReadToEnd();
+				}
+				return JsonConvert.DeserializeObject<UILanguage>( json );
+			}
+			catch ( JsonReaderException e )
+			{
+				MessageBox.Show( "Error parsing UI Language.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
 				return null;
 			}
 		}

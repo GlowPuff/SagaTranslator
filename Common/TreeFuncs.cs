@@ -87,6 +87,59 @@ namespace Saga_Translator
 			appModel.NothingSelected = false;
 		}
 
+		public void PopulateUIMainTree()
+		{
+			mainTree.Items.Clear();
+
+			TreeViewItem uiItem = new TreeViewItem();
+			uiItem.Header = "Settings";
+			uiItem.DataContext = translatedUI.uiSettings;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Title Screen";
+			uiItem.DataContext = translatedUI.uiTitle;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Saga Setup Screen";
+			uiItem.DataContext = translatedUI.sagaUISetup;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Expansions";
+			uiItem.DataContext = translatedUI.uiExpansions;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Saga Main App";
+			uiItem.DataContext = translatedUI.sagaMainApp;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Setup Screen";
+			uiItem.DataContext = translatedUI.uiSetup;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Campaign Screen";
+			uiItem.DataContext = translatedUI.uiCampaign;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Classic Main App";
+			uiItem.DataContext = translatedUI.uiMainApp;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
+		}
+
 		private void mainTree_SelectedItemChanged( object sender, RoutedPropertyChangedEventArgs<object> e )
 		{
 			if ( e.NewValue is TreeViewItem )
@@ -148,6 +201,40 @@ namespace Saga_Translator
 					EnemyGroupData item = (EnemyGroupData)((TreeViewItem)e.NewValue).DataContext;
 
 					translationObject = new InitGroupPanel( item );
+				}
+
+				//UI
+				else if ( ((TreeViewItem)e.NewValue).DataContext is UITitle )
+				{
+					translationObject = new UITitlePanel( ((TreeViewItem)e.NewValue).DataContext as UITitle );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is UISettings )
+				{
+					translationObject = new UISettingsPanel( ((TreeViewItem)e.NewValue).DataContext as UISettings );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is SagaUISetup )
+				{
+					translationObject = new UISagaSetupPanel( ((TreeViewItem)e.NewValue).DataContext as SagaUISetup );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is UIExpansions )
+				{
+					translationObject = new UIExpansionsPanel( ((TreeViewItem)e.NewValue).DataContext as UIExpansions );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is SagaMainApp )
+				{
+					translationObject = new UISagaMainAppPanel( ((TreeViewItem)e.NewValue).DataContext as SagaMainApp );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is UISetup )
+				{
+					translationObject = new UISetupPanel( ((TreeViewItem)e.NewValue).DataContext as UISetup );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is UICampaign )
+				{
+					translationObject = new UICampaignPanel( ((TreeViewItem)e.NewValue).DataContext as UICampaign );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is UIMainApp )
+				{
+					translationObject = new UIMainAppPanel( ((TreeViewItem)e.NewValue).DataContext as UIMainApp );
 				}
 			}
 		}
