@@ -33,7 +33,7 @@
 					<StackPanel VerticalAlignment="Center" Margin="25,0,0,0">
 						<TextBlock Text="SOURCE (English)" Foreground="White" FontWeight="Bold"/>
 						<TextBlock x:Name="sourceText" Text="{Binding sourceMission.fileName}" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
-						<TextBlock x:Name="sourceUIText" Text="{Binding appModel.UiFileName}" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
+						<TextBlock x:Name="sourceUIText" Text="ui.json" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
 					</StackPanel>
 				</StackPanel>
 
