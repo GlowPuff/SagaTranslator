@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Saga_Translator"
         mc:Ignorable="d"
-        Title="Saga Translator [Mission]" Height="650" Width="800" Background="{StaticResource WndBG}" ResizeMode="CanResizeWithGrip" PreviewKeyDown="Window_PreviewKeyDown" WindowStartupLocation="CenterScreen">
+        Title="Saga Translator [Mission]" Height="650" Width="850" Background="{StaticResource WndBG}" ResizeMode="CanResizeWithGrip" PreviewKeyDown="Window_PreviewKeyDown" WindowStartupLocation="CenterScreen">
 
 	<Window.Resources>
 		<BooleanToVisibilityConverter x:Key="b2v"/>
