@@ -27,7 +27,10 @@ namespace Saga_Translator
 		private bool hasSaved = false, canSave = false;
 		private Mission _translatedMission, _sourceMission;
 		private UILanguage _sourceUI, _translatedUI;
+		private GenericUIData _sourceModel, _translatedModel;
 
+		public GenericUIData sourceDynamicUIModel { get { return _sourceModel; } set { _sourceModel = value; PC(); } }
+		public GenericUIData translatedDynamicUIModel { get { return _translatedModel; } set { _translatedModel = value; PC(); } }
 		public ITranslationPanel translationObject { get { return _translationObject; } set { _translationObject = value; PC(); } }
 		public AppModel appModel { get; set; }
 		public Mission sourceMission { get => _sourceMission; set { _sourceMission = value; PC(); } }
@@ -59,8 +62,55 @@ namespace Saga_Translator
 				updateCheck.Text = "Error Checking For Update";
 
 			Utils.Init( this );
-			Title = tmode == TranslateMode.Mission ? "Saga Translator [Mission]" : "Saga Translator [UI]";
-			explorerTitle.Text = tmode == TranslateMode.Mission ? "Mission Explorer" : "UI Explorer";
+			Title = $"Saga Translator [{tmode}]";
+			explorerTitle.Text = $"{tmode} Explorer";
+		}
+
+		public MainWindow( string filePath )
+		{
+			InitializeComponent();
+			DataContext = this;
+			Utils.Init( this );
+
+			appModel = new AppModel( this, TranslateMode.Other );
+			appModel.TranslatedFilePath = Path.GetDirectoryName( filePath );
+
+			appModel.NothingSelected = false;
+
+			if ( NetworkInterface.GetIsNetworkAvailable() )
+				Task.Run( StartVersionCheck );
+			else
+				updateCheck.Text = "Error Checking For Update";
+
+			ParsedObject data = DynamicParser.Parse( filePath );
+			//set the SOURCE data
+			sourceDynamicUIModel = data.data;
+			//set the TRANSLATED MISSION
+			translatedDynamicUIModel = data.dataCopy;
+			//PopulateDynamicTree( data.gType );
+			//appModel.SetStatus( $"Loaded '{new FileInfo( filePath ).Name}'" );
+			//Title = $"Saga Translator [{data.gType}] - FILE NOT SAVED";
+			//saveMissionButton.IsEnabled = true;
+			//openMissionTranslatedButton.IsEnabled = true;
+			//sourceUIText.Text = new FileInfo( filePath ).Name;
+
+			sourceText.Visibility = Visibility.Collapsed;
+			sourceUIText.Visibility = Visibility.Visible;
+			sourceUIText.Text = new FileInfo( filePath ).Name;
+			//languageCB.IsEnabled = true;
+			saveMissionButton.IsEnabled = true;
+			openMissionTranslatedButton.IsEnabled = true;
+			//findReplace.IsEnabled = true;
+			canSave = true;
+
+			PopulateDynamicTree( data.gType );
+			translationObject = new WelcomePanel();
+			((WelcomePanel)translationObject).EnableTranslationDrop();
+
+			appModel.SetStatus( $"{data.gType} Loaded" );
+
+			Title = "Saga Translator [Other] - FILE NOT SAVED";
+			explorerTitle.Text = $"{data.gType} Explorer";
 		}
 
 		public MainWindow( Mission s, string filePath )
@@ -92,8 +142,8 @@ namespace Saga_Translator
 			sourceUIText.Visibility = Visibility.Collapsed;
 			languageCB.IsEnabled = true;
 			saveMissionButton.IsEnabled = true;
-			findReplace.IsEnabled = true;
 			openMissionTranslatedButton.IsEnabled = true;
+			findReplace.IsEnabled = true;
 			canSave = true;
 
 			PopulateMainTree();
@@ -142,8 +192,8 @@ namespace Saga_Translator
 			sourceUIText.Visibility = Visibility.Visible;
 			languageCB.IsEnabled = true;
 			saveMissionButton.IsEnabled = true;
-			findReplace.IsEnabled = false;
 			openMissionTranslatedButton.IsEnabled = true;
+			findReplace.IsEnabled = false;
 			canSave = true;
 
 			PopulateUIMainTree();
@@ -161,7 +211,7 @@ namespace Saga_Translator
 
 		public event PropertyChangedEventHandler? PropertyChanged;
 
-		private void Window_PreviewKeyDown( object sender, System.Windows.Input.KeyEventArgs e )
+		private void Window_PreviewKeyDown( object sender, KeyEventArgs e )
 		{
 			if ( canSave && (e.Key == Key.S && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control) )
 			{
@@ -378,16 +428,26 @@ namespace Saga_Translator
 
 		private void modeToggle_Click( object sender, RoutedEventArgs e )
 		{
-			var ret = MessageBox.Show( "SWITCHING MODES WILL CLEAR ALL DATA.\n\nAre you sure you want to switch modes?", "Switch Modes?", MessageBoxButton.YesNo, MessageBoxImage.Question );
-
-			if ( ret == MessageBoxResult.Yes )
+			var dlg = new ModeSwitchDialog();
+			dlg.ShowDialog();
+			if ( dlg.appMode != TranslateMode.Cancel )
 			{
 				mainTree.Items.Clear();
-				appModel.TranslateMode = appModel.TranslateMode == TranslateMode.Mission ? TranslateMode.UI : TranslateMode.Mission;
+				appModel.TranslateMode = dlg.appMode;
 				MainWindow mainWindow = new( appModel.TranslateMode );
 				mainWindow.Show();
 				Close();
 			}
+			//var ret = MessageBox.Show( "SWITCHING MODES WILL CLEAR ALL DATA.\n\nAre you sure you want to switch modes?", "Switch Modes?", MessageBoxButton.YesNo, MessageBoxImage.Question );
+
+			//if ( ret == MessageBoxResult.Yes )
+			//{
+			//	mainTree.Items.Clear();
+			//	appModel.TranslateMode = appModel.TranslateMode == TranslateMode.Mission ? TranslateMode.UI : TranslateMode.Mission;
+			//	MainWindow mainWindow = new( appModel.TranslateMode );
+			//	mainWindow.Show();
+			//	Close();
+			//}
 		}
 
 		private async void StartVersionCheck()
@@ -453,9 +513,26 @@ namespace Saga_Translator
 					return false;
 				}
 			}
-			else
+			else if ( appModel.TranslateMode == TranslateMode.Other )
 			{
-				var ui = FileManager.LoadUI( filename );
+				ParsedObject data = DynamicParser.Parse( filename );
+				if ( data.isSuccess )
+				{
+					MainWindow mainWindow = new( filename );
+					mainWindow.Show();
+					Close();
+				}
+				else
+				{
+					appModel.SetStatus( "Error Loading Source Data" );
+					MessageBox.Show( data.errorMsg, "Error Loading Source Data" );
+				}
+
+				return false;
+			}
+			else if ( appModel.TranslateMode == TranslateMode.UI )
+			{
+				var ui = FileManager.LoadUI<UILanguage>( filename );
 				if ( ui != null && ui.sagaUISetup != null )
 				{
 					MainWindow mainWindow = new( ui, filename );
@@ -502,9 +579,9 @@ namespace Saga_Translator
 					return false;
 				}
 			}
-			else
+			else if ( appModel.TranslateMode == TranslateMode.UI )
 			{
-				translatedUI = FileManager.LoadUI( filename );
+				translatedUI = FileManager.LoadUI<UILanguage>( filename );
 				//make sure a UI was loaded, and not anything else by checking one of the loaded models
 				if ( translatedUI != null && translatedUI.sagaUISetup != null )
 				{
@@ -530,6 +607,26 @@ namespace Saga_Translator
 					return false;
 				}
 			}
+			else if ( appModel.TranslateMode == TranslateMode.Other )
+			{
+				var data = DynamicParser.Parse( filename );
+				if ( data.isSuccess )
+				{
+					translatedDynamicUIModel = data.data;
+					hasSaved = true;
+					appModel.TranslatedFilePath = Path.GetDirectoryName( filename );
+					appModel.OtherFileName = Path.GetFileName( filename );
+					Title = "Saga Translator [Other] - " + Path.Combine( appModel.TranslatedFilePath, Path.GetFileName( filename ) );
+					appModel.SetStatus( "Loaded Translated File" );
+					PopulateDynamicTree( data.gType );
+					translationObject = new WelcomePanel();
+					((WelcomePanel)translationObject).EnableTranslationDrop();
+					return true;
+				}
+				return false;
+			}
+
+			return false;
 		}
 
 		//private void ToolBar_Loaded( object sender, RoutedEventArgs e )

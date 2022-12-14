@@ -140,6 +140,32 @@ namespace Saga_Translator
 			mainTree.Items.Add( uiItem );
 		}
 
+		public void PopulateDynamicTree( GenericType gtype )
+		{
+			mainTree.Items.Clear();
+			TreeViewItem uiRoot = new TreeViewItem();
+			uiRoot.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiRoot );
+
+			if ( gtype == GenericType.Instructions )
+			{
+				uiRoot.Header = "Instructions";
+
+				for ( int i = 0; i < (sourceDynamicUIModel.data as List<CardInstruction>).Count; i++ )
+				{
+					TreeViewItem uiItem = new TreeViewItem();
+					uiItem.Header = (sourceDynamicUIModel.data as List<CardInstruction>)[i].instName;
+					uiItem.DataContext = new DynamicContext()
+					{
+						arrayIndex = i,
+						gtype = GenericType.Instructions
+					};
+					uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+					uiRoot.Items.Add( uiItem );
+				}
+			}
+		}
+
 		private void mainTree_SelectedItemChanged( object sender, RoutedPropertyChangedEventArgs<object> e )
 		{
 			if ( e.NewValue is TreeViewItem )
@@ -235,6 +261,12 @@ namespace Saga_Translator
 				else if ( ((TreeViewItem)e.NewValue).DataContext is UIMainApp )
 				{
 					translationObject = new UIMainAppPanel( ((TreeViewItem)e.NewValue).DataContext as UIMainApp );
+				}
+
+				//DYNAMIC UI DATA
+				else if ( ((TreeViewItem)e.NewValue).DataContext is DynamicContext )
+				{
+					translationObject = new GenericUIPanel( ((TreeViewItem)e.NewValue).DataContext as DynamicContext );
 				}
 			}
 		}

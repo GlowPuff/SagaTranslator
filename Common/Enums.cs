@@ -1,6 +1,7 @@
 ﻿namespace Imperial_Commander_Editor
 {
-	///enums
+	///enums <summary>
+	public enum GenericType { Instructions }
 	public enum CustomInstructionType { Top, Bottom, Replace }
 	public enum ThreatModifierType { None, Fixed, Multiple }
 	public enum YesNoAll { Yes, No, All }
@@ -21,4 +22,4 @@
 	public enum GroupTraits { Trooper, Leader, HeavyWeapon, Guardian, Brawler, Droid, Vehicle, Hunter, Creature, Smuggler, Spy, ForceUser, Wookiee, Hero }
 }
 
-public enum TranslateMode { Mission, UI }
+public enum TranslateMode { Mission, UI, Other, Cancel }

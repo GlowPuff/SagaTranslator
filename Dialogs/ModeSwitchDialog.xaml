@@ -1,0 +1,32 @@
+﻿<Window x:Class="Saga_Translator.ModeSwitchDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saga_Translator"
+        mc:Ignorable="d"
+        Title="Mode Switch" Width="500" SizeToContent="Height" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="{StaticResource WndBG}">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Margin="10">
+			<TextBlock Text="Switch modes depending on which type of file you want to translate." Foreground="White" Padding="0" FontSize="14"/>
+			<TextBlock Text="Mission = A Mission file" Foreground="White" Padding="10" FontSize="14"/>
+			<TextBlock Text="UI = The app UI file (ui.json)" Foreground="White" Padding="10" FontSize="14"/>
+			<TextBlock Text="Other = Any of the other translatable files (instructions.json, events.json, Campaign data, Deployment Groups, etc.)" TextWrapping="Wrap" Foreground="White" Padding="10" FontSize="14"/>
+
+			<TextBlock Text="SWITCHING MODES WILL CLEAR ALL CURRENT DATA." Foreground="Red" Padding="0" FontSize="14" HorizontalAlignment="Center" FontWeight="Bold"/>
+		</StackPanel>
+
+		<UniformGrid Columns="4" Grid.Row="1" Margin="10">
+			<Button x:Name="missionBtn" Content="Mission" Margin="5" Style="{StaticResource darkHover}" Foreground="White" Click="missionBtn_Click"/>
+			<Button x:Name="uiBtn" Content="UI" Margin="5" Style="{StaticResource darkHover}" Foreground="White" Click="uiBtn_Click"/>
+			<Button x:Name="otherBtn" Content="Other" Margin="5" Style="{StaticResource darkHover}" Foreground="White" Click="otherBtn_Click" IsEnabled="False" Opacity=".25"/>
+			<Button x:Name="cancelBtn" Content="Cancel" Margin="5" Style="{StaticResource redHover}" Foreground="White" Click="cancelBtn_Click"/>
+		</UniformGrid>
+	</Grid>
+</Window>

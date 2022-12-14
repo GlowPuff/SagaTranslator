@@ -10,7 +10,7 @@ namespace Saga_Translator
 	{
 		private MainWindow mainWindow;
 		private Timer infoTimer;
-		private string appVersion, formatVersion, infoText, translatedFilePath, uiFileName;
+		private string appVersion, formatVersion, infoText, translatedFilePath, uiFileName, otherFileName;
 		private bool nothingSelected;
 		private SolidColorBrush statusColor;
 		private TranslateMode translateMode;
@@ -23,6 +23,7 @@ namespace Saga_Translator
 		/// </summary>
 		public string TranslatedFilePath { get => translatedFilePath; set => SetProperty( ref translatedFilePath, value ); }
 		public string UiFileName { get => uiFileName; set => SetProperty( ref uiFileName, value ); }
+		public string OtherFileName { get => otherFileName; set => SetProperty( ref otherFileName, value ); }
 		public bool NothingSelected { get => nothingSelected; set => SetProperty( ref nothingSelected, value ); }
 		public SolidColorBrush StatusColor { get => statusColor; set => SetProperty( ref statusColor, value ); }
 		public TranslateMode TranslateMode { get => translateMode; set => SetProperty( ref translateMode, value ); }
@@ -32,7 +33,7 @@ namespace Saga_Translator
 			mainWindow = main;
 			AppVersion = Imperial_Commander_Editor.Utils.appVersion;
 			FormatVersion = Imperial_Commander_Editor.Utils.formatVersion;
-			TranslateMode = tmode == TranslateMode.Mission ? TranslateMode.Mission : TranslateMode.UI;
+			TranslateMode = tmode;
 			InfoText = "";
 			NothingSelected = true;
 			TranslatedFilePath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
@@ -47,7 +48,7 @@ namespace Saga_Translator
 					StatusColor = new SolidColorBrush( Color.FromRgb( 69, 69, 69 ) );
 				} );
 			};
-			SetStatus( tmode == TranslateMode.Mission ? "Mode: Mission" : "Mode: UI" );
+			SetStatus( $"Mode: {tmode}" );
 		}
 
 		public void SetStatus( string s )

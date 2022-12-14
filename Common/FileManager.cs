@@ -228,22 +228,21 @@ namespace Imperial_Commander_Editor
 			return true;
 		}
 
-		public static UILanguage LoadUI( string filename )
+		public static T LoadUI<T>( string filename )
 		{
 			try
 			{
 				string json = "";
-				string basePath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
 				using ( StreamReader sr = new( filename ) )
 				{
 					json = sr.ReadToEnd();
 				}
-				return JsonConvert.DeserializeObject<UILanguage>( json );
+				return JsonConvert.DeserializeObject<T>( json );
 			}
 			catch ( JsonReaderException e )
 			{
 				MessageBox.Show( "Error parsing UI Language.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
-				return null;
+				return default( T );
 			}
 		}
 	}

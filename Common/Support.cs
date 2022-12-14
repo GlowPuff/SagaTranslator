@@ -7,6 +7,27 @@ using System.Windows.Media;
 
 namespace Imperial_Commander_Editor
 {
+	public class ParsedObject
+	{
+		public bool isSuccess;
+		public GenericUIData data;
+		public GenericUIData dataCopy;
+		public GenericType gType;
+		public Type dataType;
+		public string errorMsg;
+	}
+
+	public class GenericUIData
+	{
+		public dynamic data;
+	}
+
+	public class DynamicContext
+	{
+		public int arrayIndex;
+		public GenericType gtype;
+	}
+
 	public class ProjectItem : IComparable<ProjectItem>
 	{
 		public string Title { get; set; }

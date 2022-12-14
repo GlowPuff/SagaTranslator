@@ -7,47 +7,49 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="800">
 
-	<!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch">-->
-	<Grid VerticalAlignment="Center" Style="{StaticResource whiteText}" Margin="10">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="*" />
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="auto" />
-			<RowDefinition Height="auto" />
-			<RowDefinition Height="auto" />
-			<RowDefinition Height="auto" />
-		</Grid.RowDefinitions>
+	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch">
+		<Grid VerticalAlignment="Center" Style="{StaticResource whiteText}" Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto" />
+				<RowDefinition Height="auto" />
+				<RowDefinition Height="auto" />
+				<RowDefinition Height="auto" />
+			</Grid.RowDefinitions>
 
-		<Border x:Name="dragSourceBox" Grid.Column="0" Grid.Row="2" BorderThickness="2" BorderBrush="Gray" CornerRadius="5" MinHeight="75" Margin="10" Background="{DynamicResource MenuBG}" AllowDrop="True" DragEnter="dragSourceBox_DragEnter" Drop="dragSourceBox_Drop">
-			<TextBlock Text="Drag the (English) SOURCE file here." Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		</Border>
-		<Border x:Name="dragTranslatedBox" Grid.Column="1" Grid.Row="2" BorderThickness="2" BorderBrush="Gray" CornerRadius="5" MinHeight="75" Margin="10" Background="{DynamicResource MenuBG}" Opacity=".25" DragEnter="dragTranslatedBox_DragEnter" Drop="dragTranslatedBox_Drop">
-			<TextBlock Text="Drag an existing TRANSLATED file here." Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		</Border>
+			<Border x:Name="dragSourceBox" Grid.Column="0" Grid.Row="2" BorderThickness="2" BorderBrush="Gray" CornerRadius="5" MinHeight="75" Margin="10" Background="{DynamicResource MenuBG}" AllowDrop="True" DragEnter="dragSourceBox_DragEnter" Drop="dragSourceBox_Drop">
+				<TextBlock Text="Drag the (English) SOURCE file here." Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Border>
+			<Border x:Name="dragTranslatedBox" Grid.Column="1" Grid.Row="2" BorderThickness="2" BorderBrush="Gray" CornerRadius="5" MinHeight="75" Margin="10" Background="{DynamicResource MenuBG}" Opacity=".25" DragEnter="dragTranslatedBox_DragEnter" Drop="dragTranslatedBox_Drop">
+				<TextBlock Text="Drag an existing TRANSLATED file here." Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Border>
 
-		<TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="For Missions, don't translate strings written between ampersands.&#x0a;&#x0a;For example:&#x0a;&amp;Terminals Destroyed&amp;" Margin="24" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+			<TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="For Missions, don't translate strings written between ampersands.&#x0a;&#x0a;For example:&#x0a;&amp;Terminals Destroyed&amp;" Margin="24" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap"/>
 
-		<StackPanel Margin="0,0,10,0">
-			<TextBlock Text="New Translation" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
-			<TextBlock Text="1. Open the SOURCE File in English, either by dragging it below or using the 'Open Source File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="2. Select a TARGET LANGUAGE from the dropdown menu." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="3. Use the Explorer to translate each item in the File." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="4. Save the translated File." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="NOTE: For Missions, use the same filename as the English Mission, but save it to a different location." Margin="0,4" TextWrapping="Wrap"/>
-		</StackPanel>
+			<StackPanel Margin="0,0,10,0">
+				<TextBlock Text="New Translation" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
+				<TextBlock Text="1. Open the SOURCE File in English, either by dragging it below or using the 'Open Source File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="2. Select a TARGET LANGUAGE from the dropdown menu." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="NOTE: [Other] files don't need the language to be set." FontWeight="Black" Margin="10,4" TextWrapping="Wrap"/>
+				<TextBlock Text="3. Use the Explorer to translate each item in the File." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="4. Save the translated File." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="NOTE: For Missions, use the same filename as the English Mission, but save it to a different location." Margin="0,4" TextWrapping="Wrap"/>
+			</StackPanel>
 
-		<StackPanel Grid.Column="1" Margin="10,0,0,0">
-			<TextBlock Text="Existing Translation" Grid.Column="1" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
-			<TextBlock Text="1. Open the SOURCE File in English, either by dragging it below or using the 'Open Source File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="2. Open the existing TRANSLATED File, either by dragging it below or using the 'Open Translated File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="3. The language should be set automatically, otherwise select a TARGET LANGUAGE from the dropdown menu." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="4. Use the Explorer to translate each item." Margin="0,4" TextWrapping="Wrap"/>
-			<TextBlock Text="5. Save the translated File. The File will be saved to the same location and filename." Margin="0,4" TextWrapping="Wrap"/>
-		</StackPanel>
+			<StackPanel Grid.Column="1" Margin="10,0,0,0">
+				<TextBlock Text="Existing Translation" Grid.Column="1" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
+				<TextBlock Text="1. Open the SOURCE File in English, either by dragging it below or using the 'Open Source File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="2. Open the existing TRANSLATED File, either by dragging it below or using the 'Open Translated File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="3. The language should be set automatically, otherwise select a TARGET LANGUAGE from the dropdown menu." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="NOTE: [Other] files don't need the language to be set." FontWeight="Black" Margin="10,4" TextWrapping="Wrap"/>
+				<TextBlock Text="4. Use the Explorer to translate each item." Margin="0,4" TextWrapping="Wrap"/>
+				<TextBlock Text="5. Save the translated File. The File will be saved to the same location and filename." Margin="0,4" TextWrapping="Wrap"/>
+			</StackPanel>
 
-		<!--<Border Grid.Row="1" Grid.Column="0" Height="100" Margin="0,10,10,0" Background="{DynamicResource MenuBG}">
+			<!--<Border Grid.Row="1" Grid.Column="0" Height="100" Margin="0,10,10,0" Background="{DynamicResource MenuBG}">
 			<TextBlock Text="Drag and Drop Source Mission In English" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 		</Border>
 
@@ -55,7 +57,7 @@
 			<TextBlock Text="Drag and Drop Translated Mission" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 		</Border>-->
 
-	</Grid>
-	<!--</ScrollViewer>-->
+		</Grid>
+	</ScrollViewer>
 
 </UserControl>
