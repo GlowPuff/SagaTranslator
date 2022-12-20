@@ -149,20 +149,110 @@ namespace Saga_Translator
 
 			if ( gtype == GenericType.Instructions )
 			{
-				uiRoot.Header = "Instructions";
-
-				for ( int i = 0; i < (sourceDynamicUIModel.data as List<CardInstruction>).Count; i++ )
+				IoCList<CardInstruction>( gtype, ( uiItem, index ) =>
 				{
-					TreeViewItem uiItem = new TreeViewItem();
-					uiItem.Header = (sourceDynamicUIModel.data as List<CardInstruction>)[i].instName;
-					uiItem.DataContext = new DynamicContext()
-					{
-						arrayIndex = i,
-						gtype = GenericType.Instructions
-					};
-					uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+					uiRoot.Header = "Instructions";
+					uiItem.Header = (sourceDynamicUIModel.data as List<CardInstruction>)[index].instName;
 					uiRoot.Items.Add( uiItem );
-				}
+				} );
+			}
+			else if ( gtype == GenericType.BonusEffects )
+			{
+				IoCList<BonusEffect>( gtype, ( uiItem, index ) =>
+				{
+					uiRoot.Header = "Bonus Effects";
+					uiItem.Header = (sourceDynamicUIModel.data as List<BonusEffect>)[index].bonusID;
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+			else if ( gtype == GenericType.CardLanguage )
+			{
+				IoCList<CardLanguage>( gtype, ( uiItem, index ) =>
+				{
+					uiRoot.Header = "Deployment Groups";
+					uiItem.Header = (sourceDynamicUIModel.data as List<CardLanguage>)[index].id;
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+			else if ( gtype == GenericType.MissionCardText )
+			{
+				IoCList<MissionCardText>( gtype, ( uiItem, index ) =>
+				{
+					uiRoot.Header = "Mission Card Text";
+					uiItem.Header = (sourceDynamicUIModel.data as List<MissionCardText>)[index].id;
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+			else if ( gtype == GenericType.MissionRulesInfo )
+			{
+				IoC<string>( gtype, ( uiItem ) =>
+				{
+					uiRoot.Header = "Mission Rules/Info Text";
+					uiItem.Header = "Text";
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+			else if ( gtype == GenericType.CampaignItems )
+			{
+				IoCList<CampaignItem>( gtype, ( uiItem, index ) =>
+				{
+					uiRoot.Header = "Campaign Items";
+					uiItem.Header = (sourceDynamicUIModel.data as List<CampaignItem>)[index].id;
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+			else if ( gtype == GenericType.CampaignRewards )
+			{
+				IoCList<CampaignReward>( gtype, ( uiItem, index ) =>
+				{
+					uiRoot.Header = "Campaign Rewards";
+					uiItem.Header = (sourceDynamicUIModel.data as List<CampaignReward>)[index].id;
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+			else if ( gtype == GenericType.CampaignSkills )
+			{
+				IoCList<CampaignSkill>( gtype, ( uiItem, index ) =>
+				{
+					uiRoot.Header = "Campaign Skills";
+					uiItem.Header = (sourceDynamicUIModel.data as List<CampaignSkill>)[index].id;
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+			else if ( gtype == GenericType.CampaignInfo )
+			{
+				IoC<CampaignSkill>( gtype, ( uiItem ) =>
+				{
+					uiRoot.Header = "Campaign Info";
+					uiItem.Header = "Text";
+					uiRoot.Items.Add( uiItem );
+				} );
+			}
+		}
+
+		private void IoC<T>( GenericType gtype, Action<TreeViewItem> ioc )
+		{
+			TreeViewItem uiItem = new TreeViewItem();
+			uiItem.DataContext = new DynamicContext()
+			{
+				gtype = gtype
+			};
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			ioc( uiItem );
+		}
+
+		private void IoCList<T>( GenericType gtype, Action<TreeViewItem, int> ioc )
+		{
+			for ( int i = 0; i < (sourceDynamicUIModel.data as List<T>).Count; i++ )
+			{
+				TreeViewItem uiItem = new TreeViewItem();
+				uiItem.DataContext = new DynamicContext()
+				{
+					arrayIndex = i,
+					gtype = gtype
+				};
+				uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+				ioc( uiItem, i );
 			}
 		}
 

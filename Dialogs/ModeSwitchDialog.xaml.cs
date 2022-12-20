@@ -37,5 +37,11 @@ namespace Saga_Translator
 			appMode = TranslateMode.Mission;
 			Close();
 		}
+
+		private void supportedBtn_Click( object sender, RoutedEventArgs e )
+		{
+			var dlg = new SupportedFilesDialog();
+			dlg.ShowDialog();
+		}
 	}
 }

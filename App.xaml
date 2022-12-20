@@ -81,7 +81,7 @@
 			</Style>
 
 			<Style TargetType="Button" x:Key="darkHover">
-				<Setter Property="Background" Value="#FF2F333E"/>
+				<Setter Property="Background" Value="#FF333140"/>
 				<Setter Property="BorderBrush" Value="#FF808AAB"/>
 				<Setter Property="BorderThickness" Value="2"/>
 				<Setter Property="Padding" Value="10"/>
@@ -101,6 +101,31 @@
 					</Trigger>
 					<Trigger Property="IsPressed" Value="True">
 						<Setter Property="Background" Value="DarkRed"/>
+					</Trigger>
+				</Style.Triggers>
+			</Style>
+
+			<Style TargetType="Button" x:Key="darkHoverDarkOver">
+				<Setter Property="Background" Value="#FF333140"/>
+				<Setter Property="BorderBrush" Value="#FF808AAB"/>
+				<Setter Property="BorderThickness" Value="2"/>
+				<Setter Property="Padding" Value="10"/>
+				<Setter Property="FontWeight" Value="Bold"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Button}">
+							<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" Padding="{TemplateBinding Padding}">
+								<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+							</Border>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+				<Style.Triggers>
+					<Trigger Property="IsMouseOver" Value="True">
+						<Setter Property="Background" Value="#FF454256"/>
+					</Trigger>
+					<Trigger Property="IsPressed" Value="True">
+						<Setter Property="Background" Value="#FF1A1921"/>
 					</Trigger>
 				</Style.Triggers>
 			</Style>

@@ -26,7 +26,7 @@
 						<Image Source="Assets/mode-toggle.png" Height="30"/>
 					</Button>
 					<!--OPEN SOURCE-->
-					<Button x:Name="openMissionButton" ToolTip="Open a Source File (English)" Click="openMissionButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+					<Button x:Name="openMissionButton" ToolTip="Open a Source File (English)" Click="openSourceButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
 						<Image Source="Assets/open.png" Height="30"/>
 					</Button>
 					<!--FILENAME-->

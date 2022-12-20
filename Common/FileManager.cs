@@ -228,6 +228,39 @@ namespace Imperial_Commander_Editor
 			return true;
 		}
 
+		public static bool SaveOther( GenericUIData data, string filename, string path )
+		{
+			string basePath = path;
+
+			if ( !Directory.Exists( basePath ) )
+			{
+				var di = Directory.CreateDirectory( basePath );
+				if ( di == null )
+				{
+					MessageBox.Show( "Could not create the folder.\r\nTried to create: " + basePath, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+					return false;
+				}
+			}
+
+			string outpath = Path.Combine( basePath, filename );
+
+			string output = JsonConvert.SerializeObject( data.data, Formatting.Indented );
+			Utils.Log( outpath );
+			try
+			{
+				using ( var stream = File.CreateText( outpath ) )
+				{
+					stream.Write( output );
+				}
+			}
+			catch ( Exception e )
+			{
+				MessageBox.Show( "Could not save the Data file.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+				return false;
+			}
+			return true;
+		}
+
 		public static T LoadUI<T>( string filename )
 		{
 			try

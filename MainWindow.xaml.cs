@@ -44,6 +44,9 @@ namespace Saga_Translator
 				PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( n ) );
 		}
 
+		/// <summary>
+		/// ctor for starting app the first time in the session, default to Mission mode
+		/// </summary>
 		public MainWindow() : this( TranslateMode.Mission ) { }
 
 		public MainWindow( TranslateMode tmode )
@@ -66,6 +69,9 @@ namespace Saga_Translator
 			explorerTitle.Text = $"{tmode} Explorer";
 		}
 
+		/// <summary>
+		/// ctor for Other mode
+		/// </summary>
 		public MainWindow( string filePath )
 		{
 			InitializeComponent();
@@ -73,6 +79,7 @@ namespace Saga_Translator
 			Utils.Init( this );
 
 			appModel = new AppModel( this, TranslateMode.Other );
+			appModel.OtherFileName = Path.GetFileName( filePath );
 			appModel.TranslatedFilePath = Path.GetDirectoryName( filePath );
 
 			appModel.NothingSelected = false;
@@ -113,6 +120,9 @@ namespace Saga_Translator
 			explorerTitle.Text = $"{data.gType} Explorer";
 		}
 
+		/// <summary>
+		/// ctor for Mission mode
+		/// </summary>
 		public MainWindow( Mission s, string filePath )
 		{
 			InitializeComponent();
@@ -161,6 +171,9 @@ namespace Saga_Translator
 			languageCB.SetBinding( ComboBox.SelectedValueProperty, binding );
 		}
 
+		/// <summary>
+		/// ctor for UI mode
+		/// </summary>
 		public MainWindow( UILanguage ui, string filePath )
 		{
 			InitializeComponent();
@@ -223,38 +236,93 @@ namespace Saga_Translator
 			//}
 		}
 
-		private void openMissionButton_Click( object sender, RoutedEventArgs e )
+		private void openSourceButton_Click( object sender, RoutedEventArgs e )
 		{
+			OpenFileDialog od = new();
+			od.InitialDirectory = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
+
 			if ( appModel.TranslateMode == TranslateMode.Mission )
 			{
-				OpenFileDialog od = new();
-				od.InitialDirectory = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
 				od.Filter = "Mission File (*.json)|*.json";
 				od.Title = "Open SOURCE Mission (English)";
-				if ( od.ShowDialog() == true )
-				{
-					OpenSourceFile( od.FileName );
-				}
 			}
-			else
+			else if ( appModel.TranslateMode == TranslateMode.UI )
 			{
-				OpenFileDialog od = new();
-				od.InitialDirectory = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
 				od.Filter = "UI File (*.json)|*.json";
 				od.Title = "Open SOURCE UI (English)";
-				if ( od.ShowDialog() == true )
-				{
-					OpenSourceFile( od.FileName );
-				}
 			}
+			else if ( appModel.TranslateMode == TranslateMode.Other )
+			{
+				od.Filter = "JSON/TXT File (*.json, *.txt)|*.json;*.txt";
+				od.Title = "Open SOURCE DATA (English)";
+			}
+
+			if ( od.ShowDialog() == true )
+				OpenSourceFile( od.FileName );
 		}
 
 		private void saveMissionButton_Click( object sender, RoutedEventArgs e )
 		{
 			if ( appModel.TranslateMode == TranslateMode.Mission )
 				HandleSaveMission();
-			else
+			else if ( appModel.TranslateMode == TranslateMode.UI )
 				HandleSaveUI();
+			else if ( appModel.TranslateMode == TranslateMode.Other )
+				HandleSaveOther();
+		}
+
+		private void HandleSaveOther()
+		{
+			if ( !hasSaved )
+			{
+				SaveFileDialog od = new SaveFileDialog();
+				od.AddExtension = true;
+				od.InitialDirectory = appModel.TranslatedFilePath;
+				od.Filter = $"{appModel.TranslateMode} File (*.json, *.txt)|*.json;*.txt";
+				od.Title = $"Save Translated {appModel.TranslateMode}";
+				od.FileName = Path.Combine( appModel.TranslatedFilePath, appModel.OtherFileName );
+				if ( od.ShowDialog() == true )
+				{
+					appModel.TranslatedFilePath = Path.GetDirectoryName( od.FileName );
+					appModel.OtherFileName = od.SafeFileName;
+					if ( FileManager.SaveOther( translatedDynamicUIModel, od.SafeFileName, appModel.TranslatedFilePath ) )
+					{
+						hasSaved = true;
+						Title = "Saga Translator [Other] - " + Path.Combine( appModel.TranslatedFilePath, od.SafeFileName );
+						appModel.SetStatus( "Translation Saved" );
+					}
+					else
+					{
+						appModel.SetStatus( "Error Saving Translation" );
+					}
+				}
+			}
+			else
+			{
+				if ( !Directory.Exists( appModel.TranslatedFilePath ) )
+				{
+					var di = Directory.CreateDirectory( appModel.TranslatedFilePath );
+					if ( di == null )
+					{
+						MessageBox.Show( "Could not create the folder.\r\nTried to create: " + appModel.TranslatedFilePath, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+						hasSaved = false;
+						appModel.SetStatus( "Error Creating Directory" );
+						return;
+					}
+				}
+
+				if ( FileManager.SaveOther( translatedDynamicUIModel, appModel.OtherFileName, appModel.TranslatedFilePath ) )
+				{
+					hasSaved = true;
+					Title = "Saga Translator [Other] - " + Path.Combine( appModel.TranslatedFilePath, appModel.OtherFileName );
+					appModel.SetStatus( "Translation Saved" );
+				}
+				else
+				{
+					hasSaved = false;
+					appModel.SetStatus( "Error Saving Translation" );
+				}
+			}
 		}
 
 		private void HandleSaveUI()
@@ -378,18 +446,21 @@ namespace Saga_Translator
 				od.Filter = "Mission File (*.json)|*.json";
 				od.Title = "Open Translated Mission";
 				if ( od.ShowDialog() == true )
-				{
 					OpenTranslatedFile( od.FileName );
-				}
 			}
-			else
+			else if ( appModel.TranslateMode == TranslateMode.UI )
 			{
 				od.Filter = "UI File (*.json)|*.json";
 				od.Title = "Open Translated UI";
 				if ( od.ShowDialog() == true )
-				{
 					OpenTranslatedFile( od.FileName );
-				}
+			}
+			else if ( appModel.TranslateMode == TranslateMode.Other )
+			{
+				od.Filter = $"{appModel.TranslateMode} File (*.json, *.txt)|*.json;*.txt";
+				od.Title = "Open Translated UI";
+				if ( od.ShowDialog() == true )
+					OpenTranslatedFile( od.FileName );
 			}
 		}
 
@@ -623,7 +694,12 @@ namespace Saga_Translator
 					((WelcomePanel)translationObject).EnableTranslationDrop();
 					return true;
 				}
-				return false;
+				else
+				{
+					appModel.SetStatus( "Error Loading Translation" );
+					MessageBox.Show( data.errorMsg, "Error Loading Translated UI" );
+					return false;
+				}
 			}
 
 			return false;
