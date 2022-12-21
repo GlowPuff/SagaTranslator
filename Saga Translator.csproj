@@ -20,14 +20,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Assets\enemies.json" />
 		<None Remove="Assets\find-replace.png" />
 		<None Remove="Assets\help.png" />
 		<None Remove="Assets\mode-toggle.png" />
 		<None Remove="Assets\open.png" />
 		<None Remove="Assets\save.png" />
+		<None Remove="Assets\villains.json" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Assets\enemies.json" />
 	  <Resource Include="Assets\help.png" />
 	  <Content Include="icon.ico" />
 	</ItemGroup>
@@ -45,6 +48,7 @@
 		<Resource Include="Assets\mode-toggle.png" />
 		<Resource Include="Assets\open.png" />
 		<Resource Include="Assets\save.png" />
+		<EmbeddedResource Include="Assets\villains.json" />
 	</ItemGroup>
 
 	<ItemGroup>

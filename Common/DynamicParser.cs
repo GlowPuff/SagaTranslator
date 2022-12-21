@@ -35,8 +35,10 @@ namespace Saga_Translator
 				return Parse<List<CampaignSkill>>( filenamePath, GenericType.CampaignSkills );
 			else if ( regex2.Match( fname ).Success )
 				return LoadText( filenamePath, GenericType.CampaignInfo );
+			else if ( fname == "events.json" )
+				return Parse<EventList>( filenamePath, GenericType.CardEvent );
 
-			return new() { isSuccess = false, errorMsg = "Unrecognized data filename." };
+			return new() { isSuccess = false, errorMsg = "Unrecognized data file type. You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again." };
 		}
 
 		private static ParsedObject LoadText( string filenamePath, GenericType gType )
@@ -60,7 +62,7 @@ namespace Saga_Translator
 		{
 			GenericUIData source, sourceCopy;
 
-			var ui = FileManager.LoadUI<T>( filenamePath );
+			var ui = FileManager.LoadJSON<T>( filenamePath );
 			if ( ui != null )
 			{
 				source = new();

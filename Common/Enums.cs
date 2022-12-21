@@ -1,7 +1,7 @@
 ﻿namespace Imperial_Commander_Editor
 {
 	///enums <summary>
-	public enum GenericType { Instructions, BonusEffects, CardLanguage, MissionCardText, MissionRulesInfo, CampaignItems, CampaignRewards, CampaignSkills, CampaignInfo }
+	public enum GenericType { Instructions, BonusEffects, CardLanguage, MissionCardText, MissionRulesInfo, CampaignItems, CampaignRewards, CampaignSkills, CampaignInfo, CardEvent }
 	public enum CustomInstructionType { Top, Bottom, Replace }
 	public enum ThreatModifierType { None, Fixed, Multiple }
 	public enum YesNoAll { Yes, No, All }
@@ -23,4 +23,4 @@
 	public enum RewardType { Campaign, General, HeroNumber, Personal }
 }
 
-public enum TranslateMode { Mission, UI, Other, Cancel }
+public enum TranslateMode { Mission, UI, Supplemental, Cancel }

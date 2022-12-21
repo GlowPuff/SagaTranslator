@@ -42,7 +42,7 @@
 				<TextBlock Text="1. Use the Mode button on the toolbar to select the FILE TYPE you want to work with." TextWrapping="Wrap"/>
 				<TextBlock Text="2. Open the SOURCE File in English, either by dragging it below or using the 'Open Source File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
 				<TextBlock Text="3. Select a TARGET LANGUAGE from the dropdown menu." Margin="0,4" TextWrapping="Wrap"/>
-				<TextBlock Text="NOTE: [Other] files don't need the language to be set." FontWeight="Black" Margin="10,4" TextWrapping="Wrap"/>
+				<TextBlock Text="NOTE: [Supplemental] files don't need the language to be set." FontWeight="Black" Margin="10,4" TextWrapping="Wrap"/>
 				<TextBlock Text="4. Use the Explorer tree to translate each item in the File." Margin="0,4" TextWrapping="Wrap"/>
 				<TextBlock Text="5. Save the translated File using the Save button on the toolbar. The correct filename will be entered for you. Be careful to save to a different location than the English Source file to avoid overwriting it." Margin="0,4" TextWrapping="Wrap"/>
 				<TextBlock Text="NOTE: For Missions, use the same filename as the English Mission, but save it to a different location." Margin="0,4" TextWrapping="Wrap"/>
@@ -54,7 +54,7 @@
 				<TextBlock Text="2. Open the SOURCE File in English, either by dragging it below or using the 'Open Source File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
 				<TextBlock Text="3. Open the EXISTING TRANSLATED File, either by dragging it below or using the 'Open Translated File' button in the toolbar at the top of the app." Margin="0,4" TextWrapping="Wrap"/>
 				<TextBlock Text="4. The language should be set automatically, otherwise select a TARGET LANGUAGE from the dropdown menu." Margin="0,4" TextWrapping="Wrap"/>
-				<TextBlock Text="NOTE: [Other] files don't need the language to be set." FontWeight="Black" Margin="10,4" TextWrapping="Wrap"/>
+				<TextBlock Text="NOTE: [Supplemental] files don't need the language to be set." FontWeight="Black" Margin="10,4" TextWrapping="Wrap"/>
 				<TextBlock Text="5. Use the Explorer tree to translate each item." Margin="0,4" TextWrapping="Wrap"/>
 				<TextBlock Text="6. Save the translated File. The File will be saved to the same location and filename." Margin="0,4" TextWrapping="Wrap"/>
 			</StackPanel>

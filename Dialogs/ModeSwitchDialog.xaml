@@ -17,7 +17,7 @@
 			<TextBlock Text="Switch modes depending on which type of file you want to translate." Foreground="White" Padding="0" FontSize="14"/>
 			<TextBlock Text="Mission = A Mission file" Foreground="White" Padding="10" FontSize="14"/>
 			<TextBlock Text="UI = The app UI file (ui.json)" Foreground="White" Padding="10" FontSize="14"/>
-			<TextBlock Text="Other = Any of the other translatable files (instructions.json, Campaign data, Deployment Groups, etc.)" TextWrapping="Wrap" Foreground="White" Padding="10" FontSize="14"/>
+			<TextBlock Text="Supplemental = Any of the other translatable files (instructions.json, Campaign data, Deployment Groups, etc.)" TextWrapping="Wrap" Foreground="White" Padding="10" FontSize="14"/>
 
 			<Button x:Name="supportedBtn" Content="Supported Data Files and App Mode" Style="{StaticResource darkHoverDarkOver}" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10" Click="supportedBtn_Click"/>
 
@@ -27,7 +27,7 @@
 		<UniformGrid Columns="4" Grid.Row="1" Margin="10">
 			<Button x:Name="missionBtn" Content="Mission" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="missionBtn_Click"/>
 			<Button x:Name="uiBtn" Content="UI" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="uiBtn_Click"/>
-			<Button x:Name="otherBtn" Content="Other" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="otherBtn_Click"/>
+			<Button x:Name="otherBtn" Content="Supplemental" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="otherBtn_Click"/>
 			<Button x:Name="cancelBtn" Content="Cancel" Margin="5" Style="{StaticResource redHover}" Foreground="White" Click="cancelBtn_Click"/>
 		</UniformGrid>
 	</Grid>

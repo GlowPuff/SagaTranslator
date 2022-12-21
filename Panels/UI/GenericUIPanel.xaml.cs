@@ -38,6 +38,8 @@ namespace Saga_Translator
 				HandleCampaignSkills();
 			else if ( context.gtype == GenericType.CampaignInfo )
 				HandlCampaignInfo();
+			else if ( context.gtype == GenericType.CardEvent )
+				HandleCardEvents();
 		}
 	}
 }

@@ -261,7 +261,7 @@ namespace Imperial_Commander_Editor
 			return true;
 		}
 
-		public static T LoadUI<T>( string filename )
+		public static T LoadJSON<T>( string filename )
 		{
 			try
 			{
@@ -274,7 +274,7 @@ namespace Imperial_Commander_Editor
 			}
 			catch ( JsonReaderException e )
 			{
-				MessageBox.Show( "Error parsing UI Language.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "Error parsing JSON file.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
 				return default( T );
 			}
 		}

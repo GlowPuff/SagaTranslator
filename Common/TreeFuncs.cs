@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Imperial_Commander_Editor;
@@ -160,8 +161,11 @@ namespace Saga_Translator
 			{
 				IoCList<BonusEffect>( gtype, ( uiItem, index ) =>
 				{
+					string n = "";
+					//if ( (sourceDynamicUIModel.data as List<BonusEffect>)[index].bonusID != "DG070" )
+					n = AppModel.enemiesList.Concat( AppModel.villainsList ).Where( x => x.id == (sourceDynamicUIModel.data as List<BonusEffect>)[index].bonusID ).FirstOrDefault()?.name;
 					uiRoot.Header = "Bonus Effects";
-					uiItem.Header = (sourceDynamicUIModel.data as List<BonusEffect>)[index].bonusID;
+					uiItem.Header = $"{(sourceDynamicUIModel.data as List<BonusEffect>)[index].bonusID} / {n}";
 					uiRoot.Items.Add( uiItem );
 				} );
 			}
@@ -227,6 +231,23 @@ namespace Saga_Translator
 					uiItem.Header = "Text";
 					uiRoot.Items.Add( uiItem );
 				} );
+			}
+			else if ( gtype == GenericType.CardEvent )
+			{
+				uiRoot.Header = "Events";
+
+				for ( int i = 0; i < (sourceDynamicUIModel.data as EventList).events.Count; i++ )
+				{
+					TreeViewItem uiItem = new TreeViewItem();
+					uiItem.Header = (sourceDynamicUIModel.data as EventList).events[i].eventID;
+					uiItem.DataContext = new DynamicContext()
+					{
+						arrayIndex = i,
+						gtype = gtype
+					};
+					uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+					uiRoot.Items.Add( uiItem );
+				}
 			}
 		}
 

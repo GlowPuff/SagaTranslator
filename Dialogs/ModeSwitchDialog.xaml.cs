@@ -22,7 +22,7 @@ namespace Saga_Translator
 
 		private void otherBtn_Click( object sender, RoutedEventArgs e )
 		{
-			appMode = TranslateMode.Other;
+			appMode = TranslateMode.Supplemental;
 			Close();
 		}
 

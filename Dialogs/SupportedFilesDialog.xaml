@@ -12,55 +12,84 @@
 			<RowDefinition Height="auto"/>
 		</Grid.RowDefinitions>
 
-		<UniformGrid Columns="3" Margin="10">
-			<StackPanel>
+		<Grid Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="auto" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<StackPanel Grid.Column="0">
 				<TextBlock Text="Data Type" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold"/>
 				<Separator/>
-				<TextBlock Text="Saga Mission" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Saga User Interface" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Bonus Effects" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Enemy Instructions" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="Mission Info / Rules" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Mission Card Text" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Deployment Card Text" Foreground="White" Padding="2" FontSize="14"/>
+				<TextBlock Text="Saga Mission" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Campaign Items" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Campaign Rewards" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Campaign Skills" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Campaign Info" Foreground="White" Padding="2" FontSize="14"/>
+				<TextBlock Text="Mission Info / Rules" Foreground="White" Padding="2" FontSize="14"/>
+				<TextBlock Text="Events" Foreground="White" Padding="2" FontSize="14"/>
 			</StackPanel>
 
-			<StackPanel>
-				<TextBlock Text="Source File Name" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold"/>
-				<Separator/>
-				<TextBlock Text="Varies by Mission, xxx.json" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="ui.json" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="bonuseffects.json" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="instructions.json" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="core1info.txt, hoth7rules.txt, etc." Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="bespin.json, jabba.json, etc." Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="allies.json, enemies.json, etc." Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="items.json" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="rewards.json" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="skills.json" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="BespinInfo.txt, LothalInfo.txt, etc." Foreground="White" Padding="2" FontSize="14"/>
-			</StackPanel>
+			<Border Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left">
+				<StackPanel>
+					<TextBlock Text="Source File Name" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold"/>
+					<Separator/>
+					<TextBlock Text="ui.json" Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="bonuseffects.json" Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="instructions.json" Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="bespin.json, jabba.json, etc." Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="allies.json, enemies.json, etc." Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="Varies by Mission, xxx.json" Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="items.json" Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="rewards.json" Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="skills.json" Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="BespinInfo.txt, LothalInfo.txt, etc." Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="core1info.txt, hoth7rules.txt, etc." Foreground="White" Padding="2" FontSize="14"/>
+					<TextBlock Text="events.json" Foreground="White" Padding="2" FontSize="14"/>
+				</StackPanel>
+			</Border>
 
-			<StackPanel>
-				<TextBlock Text="App Mode" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+			<StackPanel Grid.Column="2">
+				<TextBlock Text="Translation Mode" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
 				<Separator/>
-				<TextBlock Text="Mission" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
 				<TextBlock Text="UI" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-				<TextBlock Text="Other" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Mission" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
 			</StackPanel>
-		</UniformGrid>
+
+			<StackPanel Grid.Column="3">
+				<TextBlock Text="Saga Version" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+				<Separator/>
+				<TextBlock Text="Saga and Classic" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga and Classic" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga and Classic" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga and Classic" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga and Classic" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga Only" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga Only" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga Only" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga Only" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Saga Only" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Classic Only" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+				<TextBlock Text="Classic Only" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
+			</StackPanel>
+		</Grid>
 
 		<Button Grid.Row="1" x:Name="okBtn" Content="Continue" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="okBtn_Click" HorizontalAlignment="Center" Width="100"/>
 

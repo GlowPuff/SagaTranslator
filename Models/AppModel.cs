@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Timers;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Imperial_Commander_Editor;
+using Newtonsoft.Json;
 
 namespace Saga_Translator
 {
@@ -27,6 +31,8 @@ namespace Saga_Translator
 		public bool NothingSelected { get => nothingSelected; set => SetProperty( ref nothingSelected, value ); }
 		public SolidColorBrush StatusColor { get => statusColor; set => SetProperty( ref statusColor, value ); }
 		public TranslateMode TranslateMode { get => translateMode; set => SetProperty( ref translateMode, value ); }
+		public static List<DeploymentCard> enemiesList = new();
+		public static List<DeploymentCard> villainsList = new();
 
 		public AppModel( MainWindow main, TranslateMode tmode )
 		{
@@ -48,6 +54,24 @@ namespace Saga_Translator
 					StatusColor = new SolidColorBrush( Color.FromRgb( 69, 69, 69 ) );
 				} );
 			};
+
+			var assembly = Assembly.GetExecutingAssembly();
+			var enemyRsc = "Saga_Translator.Assets.enemies.json";
+			var villainRsc = "Saga_Translator.Assets.villains.json";
+
+			using ( Stream stream = assembly.GetManifestResourceStream( enemyRsc ) )
+			using ( StreamReader reader = new StreamReader( stream ) )
+			{
+				string json = reader.ReadToEnd();
+				enemiesList = JsonConvert.DeserializeObject<List<DeploymentCard>>( json );
+			}
+			using ( Stream stream = assembly.GetManifestResourceStream( villainRsc ) )
+			using ( StreamReader reader = new StreamReader( stream ) )
+			{
+				string json = reader.ReadToEnd();
+				villainsList = JsonConvert.DeserializeObject<List<DeploymentCard>>( json );
+			}
+
 			SetStatus( $"Mode: {tmode}" );
 		}
 

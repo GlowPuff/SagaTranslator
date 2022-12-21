@@ -70,7 +70,7 @@ namespace Saga_Translator
 		}
 
 		/// <summary>
-		/// ctor for Other mode
+		/// ctor for Supplemental mode
 		/// </summary>
 		public MainWindow( string filePath )
 		{
@@ -78,7 +78,7 @@ namespace Saga_Translator
 			DataContext = this;
 			Utils.Init( this );
 
-			appModel = new AppModel( this, TranslateMode.Other );
+			appModel = new AppModel( this, TranslateMode.Supplemental );
 			appModel.OtherFileName = Path.GetFileName( filePath );
 			appModel.TranslatedFilePath = Path.GetDirectoryName( filePath );
 
@@ -116,8 +116,9 @@ namespace Saga_Translator
 
 			appModel.SetStatus( $"{data.gType} Loaded" );
 
-			Title = "Saga Translator [Other] - FILE NOT SAVED";
-			explorerTitle.Text = $"{data.gType} Explorer";
+			Title = "Saga Translator [Supplemental] - FILE NOT SAVED";
+			explorerTitle.Text = $"Supplemental Explorer";
+			languageCB.Visibility = Visibility.Hidden;
 		}
 
 		/// <summary>
@@ -251,7 +252,7 @@ namespace Saga_Translator
 				od.Filter = "UI File (*.json)|*.json";
 				od.Title = "Open SOURCE UI (English)";
 			}
-			else if ( appModel.TranslateMode == TranslateMode.Other )
+			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
 			{
 				od.Filter = "JSON/TXT File (*.json, *.txt)|*.json;*.txt";
 				od.Title = "Open SOURCE DATA (English)";
@@ -267,7 +268,7 @@ namespace Saga_Translator
 				HandleSaveMission();
 			else if ( appModel.TranslateMode == TranslateMode.UI )
 				HandleSaveUI();
-			else if ( appModel.TranslateMode == TranslateMode.Other )
+			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
 				HandleSaveOther();
 		}
 
@@ -288,7 +289,7 @@ namespace Saga_Translator
 					if ( FileManager.SaveOther( translatedDynamicUIModel, od.SafeFileName, appModel.TranslatedFilePath ) )
 					{
 						hasSaved = true;
-						Title = "Saga Translator [Other] - " + Path.Combine( appModel.TranslatedFilePath, od.SafeFileName );
+						Title = "Saga Translator [Supplemental] - " + Path.Combine( appModel.TranslatedFilePath, od.SafeFileName );
 						appModel.SetStatus( "Translation Saved" );
 					}
 					else
@@ -314,7 +315,7 @@ namespace Saga_Translator
 				if ( FileManager.SaveOther( translatedDynamicUIModel, appModel.OtherFileName, appModel.TranslatedFilePath ) )
 				{
 					hasSaved = true;
-					Title = "Saga Translator [Other] - " + Path.Combine( appModel.TranslatedFilePath, appModel.OtherFileName );
+					Title = "Saga Translator [Supplemental] - " + Path.Combine( appModel.TranslatedFilePath, appModel.OtherFileName );
 					appModel.SetStatus( "Translation Saved" );
 				}
 				else
@@ -455,7 +456,7 @@ namespace Saga_Translator
 				if ( od.ShowDialog() == true )
 					OpenTranslatedFile( od.FileName );
 			}
-			else if ( appModel.TranslateMode == TranslateMode.Other )
+			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
 			{
 				od.Filter = $"{appModel.TranslateMode} File (*.json, *.txt)|*.json;*.txt";
 				od.Title = "Open Translated UI";
@@ -579,12 +580,12 @@ namespace Saga_Translator
 				}
 				else
 				{
-					MessageBox.Show( "Loaded object was null or incorrect JSON.", "Error Loading Source Mission" );
+					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Source Mission" );
 					appModel.SetStatus( "Error Loading Mission" );
 					return false;
 				}
 			}
-			else if ( appModel.TranslateMode == TranslateMode.Other )
+			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
 			{
 				ParsedObject data = DynamicParser.Parse( filename );
 				if ( data.isSuccess )
@@ -603,7 +604,7 @@ namespace Saga_Translator
 			}
 			else if ( appModel.TranslateMode == TranslateMode.UI )
 			{
-				var ui = FileManager.LoadUI<UILanguage>( filename );
+				var ui = FileManager.LoadJSON<UILanguage>( filename );
 				if ( ui != null && ui.sagaUISetup != null )
 				{
 					MainWindow mainWindow = new( ui, filename );
@@ -612,7 +613,7 @@ namespace Saga_Translator
 				}
 				else
 				{
-					MessageBox.Show( "Loaded object was null or incorrect JSON.", "Error Loading Source UI" );
+					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Source UI" );
 					appModel.SetStatus( "Error Loading UI" );
 					return false;
 				}
@@ -652,7 +653,7 @@ namespace Saga_Translator
 			}
 			else if ( appModel.TranslateMode == TranslateMode.UI )
 			{
-				translatedUI = FileManager.LoadUI<UILanguage>( filename );
+				translatedUI = FileManager.LoadJSON<UILanguage>( filename );
 				//make sure a UI was loaded, and not anything else by checking one of the loaded models
 				if ( translatedUI != null && translatedUI.sagaUISetup != null )
 				{
@@ -678,7 +679,7 @@ namespace Saga_Translator
 					return false;
 				}
 			}
-			else if ( appModel.TranslateMode == TranslateMode.Other )
+			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
 			{
 				var data = DynamicParser.Parse( filename );
 				if ( data.isSuccess )
@@ -687,7 +688,7 @@ namespace Saga_Translator
 					hasSaved = true;
 					appModel.TranslatedFilePath = Path.GetDirectoryName( filename );
 					appModel.OtherFileName = Path.GetFileName( filename );
-					Title = "Saga Translator [Other] - " + Path.Combine( appModel.TranslatedFilePath, Path.GetFileName( filename ) );
+					Title = "Saga Translator [Supplemental] - " + Path.Combine( appModel.TranslatedFilePath, Path.GetFileName( filename ) );
 					appModel.SetStatus( "Loaded Translated File" );
 					PopulateDynamicTree( data.gType );
 					translationObject = new WelcomePanel();
