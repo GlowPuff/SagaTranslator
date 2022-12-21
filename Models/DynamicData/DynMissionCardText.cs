@@ -139,35 +139,35 @@ namespace Saga_Translator
 
 			//source side
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Name" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).name ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).name ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Description" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).descriptionText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).descriptionText ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Bonus Text" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).bonusText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).bonusText ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Hero Text" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).heroText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).heroText ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Ally Text" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).allyText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).allyText ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Villain Text" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).villainText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).villainText ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Tags" ) );
 			foreach ( var item in (sourceUI as MissionCardText).tagsText )
 				sourcePanel.Children.Add( UIFactory.TextBox( item ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Expansion Text" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).expansionText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).expansionText ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Rebel Reward Text" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).rebelRewardText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).rebelRewardText ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Imperial Reward Text" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as MissionCardText).imperialRewardText ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as MissionCardText).imperialRewardText ) );
 		}
 
 		void MissionCardTextLostFocus( object sender, RoutedEventArgs e )

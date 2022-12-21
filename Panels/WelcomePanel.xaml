@@ -23,7 +23,7 @@
 
 			<Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="10" BorderThickness="2" BorderBrush="Gray" Background="{StaticResource MenuDarkBG}" Padding="10" Margin="10,0">
 				<StackPanel>
-					<TextBlock Text="View the supported data this app can translate, along with their respective filenames and appropriate Mode to use." HorizontalAlignment="Center" TextWrapping="Wrap"/>
+					<TextBlock Text="View the supported data this app can translate, along with their respective filenames and appropriate Translation Mode to use." HorizontalAlignment="Center" TextWrapping="Wrap"/>
 					<Button x:Name="supportedBtn" Content="Supported Data Files and App Mode" Style="{StaticResource darkHoverDarkOver}" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0" Click="supportedBtn_Click"/>
 				</StackPanel>
 			</Border>

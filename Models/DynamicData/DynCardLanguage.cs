@@ -111,10 +111,10 @@ namespace Saga_Translator
 
 			//source side
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Name" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as CardLanguage).name ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as CardLanguage).name ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Subname" ) );
-			sourcePanel.Children.Add( UIFactory.TextBox( (translatedUI as CardLanguage).subname ) );
+			sourcePanel.Children.Add( UIFactory.TextBox( (sourceUI as CardLanguage).subname ) );
 
 			sourcePanel.Children.Add( UIFactory.TextBlock( "Traits" ) );
 			foreach ( var item in (sourceUI as CardLanguage).traits )
