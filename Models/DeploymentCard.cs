@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
-using Saga_Translator;
 
 namespace Imperial_Commander_Editor
 {

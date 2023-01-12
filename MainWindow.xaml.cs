@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -571,8 +572,13 @@ namespace Saga_Translator
 		{
 			if ( appModel.TranslateMode == TranslateMode.Mission )
 			{
+				Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
+				Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info).txt" );
+				List<string> taboo = new( new string[] { "ui.json", "instructions.json", "bonuseffects.json", "allies.json", "enemies.json", "heroes.json", "villains.json", "bespin.json", "core.json", "empire.json", "hoth.json", "jabba.json", "lothal.json", "other.json", "twin.json", "items.json", "rewards.json", "skills.json", "events.json" } );
+
+				string fname = new FileInfo( filename ).Name.ToLower();
 				var mission = FileManager.LoadMission( filename );
-				if ( mission != null && mission.fileName != "ui.json" )
+				if ( mission != null && !taboo.Contains( fname ) && !regex.IsMatch( fname ) && !regex2.IsMatch( fname ) )
 				{
 					MainWindow mainWindow = new( mission, filename );
 					mainWindow.Show();
@@ -623,11 +629,17 @@ namespace Saga_Translator
 
 		public bool OpenTranslatedFile( string filename )
 		{
+			Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
+			Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info).txt" );
+			List<string> taboo = new( new string[] { "ui.json", "instructions.json", "bonuseffects.json", "allies.json", "enemies.json", "heroes.json", "villains.json", "bespin.json", "core.json", "empire.json", "hoth.json", "jabba.json", "lothal.json", "other.json", "twin.json", "items.json", "rewards.json", "skills.json", "events.json" } );
+
+			string fname = new FileInfo( filename ).Name.ToLower();
+
 			if ( appModel.TranslateMode == TranslateMode.Mission )
 			{
 				translatedMission = FileManager.LoadMission( filename );
 				//make sure a mission was loaded, and not anything else by checking one of the loaded models
-				if ( translatedMission != null && translatedMission.fileName != "ui.json" )
+				if ( translatedMission != null && !taboo.Contains( fname ) && !regex.IsMatch( fname ) && !regex2.IsMatch( fname ) )
 				{
 					hasSaved = true;
 					appModel.TranslatedFilePath = Path.GetDirectoryName( filename );
@@ -647,7 +659,7 @@ namespace Saga_Translator
 				else
 				{
 					appModel.SetStatus( "Error Loading Translated Mission" );
-					MessageBox.Show( "Loaded object was null or incorrect JSON.", "Error Loading Translated Mission" );
+					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Translated Mission" );
 					return false;
 				}
 			}
@@ -675,7 +687,7 @@ namespace Saga_Translator
 				else
 				{
 					appModel.SetStatus( "Error Loading Translated UI" );
-					MessageBox.Show( "Loaded object was null or incorrect JSON.", "Error Loading Translated UI" );
+					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Translated UI" );
 					return false;
 				}
 			}
@@ -698,7 +710,7 @@ namespace Saga_Translator
 				else
 				{
 					appModel.SetStatus( "Error Loading Translation" );
-					MessageBox.Show( data.errorMsg, "Error Loading Translated UI" );
+					MessageBox.Show( data.errorMsg, "Error Loading Supplemental file." );
 					return false;
 				}
 			}

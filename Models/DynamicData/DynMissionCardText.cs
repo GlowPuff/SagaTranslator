@@ -47,7 +47,7 @@ namespace Saga_Translator
 					data = (translatedUI as MissionCardText),
 				},
 				MissionCardTextLostFocus,
-				false
+				true
 				) );
 
 			translatePanel.Children.Add( UIFactory.TextBlock( "Hero Text" ) );
