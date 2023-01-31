@@ -4,7 +4,7 @@
 	public enum GenericType { Instructions, BonusEffects, CardLanguage, MissionCardText, MissionRulesInfo, CampaignItems, CampaignRewards, CampaignSkills, CampaignInfo, CardEvent }
 	public enum CustomInstructionType { Top, Bottom, Replace }
 	public enum ThreatModifierType { None, Fixed, Multiple }
-	public enum YesNoAll { Yes, No, All }
+	public enum YesNoAll { Yes, No, All, Multi }
 	public enum PriorityTargetType { Rebel, Hero, Ally, Other, Trait }
 	public enum Expansion { Core, Twin, Hoth, Bespin, Jabba, Empire, Lothal }
 	public enum EntityType { Tile, Console, Crate, DeploymentPoint, Token, Highlight, Door }

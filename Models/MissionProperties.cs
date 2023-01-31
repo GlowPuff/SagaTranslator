@@ -22,6 +22,7 @@ namespace Imperial_Commander_Editor
 		MissionType _missionType;
 		ChangeReposition _changeRepositionOverride;
 		ObservableCollection<MissionSubType> _missionSubType;
+		ObservableCollection<string> _multipleBannedAllies;
 
 		public string missionName
 		{
@@ -152,6 +153,21 @@ namespace Imperial_Commander_Editor
 		public ObservableCollection<MissionSubType> missionSubType { get { return _missionSubType; } set { _missionSubType = value; PC(); } }
 
 		public ObservableCollection<string> bannedGroups { get; set; } = new();
+		public ObservableCollection<string> multipleBannedAllies
+		{
+			get
+			{
+				//added for Mission Format v.20
+				if ( _multipleBannedAllies == null )
+					_multipleBannedAllies = new();
+				return _multipleBannedAllies;
+			}
+			set
+			{
+				_multipleBannedAllies = value;
+				PC();
+			}
+		}
 
 		public void PC( [CallerMemberName] string n = "" )
 		{
