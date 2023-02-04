@@ -64,7 +64,7 @@ namespace Saga_Translator
 				updateCheck.Text = "Error Checking For Update";
 
 			Utils.Init( this );
-			Title = "Saga Translator [Choose a Translation Mode]";
+			Title = "Saga Translator [Choose a Translation Source]";
 
 			//create default folder for cached Missions
 			if ( !Directory.Exists( Path.Combine( appPath, "CachedMissions" ) ) )
@@ -648,11 +648,12 @@ namespace Saga_Translator
 
 			if ( appModel.TranslateMode == TranslateMode.Mission )
 			{
-				translatedMission = FileManager.LoadMission( filename );
+				var loadedMission = FileManager.LoadMission( filename );
 				//make sure a mission was loaded, and not anything else by checking one of the loaded models
-				if ( translatedMission != null )
+				if ( loadedMission != null )
 				{
 					success = true;
+					translatedMission = loadedMission;
 					translatedMission.fileName = Path.GetFileName( filename );
 					PopulateMainTree();
 					Binding binding = new( "languageID" ) { Source = translatedMission };
@@ -711,7 +712,7 @@ namespace Saga_Translator
 			else
 			{
 				appModel.SetStatus( "Error Loading Translated Data" );
-				MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Translated Data" );
+				MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Source Mode. Switch the Source Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Translated Data" );
 				return false;
 			}
 		}

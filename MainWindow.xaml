@@ -22,7 +22,7 @@
 				<!--LEFT-->
 				<StackPanel Orientation="Horizontal" Background="{StaticResource MenuDarkBG}">
 					<!--MODE SWITCH-->
-					<Button x:Name="modeToggle" ToolTip="Translation Mode" Click="modeToggle_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+					<Button x:Name="modeToggle" ToolTip="Translation Source" Click="modeToggle_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
 						<Image Source="Assets/mode-toggle.png" Height="30"/>
 					</Button>
 					<!--OPEN SOURCE-->

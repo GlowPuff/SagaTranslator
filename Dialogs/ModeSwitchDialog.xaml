@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Saga_Translator"
         mc:Ignorable="d"
-        Title="Mode Switch" Width="500" SizeToContent="Height" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="{StaticResource WndBG}">
+        Title="Source Switch" Width="500" SizeToContent="Height" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="{StaticResource WndBG}">
 
 	<Grid>
 		<Grid.RowDefinitions>
