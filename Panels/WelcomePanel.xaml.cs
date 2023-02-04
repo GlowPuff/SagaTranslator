@@ -23,47 +23,53 @@ namespace Saga_Translator
 			}
 		}
 
-		private void dragSourceBox_DragEnter( object sender, DragEventArgs e )
-		{
-			Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
-			Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info).txt" );
-			e.Effects = DragDropEffects.None;
+		/// <summary>
+		/// DEPRECATED
+		/// </summary>
+		//private void dragSourceBox_DragEnter( object sender, DragEventArgs e )
+		//{
+		//	Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
+		//	Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info).txt" );
+		//	e.Effects = DragDropEffects.None;
 
-			if ( e.Data.GetDataPresent( DataFormats.FileDrop ) )
-			{
-				string[] filename = e.Data.GetData( DataFormats.FileDrop ) as string[];
-				if ( Path.GetExtension( filename[0] ) == ".json"
-					|| regex.Match( filename[0].ToLower() ).Success
-					|| regex2.Match( filename[0].ToLower() ).Success )
-					e.Effects = DragDropEffects.All;
-			}
-		}
+		//	if ( e.Data.GetDataPresent( DataFormats.FileDrop ) )
+		//	{
+		//		string[] filename = e.Data.GetData( DataFormats.FileDrop ) as string[];
+		//		if ( Path.GetExtension( filename[0] ) == ".json"
+		//			|| regex.Match( filename[0].ToLower() ).Success
+		//			|| regex2.Match( filename[0].ToLower() ).Success )
+		//			e.Effects = DragDropEffects.All;
+		//	}
+		//}
 
-		private void dragSourceBox_Drop( object sender, DragEventArgs e )
-		{
-			Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
-			Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info|rules).txt" );
+		/// <summary>
+		/// DEPRECATED
+		/// </summary>
+		//private void dragSourceBox_Drop( object sender, DragEventArgs e )
+		//{
+		//	Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
+		//	Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info|rules).txt" );
 
-			if ( e.Data.GetDataPresent( DataFormats.FileDrop ) )
-			{
-				//grab the filename
-				string[] filename = e.Data.GetData( DataFormats.FileDrop ) as string[];
-				if ( filename.Length == 1 )
-				{
-					MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-					if ( window != null && (Path.GetExtension( filename[0] ) == ".json"
-						|| regex.Match( filename[0].ToLower() ).Success)
-						|| regex2.Match( filename[0].ToLower() ).Success )
-					{
-						if ( window.OpenSourceFile( filename[0] ) )
-						{
-							dragTranslatedBox.AllowDrop = true;
-							dragTranslatedBox.Opacity = 1;
-						}
-					}
-				}
-			}
-		}
+		//	if ( e.Data.GetDataPresent( DataFormats.FileDrop ) )
+		//	{
+		//		//grab the filename
+		//		string[] filename = e.Data.GetData( DataFormats.FileDrop ) as string[];
+		//		if ( filename.Length == 1 )
+		//		{
+		//			MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+		//			if ( window != null && (Path.GetExtension( filename[0] ) == ".json"
+		//				|| regex.Match( filename[0].ToLower() ).Success)
+		//				|| regex2.Match( filename[0].ToLower() ).Success )
+		//			{
+		//				if ( window.OpenSourceFile( filename[0] ) )
+		//				{
+		//					dragTranslatedBox.AllowDrop = true;
+		//					dragTranslatedBox.Opacity = 1;
+		//				}
+		//			}
+		//		}
+		//	}
+		//}
 
 		private void dragTranslatedBox_DragEnter( object sender, DragEventArgs e )
 		{

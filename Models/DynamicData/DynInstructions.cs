@@ -45,6 +45,7 @@ namespace Saga_Translator
 
 			//source side
 			//instName
+			sourcePanel.Children.Add( UIFactory.TextBlock( "Name" ) );
 			TextBox tbns = new();
 			tbns.Text = (sourceUI as CardInstruction).instName;
 			tbns.BorderThickness = new( 2 );

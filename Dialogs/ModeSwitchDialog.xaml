@@ -9,26 +9,84 @@
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition/>
+			<RowDefinition Height="*"/>
 			<RowDefinition Height="auto"/>
 		</Grid.RowDefinitions>
 
 		<StackPanel Margin="10">
-			<TextBlock Text="Switch modes depending on which type of file you want to translate." Foreground="White" Padding="0" FontSize="14"/>
-			<TextBlock Text="Mission = A Mission file" Foreground="White" Padding="10" FontSize="14"/>
-			<TextBlock Text="UI = The app UI file (ui.json)" Foreground="White" Padding="10" FontSize="14"/>
-			<TextBlock Text="Supplemental = Any of the other translatable files (instructions.json, Campaign data, Deployment Groups, etc.)" TextWrapping="Wrap" Foreground="White" Padding="10" FontSize="14"/>
+			<GroupBox BorderThickness="0">
+				<StackPanel>
+					<TextBlock Text="Choose which item you want to translate:" Foreground="White" FontSize="14"/>
+					<ComboBox x:Name="fileCB" Margin="10" SelectionChanged="fileCB_SelectionChanged" FontSize="14" Padding="5"/>
+				</StackPanel>
+			</GroupBox>
 
-			<Button x:Name="supportedBtn" Content="Supported Data Files and App Mode" Style="{StaticResource darkHoverDarkOver}" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10" Click="supportedBtn_Click"/>
+			<GroupBox x:Name="combo1Box" BorderThickness="0" Visibility="Collapsed">
+				<StackPanel>
+					<TextBlock Text="{Binding combo1Label}" Foreground="White" FontSize="14"/>
+					<ComboBox x:Name="combo1CB" DisplayMemberPath="displayName" Margin="10" SelectionChanged="combo1CB_SelectionChanged" FontSize="14" Padding="5"/>
+				</StackPanel>
+			</GroupBox>
 
-			<TextBlock Text="SWITCHING MODES WILL CLEAR ALL CURRENT DATA." Foreground="Red" Padding="0" FontSize="14" HorizontalAlignment="Center" FontWeight="Bold"/>
+			<GroupBox x:Name="combo2Box" BorderThickness="0" Visibility="Collapsed">
+				<StackPanel>
+					<TextBlock Text="{Binding combo2Label}" Foreground="White" FontSize="14"/>
+					<ComboBox x:Name="combo2CB" DisplayMemberPath="displayName" Margin="10" SelectionChanged="combo2CB_SelectionChanged" FontSize="14" Padding="5"/>
+				</StackPanel>
+			</GroupBox>
+
+			<GroupBox x:Name="downloadBox" BorderThickness="0" Visibility="Collapsed">
+				<StackPanel>
+					<TextBlock Text="Download Mission:" Foreground="White" FontSize="14"/>
+					<StackPanel Orientation="Horizontal">
+						<Button x:Name="downloadBtn" Content="Download Selected Mission From GitHub" Style="{StaticResource greenHover}" Foreground="White" Margin="10" Click="downloadBtn_Click"/>
+						<Image x:Name="spinner" Source="/Assets/busyspinner.png" Width="32" Height="32" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+							<Image.RenderTransform>
+								<RotateTransform x:Name="noFreeze" />
+							</Image.RenderTransform>
+							<Image.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation
+            Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
+            To="360" Duration="0:0:1" RepeatBehavior="Forever" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Image.Triggers>
+						</Image>
+						<!--SUCCESS BUTTON-->
+						<Image x:Name="successIcon" Source="/Assets/success.png" Width="32" Height="32" Visibility="Collapsed"/>
+					</StackPanel>
+					<TextBlock x:Name="downloadStatus" Text="" Foreground="White" FontSize="14"/>
+				</StackPanel>
+			</GroupBox>
+
+			<GroupBox x:Name="customBox" BorderThickness="0" Visibility="Collapsed">
+				<StackPanel>
+					<TextBlock Text="Custom English SOURCE Mission:" Foreground="White" FontSize="14"/>
+					<Button x:Name="customBtn" Content="Load a Custom Mission..." Style="{StaticResource greenHover}" Foreground="White" Margin="10" Click="customBtn_Click"/>
+					<TextBlock x:Name="customPathLabel" Text="" Foreground="White" FontSize="14"/>
+				</StackPanel>
+			</GroupBox>
 		</StackPanel>
 
-		<UniformGrid Columns="4" Grid.Row="1" Margin="10">
-			<Button x:Name="missionBtn" Content="Mission" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="missionBtn_Click"/>
-			<Button x:Name="uiBtn" Content="UI" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="uiBtn_Click"/>
-			<Button x:Name="otherBtn" Content="Supplemental" Margin="5" Style="{StaticResource darkHoverDarkOver}" Foreground="White" Click="otherBtn_Click"/>
-			<Button x:Name="cancelBtn" Content="Cancel" Margin="5" Style="{StaticResource redHover}" Foreground="White" Click="cancelBtn_Click"/>
-		</UniformGrid>
+		<GroupBox Grid.Row="1" BorderThickness="0" Background="{StaticResource MenuDarkBG}" Padding="0,5,0,0">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="1*" />
+				</Grid.ColumnDefinitions>
+
+				<Button x:Name="supportedBtn" Grid.Column="0" Content="Supported Data Files..." Style="{StaticResource darkHoverDarkOver}" Foreground="White" HorizontalAlignment="Left" Margin="5" Click="supportedBtn_Click"/>
+
+				<StackPanel Orientation="Horizontal" Grid.Column="2">
+					<Button x:Name="continueBtn" Content="Continue" Style="{StaticResource greenHover}" Foreground="White" HorizontalAlignment="Center" Margin="5" Click="continueBtn_Click" IsEnabled="False"/>
+					<Button x:Name="cancelBtn" Content="Cancel" Margin="5" Style="{StaticResource redHover}" Foreground="White" Click="cancelBtn_Click" HorizontalAlignment="Right"/>
+				</StackPanel>
+			</Grid>
+		</GroupBox>
 	</Grid>
 </Window>

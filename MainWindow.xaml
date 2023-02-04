@@ -22,17 +22,17 @@
 				<!--LEFT-->
 				<StackPanel Orientation="Horizontal" Background="{StaticResource MenuDarkBG}">
 					<!--MODE SWITCH-->
-					<Button x:Name="modeToggle" ToolTip="Switch Translation Mode" Click="modeToggle_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+					<Button x:Name="modeToggle" ToolTip="Translation Mode" Click="modeToggle_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
 						<Image Source="Assets/mode-toggle.png" Height="30"/>
 					</Button>
 					<!--OPEN SOURCE-->
-					<Button x:Name="openMissionButton" ToolTip="Open a Source File (English)" Click="openSourceButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+					<!--<Button x:Name="openMissionButton" ToolTip="Open a Source File (English)" Click="openSourceButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5" Visibility="Collapsed">
 						<Image Source="Assets/open.png" Height="30"/>
-					</Button>
+					</Button>-->
 					<!--FILENAME-->
 					<StackPanel VerticalAlignment="Center" Margin="25,0,0,0">
 						<TextBlock Text="SOURCE (English)" Foreground="White" FontWeight="Bold"/>
-						<TextBlock x:Name="sourceText" Text="{Binding sourceMission.fileName}" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
+						<TextBlock x:Name="sourceText" Text="{Binding sourceMissionFilename}" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
 						<TextBlock x:Name="sourceUIText" Text="ui.json" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
 					</StackPanel>
 				</StackPanel>
@@ -49,6 +49,7 @@
 							</TransformGroup>
 						</Separator.RenderTransform>
 					</Separator>
+					<TextBlock Text="TRANSLATION" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
 					<!--OPEN TRANSLATED-->
 					<Button x:Name="openMissionTranslatedButton" ToolTip="Open an Existing Translated File" Click="openMissionTranslatedButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5" IsEnabled="False">
 						<Image Source="Assets/open.png" Height="30"/>
@@ -74,9 +75,9 @@
 				<!--FIND REPLACE-->
 				<StackPanel Grid.Column="2" Orientation="Horizontal">
 					<!--FIND REPLACE-->
-					<Button x:Name="findReplace" ToolTip="Find and Replace" Click="findReplace_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5" IsEnabled="False">
-						<Image Source="Assets/find-replace.png" Height="30"/>
-					</Button>
+					<!--<Button x:Name="findReplace" ToolTip="Find and Replace" Click="findReplace_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5" IsEnabled="False">
+						<Image Source="Assets/find-replace.png" Height="30" Visibility="Collapsed"/>
+					</Button>-->
 					<!--HELP-->
 					<Button x:Name="helpButton" ToolTip="Find and Replace" Click="helpButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
 						<Image Source="Assets/help.png" Height="30"/>
@@ -139,7 +140,7 @@
 						<RowDefinition Height="1*" />
 					</Grid.RowDefinitions>
 
-					<TextBlock x:Name="explorerTitle" Text="Mission Explorer" Foreground="White" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+					<TextBlock x:Name="explorerTitle" Text="Explorer" Foreground="White" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
 					<TreeView Grid.Row="1" x:Name="mainTree" Background="{StaticResource WndBG }" SelectedItemChanged="mainTree_SelectedItemChanged">
 					</TreeView>
 				</Grid>

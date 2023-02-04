@@ -11,7 +11,7 @@
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<StackPanel x:Name="translatePanel" Margin="0,26,5,0"/>
 			<StackPanel x:Name="sourcePanel" Margin="5,0,0,0" IsEnabled="False">
-				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
+				<TextBlock x:Name="sourceLabel" Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

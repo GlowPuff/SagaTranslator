@@ -13,6 +13,9 @@ namespace Saga_Translator
 			sourceUI = ((List<BonusEffect>)Utils.mainWindow.sourceDynamicUIModel.data)[dContext.arrayIndex];
 			translatedUI = ((List<BonusEffect>)Utils.mainWindow.translatedDynamicUIModel.data)[dContext.arrayIndex];
 
+			if ( (translatedUI as BonusEffect).effects.Count == 0 )
+				sourceLabel.Text = "No Data for this item";
+
 			//translate side
 			for ( int i = 0; i < (translatedUI as BonusEffect).effects.Count; i++ )
 			{

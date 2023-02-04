@@ -17,18 +17,18 @@
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="*" />
+				<!--<ColumnDefinition Width="*" />-->
 			</Grid.ColumnDefinitions>
 
 			<StackPanel Grid.Column="0">
 				<TextBlock Text="Data Type" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold"/>
 				<Separator/>
-				<TextBlock Text="Saga User Interface" Foreground="White" Padding="2" FontSize="14"/>
+				<TextBlock Text="User Interface" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Bonus Effects" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Enemy Instructions" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Mission Card Text" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Deployment Card Text" Foreground="White" Padding="2" FontSize="14"/>
-				<TextBlock Text="Saga Mission" Foreground="White" Padding="2" FontSize="14"/>
+				<TextBlock Text="Mission" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Campaign Items" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Campaign Rewards" Foreground="White" Padding="2" FontSize="14"/>
 				<TextBlock Text="Campaign Skills" Foreground="White" Padding="2" FontSize="14"/>
@@ -56,7 +56,7 @@
 				</StackPanel>
 			</Border>
 
-			<StackPanel Grid.Column="2">
+			<!--<StackPanel Grid.Column="2">
 				<TextBlock Text="Translation Mode" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
 				<Separator/>
 				<TextBlock Text="UI" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
@@ -71,10 +71,10 @@
 				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
 				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
 				<TextBlock Text="Supplemental" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
-			</StackPanel>
+			</StackPanel>-->
 
-			<StackPanel Grid.Column="3">
-				<TextBlock Text="Saga Version" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+			<StackPanel Grid.Column="2">
+				<TextBlock Text="Imperial Commander Mode" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
 				<Separator/>
 				<TextBlock Text="Saga and Classic" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>
 				<TextBlock Text="Saga and Classic" Foreground="White" Padding="2" FontSize="14" HorizontalAlignment="Center"/>

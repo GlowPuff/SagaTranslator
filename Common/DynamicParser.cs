@@ -8,6 +8,55 @@ namespace Saga_Translator
 {
 	public static class DynamicParser
 	{
+		public static ParsedObject Parse( SourceData translationMeta )
+		{
+			switch ( translationMeta.fileMode )
+			{
+				case FileMode.BonusEffects:
+					return ParseJSON<List<BonusEffect>>( translationMeta.stringifiedJsonData, GenericType.BonusEffects );
+				case FileMode.CampaignInfo:
+					{
+						GenericUIData source = new() { data = translationMeta.stringifiedJsonData };
+						GenericUIData sourceCopy = new() { data = translationMeta.stringifiedJsonData };
+						return new()
+						{
+							isSuccess = true,
+							data = source,
+							dataCopy = sourceCopy,
+							gType = GenericType.CampaignInfo
+						};
+					}
+				case FileMode.CampaignItems:
+					return ParseJSON<List<CampaignItem>>( translationMeta.stringifiedJsonData, GenericType.CampaignItems );
+				case FileMode.CampaignRewards:
+					return ParseJSON<List<CampaignReward>>( translationMeta.stringifiedJsonData, GenericType.CampaignRewards );
+				case FileMode.CampaignSkills:
+					return ParseJSON<List<CampaignSkill>>( translationMeta.stringifiedJsonData, GenericType.CampaignSkills );
+				case FileMode.DeploymentGroups:
+					return ParseJSON<List<CardLanguage>>( translationMeta.stringifiedJsonData, GenericType.CardLanguage );
+				case FileMode.EnemyInstructions:
+					return ParseJSON<List<CardInstruction>>( translationMeta.stringifiedJsonData, GenericType.Instructions );
+				case FileMode.Events:
+					return ParseJSON<EventList>( translationMeta.stringifiedJsonData, GenericType.CardEvent );
+				case FileMode.MissionInfo:
+					{
+						GenericUIData source = new() { data = translationMeta.stringifiedJsonData };
+						GenericUIData sourceCopy = new() { data = translationMeta.stringifiedJsonData };
+						return new()
+						{
+							isSuccess = true,
+							data = source,
+							dataCopy = sourceCopy,
+							gType = GenericType.MissionRulesInfo
+						};
+					}
+				case FileMode.MissionCardText:
+					return ParseJSON<List<MissionCardText>>( translationMeta.stringifiedJsonData, GenericType.MissionCardText );
+			}
+
+			return null;
+		}
+
 		public static ParsedObject Parse( string filenamePath )
 		{
 			Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
@@ -56,6 +105,32 @@ namespace Saga_Translator
 				dataCopy = sourceCopy,
 				gType = gType
 			};
+		}
+
+		private static ParsedObject ParseJSON<T>( string stringifiedJson, GenericType gType )
+		{
+			GenericUIData source, sourceCopy;
+
+			if ( !string.IsNullOrEmpty( stringifiedJson ) )
+			{
+				source = new();
+				source.data = JsonConvert.DeserializeObject<T>( stringifiedJson );
+				//set the TRANSLATED data
+				sourceCopy = new();
+				sourceCopy.data = JsonConvert.DeserializeObject<T>( stringifiedJson );
+
+				return new()
+				{
+					isSuccess = true,
+					data = source,
+					dataCopy = sourceCopy,
+					gType = gType
+				};
+			}
+			else
+			{
+				return new() { isSuccess = false, errorMsg = "FileManager.ParseJSON()::stringifiedJson is empty." };
+			}
 		}
 
 		private static ParsedObject Parse<T>( string filenamePath, GenericType gType )

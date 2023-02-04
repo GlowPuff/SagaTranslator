@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,6 +28,7 @@ namespace Saga_Translator
 		private Mission _translatedMission, _sourceMission;
 		private UILanguage _sourceUI, _translatedUI;
 		private GenericUIData _sourceModel, _translatedModel;
+		private string _sourceMissionFilename;
 
 		public GenericUIData sourceDynamicUIModel { get { return _sourceModel; } set { _sourceModel = value; PC(); } }
 		public GenericUIData translatedDynamicUIModel { get { return _translatedModel; } set { _translatedModel = value; PC(); } }
@@ -38,6 +38,8 @@ namespace Saga_Translator
 		public Mission? translatedMission { get => _translatedMission; set { _translatedMission = value; PC(); } }
 		public UILanguage sourceUI { get => _sourceUI; set { _sourceUI = value; PC(); } }
 		public UILanguage? translatedUI { get => _translatedUI; set { _translatedUI = value; PC(); } }
+		public string sourceMissionFilename { get => _sourceMissionFilename; set { _sourceMissionFilename = value; PC(); } }
+		public static string appPath { get { return AppDomain.CurrentDomain.BaseDirectory; } }
 
 		public void PC( [CallerMemberName] string n = "" )
 		{
@@ -46,19 +48,15 @@ namespace Saga_Translator
 		}
 
 		/// <summary>
-		/// ctor for starting app the first time in the session, default to Mission mode
+		/// ctor for starting app the first time in the session
 		/// </summary>
-		public MainWindow() : this( TranslateMode.Mission ) { }
-
-		public MainWindow( TranslateMode tmode )
+		public MainWindow()
 		{
 			InitializeComponent();
 			DataContext = this;
 
-			appModel = new AppModel( this, tmode );
-
+			appModel = new( this, TranslateMode.Cancel, FileMode.Cancel );
 			translationObject = new WelcomePanel();
-			appModel.NothingSelected = false;
 
 			if ( NetworkInterface.GetIsNetworkAvailable() )
 				Task.Run( StartVersionCheck );
@@ -66,66 +64,134 @@ namespace Saga_Translator
 				updateCheck.Text = "Error Checking For Update";
 
 			Utils.Init( this );
-			Title = $"Saga Translator [{tmode}]";
-			explorerTitle.Text = $"{tmode} Explorer";
+			Title = "Saga Translator [Choose a Translation Mode]";
+
+			//create default folder for cached Missions
+			if ( !Directory.Exists( Path.Combine( appPath, "CachedMissions" ) ) )
+				Directory.CreateDirectory( Path.Combine( appPath, "CachedMissions" ) );
+			if ( !Directory.Exists( Path.Combine( appPath, "SavedTranslations" ) ) )
+				Directory.CreateDirectory( Path.Combine( appPath, "SavedTranslations" ) );
 		}
 
 		/// <summary>
-		/// ctor for Supplemental mode
+		/// ctor after selecting data to translate
 		/// </summary>
-		public MainWindow( string filePath )
+		public MainWindow( SourceData sourceData, TranslateMode tmode )
 		{
 			InitializeComponent();
 			DataContext = this;
+
 			Utils.Init( this );
-
-			appModel = new AppModel( this, TranslateMode.Supplemental );
-			appModel.OtherFileName = Path.GetFileName( filePath );
-			appModel.TranslatedFilePath = Path.GetDirectoryName( filePath );
-
+			appModel = new AppModel( this, tmode, sourceData.fileMode );
+			if ( tmode == TranslateMode.Mission )
+			{
+				sourceMissionFilename = sourceData.metaDisplay.displayName + ".json";
+				appModel.TranslatedFileName = sourceMissionFilename;
+			}
+			else
+			{
+				appModel.TranslatedFileName = sourceData.fileName;
+			}
+			//default save base path is the app location
+			appModel.TranslatedFilePath = Path.Combine( appPath, "SavedTranslations" );
 			appModel.NothingSelected = false;
+
+			translationObject = new WelcomePanel();
+			((WelcomePanel)translationObject).EnableTranslationDrop();
 
 			if ( NetworkInterface.GetIsNetworkAvailable() )
 				Task.Run( StartVersionCheck );
 			else
 				updateCheck.Text = "Error Checking For Update";
 
-			ParsedObject data = DynamicParser.Parse( filePath );
+			if ( tmode == TranslateMode.Supplemental )
+				SetupSupplemental( sourceData );
+			else if ( tmode == TranslateMode.UI )
+				SetupUI( sourceData );
+			else if ( tmode == TranslateMode.Mission )
+				SetupMission( sourceData );
+
+			Title = $"Saga Translator [{sourceData.fileMode}] - FILE NOT SAVED";
+
+			saveMissionButton.IsEnabled = true;
+			openMissionTranslatedButton.IsEnabled = true;
+			canSave = true;
+		}
+
+		/// <summary>
+		/// Setup app for non-Mission and non-UI data
+		/// </summary>
+		private void SetupSupplemental( SourceData sourceData )
+		{
+			ParsedObject data = DynamicParser.Parse( sourceData );
 			//set the SOURCE data
 			sourceDynamicUIModel = data.data;
 			//set the TRANSLATED MISSION
 			translatedDynamicUIModel = data.dataCopy;
-			//PopulateDynamicTree( data.gType );
-			//appModel.SetStatus( $"Loaded '{new FileInfo( filePath ).Name}'" );
-			//Title = $"Saga Translator [{data.gType}] - FILE NOT SAVED";
-			//saveMissionButton.IsEnabled = true;
-			//openMissionTranslatedButton.IsEnabled = true;
-			//sourceUIText.Text = new FileInfo( filePath ).Name;
 
 			sourceText.Visibility = Visibility.Collapsed;
 			sourceUIText.Visibility = Visibility.Visible;
-			sourceUIText.Text = new FileInfo( filePath ).Name;
-			//languageCB.IsEnabled = true;
-			saveMissionButton.IsEnabled = true;
-			openMissionTranslatedButton.IsEnabled = true;
-			//findReplace.IsEnabled = true;
-			canSave = true;
+			sourceUIText.Text = sourceData.fileName;
 
 			PopulateDynamicTree( data.gType );
-			translationObject = new WelcomePanel();
-			((WelcomePanel)translationObject).EnableTranslationDrop();
 
-			appModel.SetStatus( $"{data.gType} Loaded" );
+			languageCB.Visibility = Visibility.Collapsed;
+		}
 
-			Title = "Saga Translator [Supplemental] - FILE NOT SAVED";
-			explorerTitle.Text = $"Supplemental Explorer";
-			languageCB.Visibility = Visibility.Hidden;
+		/// <summary>
+		/// Setup app for Mission data
+		/// </summary>
+		private void SetupMission( SourceData sourceData )
+		{
+			//set the ENGLISH SOURCE
+			sourceMission = JsonConvert.DeserializeObject<Mission>( sourceData.stringifiedJsonData );
+			//set the TRANSLATED MISSION
+			translatedMission = JsonConvert.DeserializeObject<Mission>( sourceData.stringifiedJsonData );
+			if ( string.IsNullOrEmpty( translatedMission.languageID ) )
+				translatedMission.languageID = "Select Target Language";
+
+			sourceText.Visibility = Visibility.Visible;
+			sourceUIText.Visibility = Visibility.Collapsed;
+			languageCB.IsEnabled = true;
+
+			PopulateMainTree();
+
+			Binding binding = new( "languageID" )
+			{
+				Source = translatedMission
+			};
+			languageCB.SetBinding( ComboBox.SelectedValueProperty, binding );
+		}
+
+		/// <summary>
+		/// Setup app for UI data
+		/// </summary>
+		private void SetupUI( SourceData translationMeta )
+		{
+			//set the ENGLISH SOURCE
+			sourceUI = JsonConvert.DeserializeObject<UILanguage>( translationMeta.stringifiedJsonData );
+			//set the TRANSLATED UI
+			translatedUI = JsonConvert.DeserializeObject<UILanguage>( translationMeta.stringifiedJsonData );
+			if ( string.IsNullOrEmpty( translatedUI.languageID ) )
+				translatedUI.languageID = "Select Target Language";
+
+			sourceText.Visibility = Visibility.Collapsed;
+			sourceUIText.Visibility = Visibility.Visible;
+			languageCB.IsEnabled = true;
+
+			PopulateUIMainTree();
+
+			Binding binding = new( "languageID" )
+			{
+				Source = translatedUI
+			};
+			languageCB.SetBinding( ComboBox.SelectedValueProperty, binding );
 		}
 
 		/// <summary>
 		/// ctor for Mission mode
 		/// </summary>
-		public MainWindow( Mission s, string filePath )
+		/*public MainWindow( Mission s, string filePath )
 		{
 			InitializeComponent();
 			DataContext = this;
@@ -171,58 +237,7 @@ namespace Saga_Translator
 				Source = translatedMission
 			};
 			languageCB.SetBinding( ComboBox.SelectedValueProperty, binding );
-		}
-
-		/// <summary>
-		/// ctor for UI mode
-		/// </summary>
-		public MainWindow( UILanguage ui, string filePath )
-		{
-			InitializeComponent();
-			DataContext = this;
-			Utils.Init( this );
-
-			appModel = new AppModel( this, TranslateMode.UI );
-			appModel.TranslatedFilePath = Path.GetDirectoryName( filePath );
-
-			translationObject = new WelcomePanel();
-			((WelcomePanel)translationObject).EnableTranslationDrop();
-			appModel.NothingSelected = false;
-
-			if ( NetworkInterface.GetIsNetworkAvailable() )
-				Task.Run( StartVersionCheck );
-			else
-				updateCheck.Text = "Error Checking For Update";
-
-			//set the ENGLISH SOURCE
-			sourceUI = ui;
-			//make a copy of the ui
-			string json = JsonConvert.SerializeObject( sourceUI );
-			//set the TRANSLATED UI
-			translatedUI = JsonConvert.DeserializeObject<UILanguage>( json );
-			if ( string.IsNullOrEmpty( translatedUI.languageID ) )
-				translatedUI.languageID = "Select Target Language";
-
-			sourceText.Visibility = Visibility.Collapsed;
-			sourceUIText.Visibility = Visibility.Visible;
-			languageCB.IsEnabled = true;
-			saveMissionButton.IsEnabled = true;
-			openMissionTranslatedButton.IsEnabled = true;
-			findReplace.IsEnabled = false;
-			canSave = true;
-
-			PopulateUIMainTree();
-
-			appModel.SetStatus( "UI Loaded" );
-
-			Title = "Saga Translator [UI] - FILE NOT SAVED";
-			explorerTitle.Text = "UI Explorer";
-			Binding binding = new( "languageID" )
-			{
-				Source = translatedUI
-			};
-			languageCB.SetBinding( ComboBox.SelectedValueProperty, binding );
-		}
+		}*/
 
 		public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -238,30 +253,33 @@ namespace Saga_Translator
 			//}
 		}
 
-		private void openSourceButton_Click( object sender, RoutedEventArgs e )
-		{
-			OpenFileDialog od = new();
-			od.InitialDirectory = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
+		/// <summary>
+		/// DEPRECATED
+		/// </summary>
+		//private void openSourceButton_Click( object sender, RoutedEventArgs e )
+		//{
+		//	//OpenFileDialog od = new();
+		//	//od.InitialDirectory = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
 
-			if ( appModel.TranslateMode == TranslateMode.Mission )
-			{
-				od.Filter = "Mission File (*.json)|*.json";
-				od.Title = "Open SOURCE Mission (English)";
-			}
-			else if ( appModel.TranslateMode == TranslateMode.UI )
-			{
-				od.Filter = "UI File (*.json)|*.json";
-				od.Title = "Open SOURCE UI (English)";
-			}
-			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
-			{
-				od.Filter = "JSON/TXT File (*.json, *.txt)|*.json;*.txt";
-				od.Title = "Open SOURCE DATA (English)";
-			}
+		//	//if ( appModel.TranslateMode == TranslateMode.Mission )
+		//	//{
+		//	//	od.Filter = "Mission File (*.json)|*.json";
+		//	//	od.Title = "Open SOURCE Mission (English)";
+		//	//}
+		//	//else if ( appModel.TranslateMode == TranslateMode.UI )
+		//	//{
+		//	//	od.Filter = "UI File (*.json)|*.json";
+		//	//	od.Title = "Open SOURCE UI (English)";
+		//	//}
+		//	//else if ( appModel.TranslateMode == TranslateMode.Supplemental )
+		//	//{
+		//	//	od.Filter = "JSON/TXT File (*.json, *.txt)|*.json;*.txt";
+		//	//	od.Title = "Open SOURCE DATA (English)";
+		//	//}
 
-			if ( od.ShowDialog() == true )
-				OpenSourceFile( od.FileName );
-		}
+		//	//if ( od.ShowDialog() == true )
+		//	//	OpenSourceFile( od.FileName );
+		//}
 
 		private void saveMissionButton_Click( object sender, RoutedEventArgs e )
 		{
@@ -273,6 +291,9 @@ namespace Saga_Translator
 				HandleSaveOther();
 		}
 
+		/// <summary>
+		/// Save anything other than Mission and UI
+		/// </summary>
 		private void HandleSaveOther()
 		{
 			if ( !hasSaved )
@@ -282,15 +303,15 @@ namespace Saga_Translator
 				od.InitialDirectory = appModel.TranslatedFilePath;
 				od.Filter = $"{appModel.TranslateMode} File (*.json, *.txt)|*.json;*.txt";
 				od.Title = $"Save Translated {appModel.TranslateMode}";
-				od.FileName = Path.Combine( appModel.TranslatedFilePath, appModel.OtherFileName );
+				od.FileName = Path.Combine( appModel.TranslatedFilePath, appModel.TranslatedFileName );
 				if ( od.ShowDialog() == true )
 				{
 					appModel.TranslatedFilePath = Path.GetDirectoryName( od.FileName );
-					appModel.OtherFileName = od.SafeFileName;
+					appModel.TranslatedFileName = od.SafeFileName;
 					if ( FileManager.SaveOther( translatedDynamicUIModel, od.SafeFileName, appModel.TranslatedFilePath ) )
 					{
 						hasSaved = true;
-						Title = "Saga Translator [Supplemental] - " + Path.Combine( appModel.TranslatedFilePath, od.SafeFileName );
+						Title = $"Saga Translator [{appModel.FileMode}] - " + Path.Combine( appModel.TranslatedFilePath, od.SafeFileName );
 						appModel.SetStatus( "Translation Saved" );
 					}
 					else
@@ -313,10 +334,10 @@ namespace Saga_Translator
 					}
 				}
 
-				if ( FileManager.SaveOther( translatedDynamicUIModel, appModel.OtherFileName, appModel.TranslatedFilePath ) )
+				if ( FileManager.SaveOther( translatedDynamicUIModel, appModel.TranslatedFileName, appModel.TranslatedFilePath ) )
 				{
 					hasSaved = true;
-					Title = "Saga Translator [Supplemental] - " + Path.Combine( appModel.TranslatedFilePath, appModel.OtherFileName );
+					Title = $"Saga Translator [{appModel.FileMode}] - " + Path.Combine( appModel.TranslatedFilePath, appModel.TranslatedFileName );
 					appModel.SetStatus( "Translation Saved" );
 				}
 				else
@@ -327,6 +348,9 @@ namespace Saga_Translator
 			}
 		}
 
+		/// <summary>
+		/// Save UI (ui.json)
+		/// </summary>
 		private void HandleSaveUI()
 		{
 			if ( !hasSaved )
@@ -340,7 +364,7 @@ namespace Saga_Translator
 				if ( od.ShowDialog() == true )
 				{
 					appModel.TranslatedFilePath = Path.GetDirectoryName( od.FileName );
-					appModel.UiFileName = od.SafeFileName;
+					appModel.TranslatedFileName = od.SafeFileName;
 					if ( FileManager.SaveUI( translatedUI, od.SafeFileName, appModel.TranslatedFilePath ) )
 					{
 						hasSaved = true;
@@ -367,10 +391,10 @@ namespace Saga_Translator
 					}
 				}
 
-				if ( FileManager.SaveUI( translatedUI, appModel.UiFileName, appModel.TranslatedFilePath ) )
+				if ( FileManager.SaveUI( translatedUI, appModel.TranslatedFileName, appModel.TranslatedFilePath ) )
 				{
 					hasSaved = true;
-					Title = "Saga Translator [UI] - " + Path.Combine( appModel.TranslatedFilePath, appModel.UiFileName );
+					Title = "Saga Translator [UI] - " + Path.Combine( appModel.TranslatedFilePath, appModel.TranslatedFileName );
 					appModel.SetStatus( "Translated UI Saved" );
 				}
 				else
@@ -381,6 +405,9 @@ namespace Saga_Translator
 			}
 		}
 
+		/// <summary>
+		/// Save Mission
+		/// </summary>
 		private void HandleSaveMission()
 		{
 			if ( !hasSaved )
@@ -390,12 +417,13 @@ namespace Saga_Translator
 				od.InitialDirectory = appModel.TranslatedFilePath;
 				od.Filter = "Mission File (*.json)|*.json";
 				od.Title = "Save Translated Mission";
-				od.FileName = Path.Combine( appModel.TranslatedFilePath, translatedMission.fileName );
+				od.FileName = Path.Combine( appModel.TranslatedFilePath, appModel.TranslatedFileName );
 				if ( od.ShowDialog() == true )
 				{
 					appModel.TranslatedFilePath = Path.GetDirectoryName( od.FileName );
+					appModel.TranslatedFileName = Path.GetFileName( od.FileName );
 					translatedMission.fileName = od.SafeFileName;
-					if ( FileManager.SaveMission( translatedMission, appModel.TranslatedFilePath ) )
+					if ( FileManager.SaveMission( translatedMission, appModel.TranslatedFilePath, appModel.TranslatedFileName ) )
 					{
 						hasSaved = true;
 						Title = "Saga Translator [Mission] - " + Path.Combine( appModel.TranslatedFilePath, translatedMission.fileName );
@@ -421,7 +449,7 @@ namespace Saga_Translator
 					}
 				}
 
-				if ( FileManager.SaveMission( translatedMission, appModel.TranslatedFilePath ) )
+				if ( FileManager.SaveMission( translatedMission, appModel.TranslatedFilePath, appModel.TranslatedFileName ) )
 				{
 					hasSaved = true;
 					Title = "Saga Translator [Mission] - " + Path.Combine( appModel.TranslatedFilePath, translatedMission.fileName );
@@ -439,7 +467,7 @@ namespace Saga_Translator
 		{
 			OpenFileDialog od = new();
 			if ( !hasSaved )
-				od.InitialDirectory = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ), "ImperialCommander" );
+				od.InitialDirectory = Path.Combine( appPath, "SavedTranslations" );
 			else
 				od.InitialDirectory = appModel.TranslatedFilePath;
 
@@ -466,23 +494,8 @@ namespace Saga_Translator
 			}
 		}
 
-		private void findReplace_Click( object sender, RoutedEventArgs e )
-		{
-			List<IFindReplace> panels = new();
-			foreach ( var item in mainTree.Items )
-			{
-				GetPanels( (TreeViewItem)item, panels );
-			}
-			var dlg = new FindReplace( panels );
-			dlg.ShowDialog();
-		}
-
 		void GetPanels( TreeViewItem item, List<IFindReplace> panels )
 		{
-			//if ( item.DataContext is MissionEvent
-			//	|| item.DataContext is IEventAction
-			//	|| item.DataContext is IMapEntity
-			//	|| item.DataContext is MissionProperties )
 			if ( item.DataContext is IFindReplace )
 			{
 				panels.Add( (IFindReplace)item.DataContext );
@@ -503,24 +516,20 @@ namespace Saga_Translator
 		{
 			var dlg = new ModeSwitchDialog();
 			dlg.ShowDialog();
-			if ( dlg.appMode != TranslateMode.Cancel )
+			if ( dlg.sourceData.fileMode != FileMode.Cancel )
 			{
 				mainTree.Items.Clear();
-				appModel.TranslateMode = dlg.appMode;
-				MainWindow mainWindow = new( appModel.TranslateMode );
+				//appModel.TranslateMode = dlg.appMode;
+				if ( dlg.sourceData.fileMode == FileMode.Mission )
+					appModel.TranslateMode = TranslateMode.Mission;
+				else if ( dlg.sourceData.fileMode == FileMode.UI )
+					appModel.TranslateMode = TranslateMode.UI;
+				else
+					appModel.TranslateMode = TranslateMode.Supplemental;
+				MainWindow mainWindow = new( dlg.sourceData, appModel.TranslateMode );
 				mainWindow.Show();
 				Close();
 			}
-			//var ret = MessageBox.Show( "SWITCHING MODES WILL CLEAR ALL DATA.\n\nAre you sure you want to switch modes?", "Switch Modes?", MessageBoxButton.YesNo, MessageBoxImage.Question );
-
-			//if ( ret == MessageBoxResult.Yes )
-			//{
-			//	mainTree.Items.Clear();
-			//	appModel.TranslateMode = appModel.TranslateMode == TranslateMode.Mission ? TranslateMode.UI : TranslateMode.Mission;
-			//	MainWindow mainWindow = new( appModel.TranslateMode );
-			//	mainWindow.Show();
-			//	Close();
-			//}
 		}
 
 		private async void StartVersionCheck()
@@ -568,169 +577,143 @@ namespace Saga_Translator
 			}
 		}
 
-		public bool OpenSourceFile( string filename )
-		{
-			if ( appModel.TranslateMode == TranslateMode.Mission )
-			{
-				Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
-				Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info).txt" );
-				List<string> taboo = new( new string[] { "ui.json", "instructions.json", "bonuseffects.json", "allies.json", "enemies.json", "heroes.json", "villains.json", "bespin.json", "core.json", "empire.json", "hoth.json", "jabba.json", "lothal.json", "other.json", "twin.json", "items.json", "rewards.json", "skills.json", "events.json" } );
+		/// <summary>
+		/// DEPRECATED
+		/// </summary>
+		//public bool OpenSourceFile( string filename )
+		//{
+		//	if ( appModel.TranslateMode == TranslateMode.Mission )
+		//	{
+		//		Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
+		//		Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info).txt" );
+		//		List<string> taboo = new( new string[] { "ui.json", "instructions.json", "bonuseffects.json", "allies.json", "enemies.json", "heroes.json", "villains.json", "bespin.json", "core.json", "empire.json", "hoth.json", "jabba.json", "lothal.json", "other.json", "twin.json", "items.json", "rewards.json", "skills.json", "events.json" } );
 
-				string fname = new FileInfo( filename ).Name.ToLower();
-				var mission = FileManager.LoadMission( filename );
-				if ( mission != null && !taboo.Contains( fname ) && !regex.IsMatch( fname ) && !regex2.IsMatch( fname ) )
-				{
-					MainWindow mainWindow = new( mission, filename );
-					mainWindow.Show();
-					Close();
-				}
-				else
-				{
-					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Source Mission" );
-					appModel.SetStatus( "Error Loading Mission" );
-					return false;
-				}
-			}
-			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
-			{
-				ParsedObject data = DynamicParser.Parse( filename );
-				if ( data.isSuccess )
-				{
-					MainWindow mainWindow = new( filename );
-					mainWindow.Show();
-					Close();
-				}
-				else
-				{
-					appModel.SetStatus( "Error Loading Source Data" );
-					MessageBox.Show( data.errorMsg, "Error Loading Source Data" );
-				}
+		//		string fname = new FileInfo( filename ).Name.ToLower();
+		//		var mission = FileManager.LoadMission( filename );
+		//		if ( mission != null && !taboo.Contains( fname ) && !regex.IsMatch( fname ) && !regex2.IsMatch( fname ) )
+		//		{
+		//			MainWindow mainWindow = new( mission, filename );
+		//			mainWindow.Show();
+		//			Close();
+		//		}
+		//		else
+		//		{
+		//			MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Source Mission" );
+		//			appModel.SetStatus( "Error Loading Mission" );
+		//			return false;
+		//		}
+		//	}
+		//	else if ( appModel.TranslateMode == TranslateMode.Supplemental )
+		//	{
+		//		ParsedObject data = DynamicParser.Parse( filename );
+		//		if ( data.isSuccess )
+		//		{
+		//			MainWindow mainWindow = new( filename );
+		//			mainWindow.Show();
+		//			Close();
+		//		}
+		//		else
+		//		{
+		//			appModel.SetStatus( "Error Loading Source Data" );
+		//			MessageBox.Show( data.errorMsg, "Error Loading Source Data" );
+		//		}
 
-				return false;
-			}
-			else if ( appModel.TranslateMode == TranslateMode.UI )
-			{
-				var ui = FileManager.LoadJSON<UILanguage>( filename );
-				if ( ui != null && ui.sagaUISetup != null )
-				{
-					MainWindow mainWindow = new( ui, filename );
-					mainWindow.Show();
-					Close();
-				}
-				else
-				{
-					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Source UI" );
-					appModel.SetStatus( "Error Loading UI" );
-					return false;
-				}
-			}
-			return true;
-		}
+		//		return false;
+		//	}
+		//	else if ( appModel.TranslateMode == TranslateMode.UI )
+		//	{
+		//		var ui = FileManager.LoadJSON<UILanguage>( filename );
+		//		if ( ui != null && ui.sagaUISetup != null )
+		//		{
+		//			MainWindow mainWindow = new( ui, filename );
+		//			mainWindow.Show();
+		//			Close();
+		//		}
+		//		else
+		//		{
+		//			MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Source UI" );
+		//			appModel.SetStatus( "Error Loading UI" );
+		//			return false;
+		//		}
+		//	}
+		//	return true;
+		//}
 
 		public bool OpenTranslatedFile( string filename )
 		{
-			Regex regex = new Regex( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)\d{1,2}(info|rules).txt", RegexOptions.IgnoreCase );
-			Regex regex2 = new( @"(bespin|core|empire|hoth|jabba|lothal|other|twin)(info).txt" );
-			List<string> taboo = new( new string[] { "ui.json", "instructions.json", "bonuseffects.json", "allies.json", "enemies.json", "heroes.json", "villains.json", "bespin.json", "core.json", "empire.json", "hoth.json", "jabba.json", "lothal.json", "other.json", "twin.json", "items.json", "rewards.json", "skills.json", "events.json" } );
+			//The SOURCE file is always loaded before opening an existing translation is even allowed
 
 			string fname = new FileInfo( filename ).Name.ToLower();
+			bool success = false;
 
 			if ( appModel.TranslateMode == TranslateMode.Mission )
 			{
 				translatedMission = FileManager.LoadMission( filename );
 				//make sure a mission was loaded, and not anything else by checking one of the loaded models
-				if ( translatedMission != null && !taboo.Contains( fname ) && !regex.IsMatch( fname ) && !regex2.IsMatch( fname ) )
+				if ( translatedMission != null )
 				{
-					hasSaved = true;
-					appModel.TranslatedFilePath = Path.GetDirectoryName( filename );
+					success = true;
 					translatedMission.fileName = Path.GetFileName( filename );
-					Title = "Saga Translator [Mission] - " + Path.Combine( appModel.TranslatedFilePath, translatedMission.fileName );
-					appModel.SetStatus( "Loaded Translated Mission" );
 					PopulateMainTree();
-					Binding binding = new( "languageID" )
-					{
-						Source = translatedMission
-					};
+					Binding binding = new( "languageID" ) { Source = translatedMission };
 					languageCB.SetBinding( ComboBox.SelectedValueProperty, binding );
-					translationObject = new WelcomePanel();
-					((WelcomePanel)translationObject).EnableTranslationDrop();
-					return true;
-				}
-				else
-				{
-					appModel.SetStatus( "Error Loading Translated Mission" );
-					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Translated Mission" );
-					return false;
 				}
 			}
 			else if ( appModel.TranslateMode == TranslateMode.UI )
 			{
+				//make sure the opened filename matches the expected filename
+				if ( fname != appModel.TranslatedFileName.ToLower() )
+				{
+					MessageBox.Show( $"Translator expected a file with filename '{appModel.TranslatedFileName}' but received a file with filename '{fname}'.", "Error Loading Translation" );
+					return false;
+				}
+
 				translatedUI = FileManager.LoadJSON<UILanguage>( filename );
 				//make sure a UI was loaded, and not anything else by checking one of the loaded models
 				if ( translatedUI != null && translatedUI.sagaUISetup != null )
 				{
-					hasSaved = true;
-					appModel.TranslatedFilePath = Path.GetDirectoryName( filename );
-					appModel.UiFileName = Path.GetFileName( filename );
-					Title = "Saga Translator [UI] - " + Path.Combine( appModel.TranslatedFilePath, Path.GetFileName( filename ) );
-					appModel.SetStatus( "Loaded Translated UI" );
+					success = true;
 					PopulateUIMainTree();
-					Binding binding = new( "languageID" )
-					{
-						Source = translatedUI
-					};
+					Binding binding = new( "languageID" ) { Source = translatedUI };
 					languageCB.SetBinding( ComboBox.SelectedValueProperty, binding );
-					translationObject = new WelcomePanel();
-					((WelcomePanel)translationObject).EnableTranslationDrop();
-					return true;
-				}
-				else
-				{
-					appModel.SetStatus( "Error Loading Translated UI" );
-					MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Translated UI" );
-					return false;
 				}
 			}
 			else if ( appModel.TranslateMode == TranslateMode.Supplemental )
 			{
+				//make sure the opened filename matches the expected filename
+				if ( fname != appModel.TranslatedFileName.ToLower() )
+				{
+					MessageBox.Show( $"Translator expected a file with filename '{appModel.TranslatedFileName}' but received a file with filename '{fname}'.", "Error Loading Translation" );
+					return false;
+				}
+
 				var data = DynamicParser.Parse( filename );
 				if ( data.isSuccess )
 				{
+					success = true;
 					translatedDynamicUIModel = data.data;
-					hasSaved = true;
-					appModel.TranslatedFilePath = Path.GetDirectoryName( filename );
-					appModel.OtherFileName = Path.GetFileName( filename );
-					Title = "Saga Translator [Supplemental] - " + Path.Combine( appModel.TranslatedFilePath, Path.GetFileName( filename ) );
-					appModel.SetStatus( "Loaded Translated File" );
 					PopulateDynamicTree( data.gType );
-					translationObject = new WelcomePanel();
-					((WelcomePanel)translationObject).EnableTranslationDrop();
-					return true;
-				}
-				else
-				{
-					appModel.SetStatus( "Error Loading Translation" );
-					MessageBox.Show( data.errorMsg, "Error Loading Supplemental file." );
-					return false;
 				}
 			}
 
-			return false;
-		}
+			if ( success )
+			{
+				appModel.TranslatedFilePath = Path.GetDirectoryName( filename );
+				appModel.TranslatedFileName = Path.GetFileName( filename );
+				appModel.SetStatus( "Loaded Translated Data" );
+				hasSaved = true;
+				translationObject = new WelcomePanel();
+				((WelcomePanel)translationObject).EnableTranslationDrop();
+				Title = $"Saga Translator [{appModel.TranslateMode}] - " + Path.Combine( appModel.TranslatedFilePath, appModel.TranslatedFileName );
 
-		//private void ToolBar_Loaded( object sender, RoutedEventArgs e )
-		//{
-		//	ToolBar toolBar = sender as ToolBar;
-		//	var overflowGrid = toolBar.Template.FindName( "OverflowGrid", toolBar ) as FrameworkElement;
-		//	if ( overflowGrid != null )
-		//	{
-		//		overflowGrid.Visibility = Visibility.Collapsed;
-		//	}
-		//	var mainPanelBorder = toolBar.Template.FindName( "MainPanelBorder", toolBar ) as FrameworkElement;
-		//	if ( mainPanelBorder != null )
-		//	{
-		//		mainPanelBorder.Margin = new Thickness();
-		//	}
-		//}
+				return true;
+			}
+			else
+			{
+				appModel.SetStatus( "Error Loading Translated Data" );
+				MessageBox.Show( "Loaded object was null or incorrect JSON.  You may be trying to open the file in the wrong translation Mode. Switch the Mode via the icon at the top left of the toolbar, then try again.", "Error Loading Translated Data" );
+				return false;
+			}
+		}
 	}
 }

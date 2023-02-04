@@ -24,3 +24,4 @@
 }
 
 public enum TranslateMode { Mission, UI, Supplemental, Cancel }
+public enum FileMode { UI, BonusEffects, EnemyInstructions, Events, CampaignItems, CampaignRewards, CampaignSkills, CampaignInfo, DeploymentGroups, MissionCardText, MissionInfo, Mission, Cancel }

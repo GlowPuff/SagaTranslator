@@ -22,7 +22,7 @@ namespace Imperial_Commander_Editor
 		/// <summary>
 		/// folder path+filename RELATIVE to SpecialFolder.MyDocuments
 		/// </summary>
-		public string relativePath;
+		//public string relativePath;
 
 		/// <summary>
 		///	increment this each time file format gets updated
@@ -59,7 +59,7 @@ namespace Imperial_Commander_Editor
 			//defaults
 			missionGUID = Guid.NewGuid();
 			fileName = "";
-			relativePath = "";
+			//relativePath = "";
 			saveDate = DateTime.Now.ToString( "M/d/yyyy" );
 			timeTicks = DateTime.Now.Ticks;
 			missionProperties = new MissionProperties();

@@ -34,7 +34,7 @@ namespace Imperial_Commander_Editor
 		public string Date { get; set; }
 		public string Description { get; set; }
 		public string fileName { get; set; }
-		public string relativePath { get; set; }
+		//public string relativePath { get; set; }
 		public string fileVersion { get; set; }
 		public long timeTicks { get; set; }
 
@@ -179,6 +179,41 @@ namespace Imperial_Commander_Editor
 		public InputRange()
 		{
 
+		}
+	}
+
+	public class SourceData
+	{
+		public FileMode fileMode;
+		public string stringifiedJsonData;
+		public MetaDisplay metaDisplay;
+		public string fileName
+		{
+			get
+			{
+				var split = metaDisplay.assetName.Split( '.' ).Reverse().Take( 2 ).Reverse().ToArray();
+				return $"{split[0]}.{split[1]}";
+			}
+		}
+
+		public SourceData()
+		{
+			fileMode = FileMode.Cancel;
+			stringifiedJsonData = string.Empty;
+			metaDisplay = new();
+		}
+	}
+
+	public class MetaDisplay
+	{
+		public string displayName { get; set; }
+		public string assetName { get; set; }
+		public string missionExpansionFolder;//for saving cached file
+
+		public MetaDisplay( string dname = "", string aname = "" )
+		{
+			displayName = dname;
+			assetName = aname;
 		}
 	}
 }
