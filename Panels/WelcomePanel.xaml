@@ -37,8 +37,9 @@
 
 			<Border Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="10" BorderThickness="2" BorderBrush="Gray" Background="{StaticResource MenuDarkBG}" Padding="10" Margin="10,10,0,0">
 				<StackPanel>
-					<TextBlock Text="Save your translation using the Save button on the toolbar. The correct filename will be entered for you." Margin="0,10" TextWrapping="Wrap" FontSize="14"/>
-					<Border Margin="10,0,10,10" CornerRadius="10" BorderThickness="2" BorderBrush="Orange" Padding="10">
+					<TextBlock Text="● Save your translation using the Save button on the toolbar. The correct filename will be entered for you." Margin="0,0,0,5" TextWrapping="Wrap" FontSize="14"/>
+					<TextBlock Text="{Binding defaultSaveDir}" Margin="0,0" TextWrapping="Wrap" FontSize="14"/>
+					<Border Margin="10,10,10,10" CornerRadius="10" BorderThickness="2" BorderBrush="Orange" Padding="10">
 						<StackPanel>
 							<TextBlock Text="Additional Mission Instructions" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
 							<TextBlock Text="● Prepend the filename with the translated Country Code, for example:&#x0a;&#9;DE-CORE3.json" Margin="0,0" TextWrapping="Wrap" FontSize="14"/>
@@ -66,7 +67,7 @@
 						<TextBlock Text="1. Use the Translation Source button on the toolbar to select the data you want to translate." TextWrapping="Wrap"/>
 						<TextBlock Text="2. The source data in English will automatically load into the Explorer and will serve as your reference while translating." TextWrapping="Wrap" Margin="0,5,0,0"/>
 						<TextBlock Text="3. Use the Open File Button or Drag and Drop your existing file below to open it." TextWrapping="Wrap" Margin="0,5"/>
-						<Border x:Name="dragTranslatedBox" Grid.Row="1" Grid.Column="1" Height="100" Margin="10,10,10,0" Background="{DynamicResource MenuBG}" Opacity="1" CornerRadius="5" DragEnter="dragTranslatedBox_DragEnter" Drop="dragTranslatedBox_Drop" AllowDrop="False">
+						<Border x:Name="dragTranslatedBox" Grid.Row="1" Grid.Column="1" Height="100" Margin="10,10,10,0" Background="{DynamicResource MenuBG}" Opacity=".25" CornerRadius="5" DragEnter="dragTranslatedBox_DragEnter" Drop="dragTranslatedBox_Drop" AllowDrop="False">
 							<TextBlock Text="Drag and Drop File" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 						</Border>
 						<TextBlock Text="4. Use the Explorer to continue translating each item in the data." TextWrapping="Wrap" Margin="0,10,0,0"/>

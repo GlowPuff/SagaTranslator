@@ -79,7 +79,7 @@
 						<Image Source="Assets/find-replace.png" Height="30" Visibility="Collapsed"/>
 					</Button>-->
 					<!--HELP-->
-					<Button x:Name="helpButton" ToolTip="Find and Replace" Click="helpButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+					<Button x:Name="helpButton" ToolTip="Instructions" Click="helpButton_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
 						<Image Source="Assets/help.png" Height="30"/>
 					</Button>
 				</StackPanel>

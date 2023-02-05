@@ -168,7 +168,20 @@ namespace Imperial_Commander_Editor
 			}
 			catch ( JsonReaderException e )
 			{
-				MessageBox.Show( "Error parsing JSON file.\r\n\r\nException:\r\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "LoadJSON()::Error parsing JSON file.\n\nException:\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
+				return default( T );
+			}
+		}
+
+		public static T LoadJSONFromString<T>( string json )
+		{
+			try
+			{
+				return JsonConvert.DeserializeObject<T>( json );
+			}
+			catch ( Exception e )
+			{
+				MessageBox.Show( "LoadJSONFromString()::Error parsing JSON string.\n\nException:\n" + e.Message, "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
 				return default( T );
 			}
 		}

@@ -207,6 +207,7 @@ namespace Imperial_Commander_Editor
 	public class MetaDisplay
 	{
 		public string displayName { get; set; }
+		public string comboBoxTitle { get; set; }
 		public string assetName { get; set; }
 		public string missionExpansionFolder;//for saving cached file
 
@@ -214,6 +215,7 @@ namespace Imperial_Commander_Editor
 		{
 			displayName = dname;
 			assetName = aname;
+			comboBoxTitle = displayName;
 		}
 	}
 }

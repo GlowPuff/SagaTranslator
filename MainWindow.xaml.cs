@@ -28,7 +28,7 @@ namespace Saga_Translator
 		private Mission _translatedMission, _sourceMission;
 		private UILanguage _sourceUI, _translatedUI;
 		private GenericUIData _sourceModel, _translatedModel;
-		private string _sourceMissionFilename;
+		private string _sourceMissionFilename, _defaultSaveDir;
 
 		public GenericUIData sourceDynamicUIModel { get { return _sourceModel; } set { _sourceModel = value; PC(); } }
 		public GenericUIData translatedDynamicUIModel { get { return _translatedModel; } set { _translatedModel = value; PC(); } }
@@ -40,6 +40,7 @@ namespace Saga_Translator
 		public UILanguage? translatedUI { get => _translatedUI; set { _translatedUI = value; PC(); } }
 		public string sourceMissionFilename { get => _sourceMissionFilename; set { _sourceMissionFilename = value; PC(); } }
 		public static string appPath { get { return AppDomain.CurrentDomain.BaseDirectory; } }
+		public string defaultSaveDir { get { return _defaultSaveDir; } set { _defaultSaveDir = value; PC(); } }
 
 		public void PC( [CallerMemberName] string n = "" )
 		{
@@ -57,6 +58,7 @@ namespace Saga_Translator
 
 			appModel = new( this, TranslateMode.Cancel, FileMode.Cancel );
 			translationObject = new WelcomePanel();
+			defaultSaveDir = $"● By default, files save to:\n{Path.Combine( MainWindow.appPath, "SavedTranslations" )}";
 
 			if ( NetworkInterface.GetIsNetworkAvailable() )
 				Task.Run( StartVersionCheck );

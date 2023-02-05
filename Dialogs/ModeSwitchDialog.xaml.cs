@@ -21,9 +21,10 @@ namespace Saga_Translator
 	public partial class ModeSwitchDialog : Window, INotifyPropertyChanged
 	{
 		string _combo1Label, _combo2Label;
-		MetaDisplay[] missionExpansions, missionCardTextExpansions, campaignInfoExpansions, deploymentGroups, missionInfoExpansions;
+		MetaDisplay[] missionExpansions, missionCardTextExpansions, campaignInfoExpansions, deploymentGroups, missionInfoExpansions, tutorialMissions;
 		string[] singleShotData;
 		int[] missionCounts;
+		bool isTutorial;
 
 		public SourceData sourceData;
 		public List<string> fileList;
@@ -59,6 +60,7 @@ namespace Saga_Translator
 			"Mission Card Text\t\tbespin.json, jabba.json, etc.",//2nd selection needed
 			"Mission Info / Rules\tcore1info.txt, hoth7rules.txt, etc.",//2nd selection needed
 			"Mission\t\t\tVaries by Mission, xxx.json",//2nd selection needed
+			"Tutorials\t\t\tTUTORIAL01.json, TUTORIAL02.json, etc.",//2nd selection needed
 			} );
 
 			campaignInfoExpansions = new MetaDisplay[]
@@ -119,8 +121,15 @@ namespace Saga_Translator
 				new MetaDisplay("Villains","DeploymentGroups.villains.json"),
 			};
 
-			singleShotData = new string[]
+			tutorialMissions = new MetaDisplay[]
 			{
+				new MetaDisplay("TUTORIAL01","https://raw.githubusercontent.com/GlowPuff/ImperialCommander2/main/ImperialCommander2/Assets/Resources/SagaTutorials/En/TUTORIAL01.json"){ missionExpansionFolder="Tutorial"},
+				new MetaDisplay("TUTORIAL02","https://raw.githubusercontent.com/GlowPuff/ImperialCommander2/main/ImperialCommander2/Assets/Resources/SagaTutorials/En/TUTORIAL02.json"){ missionExpansionFolder="Tutorial"},
+				new MetaDisplay("TUTORIAL03","https://raw.githubusercontent.com/GlowPuff/ImperialCommander2/main/ImperialCommander2/Assets/Resources/SagaTutorials/En/TUTORIAL03.json"){ missionExpansionFolder="Tutorial"}
+			};
+
+			singleShotData = new string[]
+				{
 				"ui.json",
 				"bonuseffects.json",
 				"instructions.json",
@@ -128,7 +137,7 @@ namespace Saga_Translator
 				"items.json",
 				"rewards.json",
 				"skills.json"
-			};
+				};
 
 			missionCounts = new int[] { 32, 6, 16, 6, 16, 16, 6, 40 };
 		}
@@ -157,6 +166,7 @@ namespace Saga_Translator
 			sourceData = new();
 			sourceData.fileMode = (FileMode)fileCB.SelectedIndex;
 
+			isTutorial = false;
 			combo1Label = combo2Label = customPathLabel.Text = downloadStatus.Text = "";
 			combo1CB.ItemsSource = new List<string>();
 			combo2CB.ItemsSource = new List<string>();
@@ -217,6 +227,16 @@ namespace Saga_Translator
 				combo1CB.ItemsSource = missionExpansions;
 				combo1CB.SelectedIndex = -1;
 			}
+			//Tutorials
+			else if ( fileCB.SelectedIndex == 12 )
+			{
+				sourceData.fileMode = FileMode.Mission;
+				isTutorial = true;
+				combo1Label = "Select a Tutorial:";
+				combo1Box.Visibility = Visibility.Visible;
+				combo1CB.ItemsSource = tutorialMissions;
+				combo1CB.SelectedIndex = -1;
+			}
 		}
 
 		private void combo1CB_SelectionChanged( object sender, System.Windows.Controls.SelectionChangedEventArgs e )
@@ -255,7 +275,7 @@ namespace Saga_Translator
 					return new MetaDisplay( $"{split[0]}.{split[1]}", x );
 				} );
 			}
-			else if ( sourceData.fileMode == FileMode.Mission )
+			else if ( sourceData.fileMode == FileMode.Mission && !isTutorial )
 			{
 				//if it's a non-Custom mission...
 				if ( combo1CB.SelectedIndex != 8 )
@@ -266,13 +286,21 @@ namespace Saga_Translator
 					combo2Label = $"Select a '{sourceData.metaDisplay.displayName}' Mission:";
 					string[] files = new string[missionCounts[combo1CB.SelectedIndex]];
 					combo2Box.Visibility = Visibility.Visible;
-					int counter = 1;
+					int counter = 0;
 					combo2CB.ItemsSource = files.Select( x =>
 					{
+						//URL FORMAT:
 						//https://raw.githubusercontent.com/GlowPuff/ImperialCommander2/main/ImperialCommander2/Assets/SagaMissions/08Other/OTHER33.json
+						counter++;
 						string baseurl = $"https://raw.githubusercontent.com/GlowPuff/ImperialCommander2/main/ImperialCommander2/Assets/SagaMissions/0{combo1CB.SelectedIndex + 1}{sourceData.metaDisplay.assetName}/{sourceData.metaDisplay.assetName.ToUpper()}{counter}.json";
+						//look up the mission name
+						string expansion = sourceData.metaDisplay.assetName;
+						var data = FileManager.LoadBuiltinJSON( $"MissionCardText.{expansion.ToLower()}.json" );
+						int c = counter;
+						string e = expansion;
+						var mcard = FileManager.LoadJSONFromString<List<MissionCardText>>( data ).Where( x => x.id == $"{expansion}{counter}" ).First();
 
-						return new MetaDisplay( $"{sourceData.metaDisplay.assetName.ToUpper()}{counter++}", $"{baseurl}" ) { missionExpansionFolder = $"0{combo1CB.SelectedIndex + 1}{sourceData.metaDisplay.assetName}" };
+						return new MetaDisplay( $"{sourceData.metaDisplay.assetName.ToUpper()}{counter}", $"{baseurl}" ) { missionExpansionFolder = $"0{combo1CB.SelectedIndex + 1}{sourceData.metaDisplay.assetName}", comboBoxTitle = $"{sourceData.metaDisplay.assetName.ToUpper()}{counter} - {mcard.name}" };
 					} );
 				}
 				else
@@ -280,6 +308,23 @@ namespace Saga_Translator
 					//show the Load Custom mission box
 					customPathLabel.Text = "";
 					customBox.Visibility = Visibility.Visible;
+				}
+			}
+			else if ( sourceData.fileMode == FileMode.Mission && isTutorial )
+			{
+				//load the data based on the asset selected
+				sourceData.metaDisplay = combo1CB.SelectedItem as MetaDisplay;
+				//assetName is the GitHub url
+				downloadStatus.Text = "";
+				continueBtn.IsEnabled = false;
+				successIcon.Visibility = Visibility.Collapsed;
+				downloadBox.Visibility = Visibility.Visible;
+				downloadBtn.IsEnabled = true;
+				//check if there is a cached copy
+				if ( CheckCache() )
+				{
+					downloadStatus.Text = "Or Continue with cached copy.";
+					continueBtn.IsEnabled = true;
 				}
 			}
 

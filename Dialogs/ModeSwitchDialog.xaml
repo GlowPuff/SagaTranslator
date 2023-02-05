@@ -24,14 +24,14 @@
 			<GroupBox x:Name="combo1Box" BorderThickness="0" Visibility="Collapsed">
 				<StackPanel>
 					<TextBlock Text="{Binding combo1Label}" Foreground="White" FontSize="14"/>
-					<ComboBox x:Name="combo1CB" DisplayMemberPath="displayName" Margin="10" SelectionChanged="combo1CB_SelectionChanged" FontSize="14" Padding="5"/>
+					<ComboBox x:Name="combo1CB" DisplayMemberPath="comboBoxTitle" Margin="10" SelectionChanged="combo1CB_SelectionChanged" FontSize="14" Padding="5"/>
 				</StackPanel>
 			</GroupBox>
 
 			<GroupBox x:Name="combo2Box" BorderThickness="0" Visibility="Collapsed">
 				<StackPanel>
 					<TextBlock Text="{Binding combo2Label}" Foreground="White" FontSize="14"/>
-					<ComboBox x:Name="combo2CB" DisplayMemberPath="displayName" Margin="10" SelectionChanged="combo2CB_SelectionChanged" FontSize="14" Padding="5"/>
+					<ComboBox x:Name="combo2CB" DisplayMemberPath="comboBoxTitle" Margin="10" SelectionChanged="combo2CB_SelectionChanged" FontSize="14" Padding="5"/>
 				</StackPanel>
 			</GroupBox>
 
