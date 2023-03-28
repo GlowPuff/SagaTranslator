@@ -14,7 +14,7 @@
 
 				<TextBlock Text="Other Target" Margin="0,10,0,0"/>
 				<TextBlock Text="If this value is empty, leave it empty." Margin="0,0,0,5" FontStyle="Italic"/>
-				<TextBox Text="{Binding translated.otherTarget}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding translated.otherTarget}" Style="{StaticResource multi}"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -22,7 +22,7 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Other Target" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.otherTarget}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding source.otherTarget}" Style="{StaticResource multi}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

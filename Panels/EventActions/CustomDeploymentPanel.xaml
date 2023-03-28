@@ -13,22 +13,22 @@
 				<TextBlock Text="Custom Deployment" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.enemyGroupData.cardName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="0"/>
+				<TextBox Text="{Binding translated.enemyGroupData.cardName}" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Instructions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.enemyGroupData.customText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="0"/>
+				<TextBox Text="{Binding translated.enemyGroupData.customText}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Bonuses" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.bonuses}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="1"/>
+				<TextBox Text="{Binding translated.bonuses}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Abilities" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.abilities}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="2"/>
+				<TextBox Text="{Binding translated.abilities}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Surges" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.surges}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="3"/>
+				<TextBox Text="{Binding translated.surges}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Keywords" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.keywords}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="4"/>
+				<TextBox Text="{Binding translated.keywords}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -36,22 +36,22 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.enemyGroupData.cardName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="0"/>
+				<TextBox Text="{Binding source.enemyGroupData.cardName}" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Instructions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.enemyGroupData.customText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.enemyGroupData.customText}" AcceptsReturn="True" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 
 				<TextBlock Text="Bonuses" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.bonuses}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.bonuses}" AcceptsReturn="True" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 
 				<TextBlock Text="Abilities" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.abilities}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.abilities}" AcceptsReturn="True" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 
 				<TextBlock Text="Surges" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.surges}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.surges}" AcceptsReturn="True" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 
 				<TextBlock Text="Keywords" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.keywords}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.keywords}" AcceptsReturn="True" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

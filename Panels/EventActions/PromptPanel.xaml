@@ -20,7 +20,7 @@
 				<TextBlock Text="Question Prompt" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Main Text" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" KeyDown="TextBox_KeyDown" TabIndex="0"/>
+				<TextBox Text="{Binding translated.theText}" Style="{StaticResource multi}" KeyDown="TextBox_KeyDown" TabIndex="0"/>
 
 				<TextBlock Text="Button Text" Margin="0,10,0,5"/>
 				<ListBox ItemTemplate="{StaticResource btns}" ItemsSource="{Binding translated.buttonList}" d:ItemsSource="{d:SampleData ItemCount=5}" TabIndex="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" KeyboardNavigation.TabNavigation="Cycle"/>

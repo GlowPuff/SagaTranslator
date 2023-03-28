@@ -14,7 +14,7 @@
 		<DataTemplate x:Key="eMods">
 			<StackPanel Background="{StaticResource MenuBG}" Margin="0,0,0,5">
 				<TextBlock Text="Main Text" Margin="5,10,5,0" Foreground="White"/>
-				<TextBox Text="{Binding entityProperties.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" Margin="5" TabIndex="0"/>
+				<TextBox Text="{Binding entityProperties.theText}" Style="{StaticResource multi}" VerticalAlignment="Stretch" Margin="5" TabIndex="0"/>
 
 				<TextBlock Text="Buttons" Margin="5,10,5,0" Foreground="White"/>
 				<ListBox ItemTemplate="{StaticResource btns}" ItemsSource="{Binding entityProperties.buttonActions}" d:ItemsSource="{d:SampleData ItemCount=2}" Margin="5" KeyboardNavigation.TabNavigation="Cycle"/>

@@ -15,25 +15,25 @@
 
 				<!--name-->
 				<TextBlock Text="Mission Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedProps.missionName}" KeyDown="TextBox_KeyDown" TabIndex="0"/>
+				<TextBox Text="{Binding translatedProps.missionName}" KeyDown="TextBox_KeyDown"/>
 				<!--description-->
 				<TextBlock Text="Mission Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedProps.missionDescription}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="1"/>
+				<TextBox Text="{Binding translatedProps.missionDescription}" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 				<!--info-->
 				<TextBlock Text="Mission Info" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedProps.missionInfo}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="2"/>
+				<TextBox Text="{Binding translatedProps.missionInfo}" Style="{StaticResource multi}"/>
 				<!--campaign name-->
 				<TextBlock Text="Campaign Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedProps.campaignName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="3"/>
+				<TextBox Text="{Binding translatedProps.campaignName}" Style="{StaticResource multi}"/>
 				<!--objective-->
 				<TextBlock Text="Starting Objective" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedProps.startingObjective}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="4"/>
+				<TextBox Text="{Binding translatedProps.startingObjective}" Style="{StaticResource multi}"/>
 				<!--reposition-->
 				<TextBlock Text="Reposition Override" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedProps.changeRepositionOverride.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="5"/>
+				<TextBox Text="{Binding translatedProps.changeRepositionOverride.theText}" Style="{StaticResource multi}"/>
 				<!--addtl info-->
 				<TextBlock Text="Additional Mission Info" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedProps.additionalMissionInfo}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="6"/>
+				<TextBox Text="{Binding translatedProps.additionalMissionInfo}" Style="{StaticResource multi}"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -44,22 +44,22 @@
 				<TextBox Text="{Binding sourceProps.missionName}"/>
 				<!--description-->
 				<TextBlock Text="Mission Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceProps.missionDescription}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceProps.missionDescription}" Style="{StaticResource multi}"/>
 				<!--info-->
 				<TextBlock Text="Mission Info" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceProps.missionInfo}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceProps.missionInfo}" Style="{StaticResource multi}"/>
 				<!--campaign name-->
 				<TextBlock Text="Campaign Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceProps.campaignName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceProps.campaignName}" Style="{StaticResource multi}"/>
 				<!--objective-->
 				<TextBlock Text="Starting Objective" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceProps.startingObjective}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceProps.startingObjective}" Style="{StaticResource multi}"/>
 				<!--reposition-->
 				<TextBlock Text="Reposition Override" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceProps.changeRepositionOverride.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceProps.changeRepositionOverride.theText}" Style="{StaticResource multi}"/>
 				<!--addtl info-->
 				<TextBlock Text="Additional Mission Info" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceProps.additionalMissionInfo}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceProps.additionalMissionInfo}" Style="{StaticResource multi}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

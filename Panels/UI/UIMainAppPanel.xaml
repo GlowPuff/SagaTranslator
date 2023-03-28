@@ -4,198 +4,197 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saga_Translator"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<!--LEFT-->
-			<StackPanel Margin="0,26,5,0">
+			<StackPanel Margin="0,26,5,0" x:Name="dataPanel">
 				<TextBlock Text="Elite Upgrade Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.eliteUpgradeMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.eliteUpgradeMsgUC}"/>
 
 				<TextBlock Text="Elite Downgrade Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.eliteDowngradeMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.eliteDowngradeMsgUC}"/>
 
 				<TextBlock Text="Restored Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.restoredMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.restoredMsgUC}"/>
 
 				<TextBlock Text="Restore Error Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.restoreErrorMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.restoreErrorMsgUC}"/>
 
 				<TextBlock Text="Pause Deployment Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.pauseDepMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.pauseDepMsgUC}"/>
 
 				<TextBlock Text="UnPause Deployment Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.unPauseDepMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.unPauseDepMsgUC}"/>
 
 				<TextBlock Text="Pause Threat Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.pauseThreatMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.pauseThreatMsgUC}"/>
 
 				<TextBlock Text="UnPause Threat Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.UnPauseThreatMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.UnPauseThreatMsgUC}"/>
 
 				<TextBlock Text="Deployment Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deploymentHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.deploymentHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Reserved Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.reservedBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.reservedBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Ally Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.allyBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.allyBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Enemy Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.enemyBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.enemyBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Random Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.randomBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.randomBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Modify Threat Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.modThreatHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.modThreatHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Apply Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.applyBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.applyBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Round Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.roundHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.roundHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Type Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.depTypeHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.depTypeHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Event Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.eventHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.eventHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Random Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.randomHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.randomHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Max Threat Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.maxThreatHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.maxThreatHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="End Round Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.endRoundBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.endRoundBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Fame Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.fameHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.fameHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Awards Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.awardsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.awardsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Fame 1" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.fame1UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.fame1UC}" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Fame Item 1" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.fameItem1UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.fameItem1UC}"/>
 
 				<TextBlock Text="Fame Item 2" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.fameItem2UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.fameItem2UC}"/>
 
 				<TextBlock Text="Fame 2" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.fame2UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.fame2UC}"/>
 
 				<TextBlock Text="Continue Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.continueBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.continueBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Debug Threat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.debugThreatUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.debugThreatUC}"/>
 
 				<TextBlock Text="Debug Deployment Modifier" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.debugDepModUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.debugDepModUC}"/>
 
 				<TextBlock Text="Debug Deployment Hand" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.debugDepHandUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.debugDepHandUC}"/>
 
 				<TextBlock Text="Tooltip: Rules" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipRulesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipRulesUC}"/>
 
 				<TextBlock Text="Tooltip: Info" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipInfoUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipInfoUC}"/>
 
 				<TextBlock Text="Tooltip: Pause Deployment" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipPauseDepUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipPauseDepUC}"/>
 
 				<TextBlock Text="Tooltip: Pause Threat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipPauseThreatUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipPauseThreatUC}"/>
 
 				<TextBlock Text="Tooltip: Optional Deployment" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipOpDepUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipOpDepUC}"/>
 
 				<TextBlock Text="Tooltip: Settings" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipSettingsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipSettingsUC}"/>
 
 				<TextBlock Text="Tooltip: Imperial Hand" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipImpHandUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipImpHandUC}"/>
 
 				<TextBlock Text="Tooltip: Activate Enemy Group" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipActivateUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipActivateUC}"/>
 
 				<TextBlock Text="Tooltip: Fame" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipFameUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipFameUC}"/>
 
 				<TextBlock Text="Confirm" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.confirm}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.confirm}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Cancel" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.cancel}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.cancel}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deploy" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deploy}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.deploy}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Threat Increased Notification" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.threatIncreasedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.threatIncreasedUC}"/>
 
 				<TextBlock Text="Reinforcement Warning" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.reinforceWarningUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.reinforceWarningUC}"/>
 
 				<TextBlock Text="Deployment Warning" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deploymentWarningUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.deploymentWarningUC}"/>
 
 				<TextBlock Text="Calm Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.calmMessageUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.calmMessageUC}"/>
 
 				<TextBlock Text="Close" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.close}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.close}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Calm" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deployModeCalm}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.deployModeCalm}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Reinforcements" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deployModeReinforcements}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.deployModeReinforcements}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Landing" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deployModeLanding}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.deployModeLanding}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Onslaught" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deployModeOnslaught}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.deployModeOnslaught}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Fame Increased" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.fameIncreasedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.fameIncreasedUC}"/>
 
 				<TextBlock Text="No Random Matches Notification" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.noRandomMatchesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.noRandomMatchesUC}"/>
 
 				<TextBlock Text="Deployment Cost" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.depCostUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.depCostUC}"/>
 
 				<TextBlock Text="No Abilities" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.noAbilitiesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.noAbilitiesUC}"/>
 
 				<TextBlock Text="Ignored Abilities" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.ignoredAbilitiesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.ignoredAbilitiesUC}"/>
 
 				<TextBlock Text="No Keywords" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.noKeywordsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.noKeywordsUC}"/>
 
 				<TextBlock Text="None" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.noneUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.noneUC}"/>
 
 				<TextBlock Text="Reward" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.rewardUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.rewardUC}"/>
 
 				<TextBlock Text="Page" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.pageUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.pageUC}"/>
 
 				<TextBlock Text="Optional Deployment" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.optionalDeployment}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.optionalDeployment}" CharacterCasing="Upper"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -203,190 +202,190 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Elite Upgrade Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.eliteUpgradeMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.eliteUpgradeMsgUC}"/>
 
 				<TextBlock Text="Elite Downgrade Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.eliteDowngradeMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.eliteDowngradeMsgUC}"/>
 
 				<TextBlock Text="Restored Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.restoredMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.restoredMsgUC}"/>
 
 				<TextBlock Text="Restore Error Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.restoreErrorMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.restoreErrorMsgUC}"/>
 
 				<TextBlock Text="Pause Deployment Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.pauseDepMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.pauseDepMsgUC}"/>
 
 				<TextBlock Text="UnPause Deployment Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.unPauseDepMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.unPauseDepMsgUC}"/>
 
 				<TextBlock Text="Pause Threat Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.pauseThreatMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.pauseThreatMsgUC}"/>
 
 				<TextBlock Text="UnPause Threat Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.UnPauseThreatMsgUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.UnPauseThreatMsgUC}"/>
 
 				<TextBlock Text="Deployment Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deploymentHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.deploymentHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Reserved Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.reservedBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.reservedBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Ally Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.allyBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.allyBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Enemy Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.enemyBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.enemyBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Random Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.randomBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.randomBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Modify Threat Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.modThreatHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.modThreatHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Apply Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.applyBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.applyBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Round Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.roundHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.roundHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Type Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.depTypeHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.depTypeHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Event Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.eventHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.eventHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Random Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.randomHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.randomHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Max Threat Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.maxThreatHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.maxThreatHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="End Round Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.endRoundBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.endRoundBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Fame Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.fameHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.fameHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Awards Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.awardsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.awardsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Fame 1" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.fame1UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.fame1UC}" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Fame Item 1" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.fameItem1UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.fameItem1UC}"/>
 
 				<TextBlock Text="Fame Item 2" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.fameItem2UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.fameItem2UC}"/>
 
 				<TextBlock Text="Fame 2" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.fame2UC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.fame2UC}"/>
 
 				<TextBlock Text="Continue Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.continueBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.continueBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Debug Threat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.debugThreatUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.debugThreatUC}"/>
 
 				<TextBlock Text="Debug Deployment Modifier" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.debugDepModUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.debugDepModUC}"/>
 
 				<TextBlock Text="Debug Deployment Hand" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.debugDepHandUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.debugDepHandUC}"/>
 
 				<TextBlock Text="Tooltip: Rules" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipRulesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipRulesUC}"/>
 
 				<TextBlock Text="Tooltip: Info" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipInfoUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipInfoUC}"/>
 
 				<TextBlock Text="Tooltip: Pause Deployment" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipPauseDepUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipPauseDepUC}"/>
 
 				<TextBlock Text="Tooltip: Pause Threat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipPauseThreatUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipPauseThreatUC}"/>
 
 				<TextBlock Text="Tooltip: Optional Deployment" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipOpDepUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipOpDepUC}"/>
 
 				<TextBlock Text="Tooltip: Settings" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipSettingsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipSettingsUC}"/>
 
 				<TextBlock Text="Tooltip: Imperial Hand" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipImpHandUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipImpHandUC}"/>
 
 				<TextBlock Text="Tooltip: Activate Enemy Group" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipActivateUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipActivateUC}"/>
 
 				<TextBlock Text="Tooltip: Fame" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipFameUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipFameUC}"/>
 
 				<TextBlock Text="Confirm" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.confirm}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.confirm}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Cancel" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.cancel}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.cancel}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deploy" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deploy}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.deploy}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Threat Increased Notification" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.threatIncreasedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.threatIncreasedUC}"/>
 
 				<TextBlock Text="Reinforcement Warning" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.reinforceWarningUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.reinforceWarningUC}"/>
 
 				<TextBlock Text="Deployment Warning" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deploymentWarningUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.deploymentWarningUC}"/>
 
 				<TextBlock Text="Calm Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.calmMessageUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.calmMessageUC}"/>
 
 				<TextBlock Text="Close" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.close}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.close}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Calm" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deployModeCalm}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.deployModeCalm}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Reinforcements" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deployModeReinforcements}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.deployModeReinforcements}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Landing" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deployModeLanding}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.deployModeLanding}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Mode: Onslaught" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deployModeOnslaught}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.deployModeOnslaught}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Fame Increased" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.fameIncreasedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.fameIncreasedUC}"/>
 
 				<TextBlock Text="No Random Matches Notification" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.noRandomMatchesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.noRandomMatchesUC}"/>
 
 				<TextBlock Text="Deployment Cost" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.depCostUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.depCostUC}"/>
 
 				<TextBlock Text="No Abilities" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.noAbilitiesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.noAbilitiesUC}"/>
 
 				<TextBlock Text="Ignored Abilities" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.ignoredAbilitiesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.ignoredAbilitiesUC}"/>
 
 				<TextBlock Text="No Keywords" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.noKeywordsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.noKeywordsUC}"/>
 
 				<TextBlock Text="None" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.noneUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.noneUC}"/>
 
 				<TextBlock Text="Reward" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.rewardUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.rewardUC}"/>
 
 				<TextBlock Text="Page" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.pageUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.pageUC}"/>
 
 				<TextBlock Text="Optional Deployment" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.optionalDeployment}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.optionalDeployment}" CharacterCasing="Upper"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

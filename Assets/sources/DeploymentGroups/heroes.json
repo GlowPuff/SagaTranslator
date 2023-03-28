@@ -1,292 +1,418 @@
 [
 	{
-		"id": "H1",
 		"name": "Diala Passil",
-		"subname": "",
-		"ignored": "",
+		"id": "H1",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Core",
+		"groupTraits": ["Hero", "ForceUser", "Brawler"],
 		"traits": [
 			"Hero",
 			"Force User",
 			"Brawler"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true
 	},
 	{
-		"id": "H2",
 		"name": "Fenn Signis",
-		"subname": "",
-		"ignored": "",
+		"id": "H2",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Core",
+		"groupTraits": ["Hero", "Trooper", "Leader"],
 		"traits": [
 			"Hero",
 			"Trooper",
 			"Leader"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H3",
 		"name": "Gaarkhan",
-		"subname": "",
-		"ignored": "",
+		"id": "H3",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Core",
+		"groupTraits": ["Hero", "Wookiee", "Guardian", "Brawler"],
 		"traits": [
 			"Hero",
 			"Wookiee",
 			"Guardian",
 			"Brawler"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H4",
 		"name": "Gideon Argus",
-		"subname": "",
-		"ignored": "",
+		"id": "H4",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Core",
+		"groupTraits": ["Hero", "Leader"],
 		"traits": [
 			"Hero",
 			"Leader"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H5",
 		"name": "Jyn Odan",
-		"subname": "",
-		"ignored": "",
+		"id": "H5",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Core",
+		"groupTraits": ["Hero", "Smuggler"],
 		"traits": [
 			"Hero",
 			"Smuggler"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H6",
 		"name": "Mak Eshka'rey",
-		"subname": "",
-		"ignored": "",
+		"id": "H6",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Core",
+		"groupTraits": ["Hero", "Spy"],
 		"traits": [
 			"Hero",
 			"Spy"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H7",
 		"name": "Biv Bodhrik",
-		"subname": "",
-		"ignored": "",
+		"id": "H7",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Twin",
+		"groupTraits": ["Hero", "Hunter", "Brawler"],
 		"traits": [
 			"Hero",
 			"Hunter",
 			"Brawler"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H8",
 		"name": "Saska Teft",
-		"subname": "",
-		"ignored": "",
+		"id": "H8",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Twin",
+		"groupTraits": ["Hero", "Smuggler", "Spy"],
 		"traits": [
 			"Hero",
 			"Smuggler",
 			"Spy"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H9",
 		"name": "Loku Kanoloa",
-		"subname": "",
-		"ignored": "",
+		"id": "H9",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Hoth",
+		"groupTraits": ["Hero", "Spy"],
 		"traits": [
 			"Hero",
 			"Spy"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H10",
 		"name": "MHD-19",
-		"subname": "",
-		"ignored": "",
+		"id": "H10",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Hoth",
+		"groupTraits": ["Hero", "Droid"],
 		"traits": [
 			"Hero",
 			"Droid"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H11",
 		"name": "Verena Talos",
-		"subname": "",
-		"ignored": "",
+		"id": "H11",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Hoth",
+		"groupTraits": ["Hero", "Spy", "Brawler"],
 		"traits": [
 			"Hero",
 			"Spy",
 			"Brawler"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H12",
 		"name": "Davith Elso",
-		"subname": "",
-		"ignored": "",
+		"id": "H12",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Bespin",
+		"groupTraits": ["Hero", "Spy", "ForceUser"],
 		"traits": [
 			"Hero",
 			"Spy",
 			"Force User"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H13",
 		"name": "Murne Rin",
-		"subname": "",
-		"ignored": "",
+		"id": "H13",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Bespin",
+		"groupTraits": ["Hero", "Leader", "Spy"],
 		"traits": [
 			"Hero",
 			"Leader",
 			"Spy"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H14",
 		"name": "Onar Koma",
-		"subname": "",
-		"ignored": "",
+		"id": "H14",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Jabba",
+		"groupTraits": ["Hero", "Guardian", "Hunter"],
 		"traits": [
 			"Hero",
 			"Guardian",
 			"Hunter"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H15",
 		"name": "Shyla Varad",
-		"subname": "",
-		"ignored": "",
+		"id": "H15",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Jabba",
+		"groupTraits": ["Hero", "Brawler", "Hunter"],
 		"traits": [
 			"Hero",
 			"Brawler",
 			"Hunter"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H16",
 		"name": "Vinto Hreeda",
-		"subname": "",
-		"ignored": "",
+		"id": "H16",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Jabba",
+		"groupTraits": ["Hero", "Hunter", "Smuggler"],
 		"traits": [
 			"Hero",
 			"Hunter",
 			"Smuggler"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H17",
 		"name": "Drokkatta",
-		"subname": "",
-		"ignored": "",
+		"id": "H17",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Empire",
+		"groupTraits": ["Hero", "Wookiee", "HeavyWeapon"],
 		"traits": [
 			"Hero",
 			"Wookiee",
 			"Heavy Weapon"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H18",
 		"name": "Jarrod Kelvin",
-		"subname": "",
-		"ignored": "",
+		"id": "H18",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Empire",
+		"groupTraits": ["Hero", "Brawler", "Leader", "Spy"],
 		"traits": [
 			"Hero",
 			"Brawler",
 			"Leader",
 			"Spy"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H19",
 		"name": "Ko-Tun Feralo",
-		"subname": "",
-		"ignored": "",
+		"id": "H19",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Empire",
+		"groupTraits": ["Hero", "Leader", "Trooper"],
 		"traits": [
 			"Hero",
 			"Leader",
 			"Trooper"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H20",
 		"name": "CT-1701",
-		"subname": "",
-		"ignored": "",
+		"id": "H20",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Lothal",
+		"groupTraits": ["Hero", "Trooper", "Guardian"],
 		"traits": [
 			"Hero",
 			"Trooper",
 			"Guardian"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	},
 	{
-		"id": "H21",
 		"name": "Tress Hacnua",
-		"subname": "",
-		"ignored": "",
+		"id": "H21",
+		"characterType": "Hero",
+		"tier": 0,
+		"faction": "Hero",
+		"priority": 0,
+		"cost": 0,
+		"rcost": 0,
+		"size": 0,
+		"expansion": "Lothal",
+		"groupTraits": ["Hero", "Brawler"],
 		"traits": [
 			"Hero",
 			"Brawler"
 		],
-		"keywords": [],
-		"surges": [],
-		"abilities": []			
+		"ignored": "",
+		"isHero": true			
 	}
 ]

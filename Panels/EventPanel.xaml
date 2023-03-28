@@ -14,7 +14,7 @@
 
 			<!--description-->
 			<TextBlock Text="Event Text" Margin="0,10,0,5"/>
-			<TextBox Text="{Binding translatedEvent.eventText}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+			<TextBox Text="{Binding translatedEvent.eventText}" Style="{StaticResource multi}" TabIndex="0"/>
 		</StackPanel>
 
 		<StackPanel Margin="5,0,0,0" IsEnabled="False">
@@ -22,7 +22,7 @@
 
 			<!--description-->
 			<TextBlock Text="Event Text" Margin="0,10,0,5"/>
-			<TextBox Text="{Binding sourceEvent.eventText}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+			<TextBox Text="{Binding sourceEvent.eventText}" Style="{StaticResource multi}"/>
 		</StackPanel>
 	</UniformGrid>
 </UserControl>

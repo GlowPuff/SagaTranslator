@@ -4,72 +4,77 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saga_Translator"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<!--LEFT-->
-			<StackPanel Margin="0,26,5,0">
+			<StackPanel Margin="0,26,5,0" x:Name="dataPanel">
 				<TextBlock Text="Tooltip: Hide UI" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tooltipHideUIUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tooltipHideUIUC}"/>
 
 				<TextBlock Text="Round Increased" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.roundIncreasedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.roundIncreasedUC}"/>
 
 				<TextBlock Text="End Of Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.endOfMissionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.endOfMissionUC}"/>
 
 				<TextBlock Text="Deployment Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deployMessageUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.deployMessageUC}"/>
 
 				<TextBlock Text="No Deployment Point Warning" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.noDPWarningUC}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.noDPWarningUC}"/>
 
 				<TextBlock Text="Add Tiles Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.mmAddTilesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.mmAddTilesUC}"/>
 
 				<TextBlock Text="Remove Tiles Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.mmRemoveTilesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.mmRemoveTilesUC}"/>
 
 				<TextBlock Text="Add Entities Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.mmAddEntitiesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.mmAddEntitiesUC}"/>
 
 				<TextBlock Text="Groups Ready Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.groupsReadyUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.groupsReadyUC}"/>
 
 				<TextBlock Text="Groups Exhaust" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.groupsExhaustUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.groupsExhaustUC}"/>
 
 				<TextBlock Text="Reposition Target Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.repositionTargetUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.repositionTargetUC}"/>
 
 				<TextBlock Text="Doors" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.doorsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.doorsUC}"/>
 
 				<TextBlock Text="Crates" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.cratesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.cratesUC}"/>
 
 				<TextBlock Text="Terminals" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.terminalsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.terminalsUC}"/>
 
 				<TextBlock Text="Tokens" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tokensUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tokensUC}"/>
 
 				<TextBlock Text="Wound" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.woundUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.woundUC}"/>
 
 				<TextBlock Text="Withdraw" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.withdrawUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.withdrawUC}"/>
 
 				<TextBlock Text="Exhaust" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.exhaustUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.exhaustUC}"/>
 
 				<TextBlock Text="Defeat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.defeatUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.defeatUC}"/>
 
 				<TextBlock Text="Imperial Menu" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.imperialMenu}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.imperialMenu}" CharacterCasing="Upper"/>
+
+				<TextBlock Text="Medpac Information" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.medpacInfoUC}" Style="{StaticResource multi}"/>
+
+				<TextBlock Text="Cannot Be Defeated" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.cannotDefeatUC}"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -77,64 +82,70 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Tooltip: Hide UI" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tooltipHideUIUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tooltipHideUIUC}"/>
 
 				<TextBlock Text="Round Increased" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.roundIncreasedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.roundIncreasedUC}"/>
 
 				<TextBlock Text="End Of Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.endOfMissionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.endOfMissionUC}"/>
 
 				<TextBlock Text="Deployment Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deployMessageUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.deployMessageUC}"/>
 
 				<TextBlock Text="No Deployment Point Warning" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.noDPWarningUC}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.noDPWarningUC}"/>
 
 				<TextBlock Text="Add Tiles Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.mmAddTilesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.mmAddTilesUC}"/>
 
 				<TextBlock Text="Remove Tiles Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.mmRemoveTilesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.mmRemoveTilesUC}"/>
 
 				<TextBlock Text="Add Entities Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.mmAddEntitiesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.mmAddEntitiesUC}"/>
 
 				<TextBlock Text="Groups Ready Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.groupsReadyUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.groupsReadyUC}"/>
 
 				<TextBlock Text="Groups Exhaust" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.groupsExhaustUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.groupsExhaustUC}"/>
 
 				<TextBlock Text="Reposition Target Message" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.repositionTargetUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.repositionTargetUC}"/>
 
 				<TextBlock Text="Doors" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.doorsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.doorsUC}"/>
 
 				<TextBlock Text="Crates" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.cratesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.cratesUC}"/>
 
 				<TextBlock Text="Terminals" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.terminalsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.terminalsUC}"/>
 
 				<TextBlock Text="Tokens" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tokensUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tokensUC}"/>
 
 				<TextBlock Text="Wound" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.woundUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.woundUC}"/>
 
 				<TextBlock Text="Withdraw" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.withdrawUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.withdrawUC}"/>
 
 				<TextBlock Text="Exhaust" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.exhaustUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.exhaustUC}"/>
 
 				<TextBlock Text="Defeat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.defeatUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.defeatUC}"/>
 
 				<TextBlock Text="Imperial Menu" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.imperialMenu}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.imperialMenu}" CharacterCasing="Upper"/>
+
+				<TextBlock Text="Medpac Information" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.medpacInfoUC}" Style="{StaticResource multi}"/>
+
+				<TextBlock Text="Cannot Be Defeated" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.cannotDefeatUC}" CharacterCasing="Upper"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

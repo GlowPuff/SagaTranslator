@@ -19,7 +19,7 @@
 				<TextBlock Text="Door" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Main Text" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.entityProperties.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="0"/>
+				<TextBox Text="{Binding translated.entityProperties.theText}" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="0"/>
 
 
 				<TextBlock Text="Button Text" Margin="0,10,0,5"/>
@@ -31,7 +31,7 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Main Text" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.entityProperties.theText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding source.entityProperties.theText}" Style="{StaticResource multi}"/>
 
 				<TextBlock Text="Button Text" Margin="0,10,0,5"/>
 				<ListBox ItemTemplate="{StaticResource btns}" ItemsSource="{Binding source.entityProperties.buttonActions}" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>

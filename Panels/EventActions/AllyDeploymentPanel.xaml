@@ -14,7 +14,7 @@
 
 				<!--custom name-->
 				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.allyName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding translated.allyName}" Style="{StaticResource multi}"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -23,7 +23,7 @@
 
 				<!--custom name-->
 				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.allyName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.allyName}" Style="{StaticResource multi}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

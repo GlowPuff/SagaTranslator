@@ -17,7 +17,7 @@ namespace Saga_Translator
 
 	public class UISettings : ObservableObject
 	{
-		private string _settingsHeading, _music, _sound, _bloom, _vignette, _quit, _returnBtn, _ok, _quickClose;
+		private string _settingsHeading, _music, _sound, _bloom, _vignette, _quit, _returnBtn, _ok, _quickClose, _ambient;
 
 		public string settingsHeading
 		{
@@ -54,6 +54,10 @@ namespace Saga_Translator
 		public string quickClose
 		{
 			get => _quickClose; set => SetProperty( ref _quickClose, value );
+		}
+		public string ambient
+		{
+			get => _ambient; set => SetProperty( ref _ambient, value );
 		}
 	}
 
@@ -283,7 +287,7 @@ namespace Saga_Translator
 
 	public class SagaUISetup : ObservableObject
 	{
-		private string _groupsText, _villainsBtn, _tilesBtn, _setupStartBtn, _officialBtn, _customBtn, _missionCardBtn;
+		private string _groupsText, _villainsBtn, _tilesBtn, _setupStartBtn, _officialBtn, _customBtn, _missionCardBtn, _campaignJournalUC;
 
 		public string groupsText
 		{
@@ -313,11 +317,15 @@ namespace Saga_Translator
 		{
 			get => _missionCardBtn; set => SetProperty( ref _missionCardBtn, value );
 		}
+		public string campaignJournalUC
+		{
+			get => _campaignJournalUC; set => SetProperty( ref _campaignJournalUC, value );
+		}
 	}
 
 	public class SagaMainApp : ObservableObject
 	{
-		private string _tooltipHideUIUC, _roundIncreasedUC, _endOfMissionUC, _deployMessageUC, _noDPWarningUC, _mmAddTilesUC, _mmRemoveTilesUC, _mmAddEntitiesUC, _groupsReadyUC, _groupsExhaustUC, _repositionTargetUC, _doorsUC, _cratesUC, _terminalsUC, _tokensUC, _woundUC, _withdrawUC, _exhaustUC, _defeatUC, _imperialMenu;
+		private string _tooltipHideUIUC, _roundIncreasedUC, _endOfMissionUC, _deployMessageUC, _noDPWarningUC, _mmAddTilesUC, _mmRemoveTilesUC, _mmAddEntitiesUC, _groupsReadyUC, _groupsExhaustUC, _repositionTargetUC, _doorsUC, _cratesUC, _terminalsUC, _tokensUC, _woundUC, _withdrawUC, _exhaustUC, _defeatUC, _imperialMenu, _medpacInfoUC, _cannotDefeatUC;
 
 		public string tooltipHideUIUC
 		{
@@ -398,6 +406,14 @@ namespace Saga_Translator
 		public string imperialMenu
 		{
 			get => _imperialMenu; set => SetProperty( ref _imperialMenu, value );
+		}
+		public string medpacInfoUC
+		{
+			get => _medpacInfoUC; set => SetProperty( ref _medpacInfoUC, value );
+		}
+		public string cannotDefeatUC
+		{
+			get => _cannotDefeatUC; set => SetProperty( ref _cannotDefeatUC, value );
 		}
 	}
 
@@ -696,7 +712,7 @@ namespace Saga_Translator
 
 	public class UICampaign : ObservableObject
 	{
-		private string _threatInfoUC, _modeIntroductionUC, _modeStoryUC, _modeSideUC, _forcedUC, _modeInterludeUC, _modeFinaleUC, _campaignNameUC, _customCampaign, _addForcedMissionUC, _tierUC, _selectMissionUC, _customUC, _creditsUC, _fameUC, _awardsUC, _campaignSetup, _itemsUC, _rewardsUC, _villainsUC, _alliesUC, _threat, _agendaUC, _modifyUC, _removeUC, _otherUC, _campaignUC, _generalUC, _heroUC, _personalUC, _campaignSetupUC, _campaignDescriptionUC, _sagaDescriptionUC, _classicDescriptionUC, _agendaMission, _agendaImperialUC, _agendaRebelUC, _xpUC;
+		private string _threatInfoUC, _modeIntroductionUC, _modeStoryUC, _modeSideUC, _forcedUC, _modeInterludeUC, _modeFinaleUC, _campaignNameUC, _customCampaign, _addForcedMissionUC, _tierUC, _selectMissionUC, _customUC, _creditsUC, _fameUC, _awardsUC, _campaignSetup, _itemsUC, _rewardsUC, _villainsUC, _alliesUC, _threat, _agendaUC, _modifyUC, _removeUC, _otherUC, _campaignUC, _generalUC, _heroUC, _personalUC, _campaignSetupUC, _campaignDescriptionUC, _sagaDescriptionUC, _classicDescriptionUC, _agendaMission, _agendaImperialUC, _agendaRebelUC, _xpUC, _costUC;
 
 		public string threatInfoUC
 		{
@@ -849,6 +865,10 @@ namespace Saga_Translator
 		public string xpUC
 		{
 			get => _xpUC; set => SetProperty( ref _xpUC, value );
+		}
+		public string costUC
+		{
+			get => _costUC; set => SetProperty( ref _costUC, value );
 		}
 	}
 }

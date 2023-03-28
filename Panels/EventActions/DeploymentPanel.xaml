@@ -14,19 +14,19 @@
 
 				<!--custom name-->
 				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.enemyName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="0"/>
+				<TextBox Text="{Binding translated.enemyName}" Style="{StaticResource multi}"/>
 
 				<!--custom instructions-->
 				<TextBlock Text="Custom Instructions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.enemyGroupData.customText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="1"/>
+				<TextBox Text="{Binding translated.enemyGroupData.customText}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 
 				<!--modification-->
 				<TextBlock Text="Modification" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.modification}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="2"/>
+				<TextBox Text="{Binding translated.modification}" Style="{StaticResource multi}"/>
 
 				<!--reposition-->
 				<TextBlock Text="Reposition Instructions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translated.repositionInstructions}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch" TabIndex="3"/>
+				<TextBox Text="{Binding translated.repositionInstructions}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -35,19 +35,19 @@
 
 				<!--custom name-->
 				<TextBlock Text="Custom Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.enemyName}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.enemyName}" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 
 				<!--custom instructions-->
 				<TextBlock Text="Custom Instructions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.enemyGroupData.customText}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.enemyGroupData.customText}" AcceptsReturn="True" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 
 				<!--modification-->
 				<TextBlock Text="Modification" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.modification}" BorderThickness="2" TextWrapping="Wrap" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
+				<TextBox Text="{Binding source.modification}" Style="{StaticResource multi}" VerticalAlignment="Stretch"/>
 
 				<!--reposition-->
 				<TextBlock Text="Reposition Instructions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.repositionInstructions}" BorderThickness="2" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding source.repositionInstructions}" AcceptsReturn="True" Style="{StaticResource multi}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

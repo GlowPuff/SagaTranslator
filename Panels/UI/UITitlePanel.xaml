@@ -4,60 +4,59 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saga_Translator"
-             mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<!--LEFT-->
-			<StackPanel Margin="0,26,5,0">
+			<StackPanel Margin="0,26,5,0" x:Name="dataPanel">
 				<TextBlock Text="Menu Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.menuHeading}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.menuHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="New Game" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.newGameBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.newGameBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Continue Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.continueBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.continueBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Campaigns Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.campaignsBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.campaignsBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Options Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.optionsBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.optionsBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Support" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.supportUC}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.supportUC}"/>
 
 				<TextBlock Text="Documentation" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.docsUC}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.docsUC}"/>
 
 				<TextBlock Text="New Campaign" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.newCampaign}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.newCampaign}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Load Campaign Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.loadCampaign}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.loadCampaign}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Confirm Delete" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.confirmDelete}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.confirmDelete}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Delete Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.delete}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.delete}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Expansions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.expansions}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.expansions}"/>
 
 				<TextBlock Text="Tutorial" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tutorialUC}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tutorialUC}"/>
 
 				<TextBlock Text="Saga Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.saga}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.saga}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Campaigns Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.campaigns}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.campaigns}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Classic Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.classic}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.classic}" CharacterCasing="Upper"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -65,52 +64,52 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Menu Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.menuHeading}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceUI.menuHeading}"/>
 
 				<TextBlock Text="New Game" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.newGameBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceUI.newGameBtn}"/>
 
 				<TextBlock Text="Continue Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.continueBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceUI.continueBtn}"/>
 
 				<TextBlock Text="Campaigns Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.campaignsBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceUI.campaignsBtn}"/>
 
 				<TextBlock Text="Options Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.optionsBtn}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding sourceUI.optionsBtn}"/>
 
 				<TextBlock Text="Support" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.supportUC}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.supportUC}"/>
 
 				<TextBlock Text="Documentation" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.docsUC}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.docsUC}"/>
 
 				<TextBlock Text="New Campaign" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.newCampaign}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.newCampaign}"/>
 
 				<TextBlock Text="Load Campaign Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.loadCampaign}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.loadCampaign}"/>
 
 				<TextBlock Text="Confirm Delete" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.confirmDelete}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.confirmDelete}"/>
 
 				<TextBlock Text="Delete Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.delete}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.delete}"/>
 
 				<TextBlock Text="Expansions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.expansions}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.expansions}"/>
 
 				<TextBlock Text="Tutorial" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tutorialUC}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tutorialUC}"/>
 
 				<TextBlock Text="Saga Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.saga}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.saga}"/>
 
 				<TextBlock Text="Campaigns Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.campaigns}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.campaigns}"/>
 
 				<TextBlock Text="Classic Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.classic}" BorderThickness="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.classic}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

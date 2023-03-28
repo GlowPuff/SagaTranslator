@@ -4,126 +4,128 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saga_Translator"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<!--LEFT-->
-			<StackPanel Margin="0,26,5,0">
+			<StackPanel Margin="0,26,5,0" x:Name="dataPanel">
 				<TextBlock Text="Threat Information" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.threatInfoUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.threatInfoUC}"/>
 
 				<TextBlock Text="Introduction Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.modeIntroductionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.modeIntroductionUC}"/>
 
 				<TextBlock Text="Story Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.modeStoryUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.modeStoryUC}"/>
 
 				<TextBlock Text="Side Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.modeSideUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.modeSideUC}"/>
 
 				<TextBlock Text="Forced Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.forcedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.forcedUC}"/>
 
 				<TextBlock Text="Interlude Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.modeInterludeUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.modeInterludeUC}"/>
 
 				<TextBlock Text="Finale Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.modeFinaleUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.modeFinaleUC}"/>
 
 				<TextBlock Text="Campaign Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.campaignNameUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.campaignNameUC}"/>
 
 				<TextBlock Text="Custom Campaign" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.customCampaign}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.customCampaign}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Add Forced Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.addForcedMissionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.addForcedMissionUC}"/>
 
 				<TextBlock Text="Tier" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.tierUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.tierUC}"/>
 
 				<TextBlock Text="Selected Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.selectMissionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.selectMissionUC}"/>
 
 				<TextBlock Text="Custom" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.customUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.customUC}"/>
 
 				<TextBlock Text="Credits" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.creditsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.creditsUC}"/>
 
 				<TextBlock Text="Fame" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.fameUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.fameUC}"/>
 
 				<TextBlock Text="Awards" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.awardsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.awardsUC}"/>
 
 				<TextBlock Text="Campaign Setup" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.campaignSetup}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.campaignSetup}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Items" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.itemsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.itemsUC}"/>
 
 				<TextBlock Text="Rewards" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.rewardsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.rewardsUC}"/>
 
 				<TextBlock Text="Villains" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.villainsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.villainsUC}"/>
 
 				<TextBlock Text="Allies" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.alliesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.alliesUC}"/>
 
 				<TextBlock Text="Threat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.threat}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.threat}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Agenda" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.agendaUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.agendaUC}"/>
 
 				<TextBlock Text="Modify" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.modifyUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.modifyUC}"/>
 
 				<TextBlock Text="Remove" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.removeUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.removeUC}"/>
 
 				<TextBlock Text="Other" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.otherUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.otherUC}"/>
 
 				<TextBlock Text="Campaign" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.campaignUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.campaignUC}"/>
 
 				<TextBlock Text="General" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.generalUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.generalUC}"/>
 
 				<TextBlock Text="Hero" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.heroUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.heroUC}"/>
 
 				<TextBlock Text="Personal" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.personalUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.personalUC}"/>
 
 				<TextBlock Text="Campaign Setup" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.campaignSetupUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.campaignSetupUC}"/>
 
 				<TextBlock Text="Campaign Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.campaignDescriptionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.campaignDescriptionUC}"/>
 
 				<TextBlock Text="Saga Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.sagaDescriptionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.sagaDescriptionUC}" TextWrapping="Wrap"/>
 
 				<TextBlock Text="Classic Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.classicDescriptionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.classicDescriptionUC}" TextWrapping="Wrap"/>
 
 				<TextBlock Text="Agenda Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.agendaMission}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.agendaMission}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Agenda (Imperial)" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.agendaImperialUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.agendaImperialUC}" TextWrapping="Wrap"/>
 
 				<TextBlock Text="Agenda (Rebel)" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.agendaRebelUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.agendaRebelUC}" TextWrapping="Wrap"/>
 
 				<TextBlock Text="XP" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.xpUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.xpUC}"/>
+
+				<TextBlock Text="Cost" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.costUC}"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -131,118 +133,121 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Threat Information" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.threatInfoUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.threatInfoUC}"/>
 
 				<TextBlock Text="Introduction Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.modeIntroductionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.modeIntroductionUC}"/>
 
 				<TextBlock Text="Story Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.modeStoryUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.modeStoryUC}"/>
 
 				<TextBlock Text="Side Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.modeSideUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.modeSideUC}"/>
 
 				<TextBlock Text="Forced Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.forcedUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.forcedUC}"/>
 
 				<TextBlock Text="Interlude Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.modeInterludeUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.modeInterludeUC}"/>
 
 				<TextBlock Text="Finale Mode" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.modeFinaleUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.modeFinaleUC}"/>
 
 				<TextBlock Text="Campaign Name" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.campaignNameUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.campaignNameUC}"/>
 
 				<TextBlock Text="Custom Campaign" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.customCampaign}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.customCampaign}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Add Forced Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.addForcedMissionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.addForcedMissionUC}"/>
 
 				<TextBlock Text="Tier" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.tierUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.tierUC}"/>
 
 				<TextBlock Text="Selected Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.selectMissionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.selectMissionUC}"/>
 
 				<TextBlock Text="Custom" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.customUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.customUC}"/>
 
 				<TextBlock Text="Credits" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.creditsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.creditsUC}"/>
 
 				<TextBlock Text="Fame" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.fameUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.fameUC}"/>
 
 				<TextBlock Text="Awards" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.awardsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.awardsUC}"/>
 
 				<TextBlock Text="Campaign Setup" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.campaignSetup}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.campaignSetup}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Items" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.itemsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.itemsUC}"/>
 
 				<TextBlock Text="Rewards" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.rewardsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.rewardsUC}"/>
 
 				<TextBlock Text="Villains" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.villainsUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.villainsUC}"/>
 
 				<TextBlock Text="Allies" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.alliesUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.alliesUC}"/>
 
 				<TextBlock Text="Threat" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.threat}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.threat}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Agenda" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.agendaUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.agendaUC}"/>
 
 				<TextBlock Text="Modify" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.modifyUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.modifyUC}"/>
 
 				<TextBlock Text="Remove" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.removeUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.removeUC}"/>
 
 				<TextBlock Text="Other" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.otherUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.otherUC}"/>
 
 				<TextBlock Text="Campaign" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.campaignUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.campaignUC}"/>
 
 				<TextBlock Text="General" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.generalUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.generalUC}"/>
 
 				<TextBlock Text="Hero" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.heroUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.heroUC}"/>
 
 				<TextBlock Text="Personal" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.personalUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.personalUC}"/>
 
 				<TextBlock Text="Campaign Setup" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.campaignSetupUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.campaignSetupUC}"/>
 
 				<TextBlock Text="Campaign Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.campaignDescriptionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.campaignDescriptionUC}"/>
 
 				<TextBlock Text="Saga Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.sagaDescriptionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.sagaDescriptionUC}"/>
 
 				<TextBlock Text="Classic Description" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.classicDescriptionUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.classicDescriptionUC}"/>
 
 				<TextBlock Text="Agenda Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.agendaMission}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.agendaMission}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Agenda (Imperial)" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.agendaImperialUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.agendaImperialUC}"/>
 
 				<TextBlock Text="Agenda (Rebel)" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.agendaRebelUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.agendaRebelUC}"/>
 
 				<TextBlock Text="XP" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.xpUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.xpUC}"/>
+
+				<TextBlock Text="Cost" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.costUC}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

@@ -4,39 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saga_Translator"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<!--LEFT-->
-			<StackPanel Margin="0,26,5,0">
+			<StackPanel Margin="0,26,5,0" x:Name="dataPanel">
 				<TextBlock Text="Settings Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.settingsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.settingsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Music Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.music}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.music}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Sound Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.sound}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.sound}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Bloom Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.bloom}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.bloom}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Vignette Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.vignette}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.vignette}" CharacterCasing="Upper"/>
+
+				<TextBlock Text="Ambient Option" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.ambient}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Quit Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.quit}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.quit}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Return Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.returnBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.returnBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="OK Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.ok}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.ok}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Quick Close Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.quickClose}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.quickClose}" CharacterCasing="Upper"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -44,31 +46,34 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Settings Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.settingsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.settingsHeading}"/>
 
 				<TextBlock Text="Music Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.music}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.music}"/>
 
 				<TextBlock Text="Sound Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.sound}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.sound}"/>
 
 				<TextBlock Text="Bloom Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.bloom}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.bloom}"/>
 
 				<TextBlock Text="Vignette Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.vignette}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.vignette}"/>
+
+				<TextBlock Text="Ambient Option" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.ambient}"/>
 
 				<TextBlock Text="Quit Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.quit}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.quit}"/>
 
 				<TextBlock Text="Return Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.returnBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.returnBtn}"/>
 
 				<TextBlock Text="OK Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.ok}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.ok}"/>
 
 				<TextBlock Text="Quick Close Option" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.quickClose}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.quickClose}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

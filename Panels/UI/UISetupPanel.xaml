@@ -5,122 +5,122 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Saga_Translator"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
 			<!--LEFT-->
-			<StackPanel Margin="0,26,5,0">
+			<StackPanel Margin="0,26,5,0" x:Name="dataPanel">
 				<TextBlock Text="Settings Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.settingsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.settingsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Choose Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.chooseMission}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.chooseMission}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="View Card Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.viewCardBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.viewCardBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Mission Info Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.missionInfoBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.missionInfoBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Threat Level Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.threatLevelHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.threatLevelHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Additional Threat Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.addtlThreatHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.addtlThreatHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.deploymentHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.deploymentHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Yes" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.yes}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.yes}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="No" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.no}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.no}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Back" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.back}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.back}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Difficulty" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.difficulty}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.difficulty}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Easy" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.easy}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.easy}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Normal" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.normal}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.normal}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Hard" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.hard}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.hard}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Imperials" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.imperials}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.imperials}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Mercenaries" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.mercenaries}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.mercenaries}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Adaptive" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.adaptive}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.adaptive}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Enemy Groups Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.groupsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.groupsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Choose" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.choose}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.choose}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Zoom" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.zoom}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.zoom}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Initial Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.initialHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.initialHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Reserved Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.reservedHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.reservedHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Villains Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.villainsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.villainsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Ignored Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.ignoredHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.ignoredHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Add Hero" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.addHero}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.addHero}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Add Ally" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.addAlly}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.addAlly}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Threat Cost Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.threatCostHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.threatCostHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Cancel" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.cancel}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.cancel}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Continue Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.continueBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.continueBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Saved" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.saved}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.saved}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Loaded" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.loaded}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.loaded}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Selected" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.selected}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.selected}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Group Chooser" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.enemyChooser}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.enemyChooser}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Mission Chooser" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.missionChooser}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.missionChooser}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Hero and Ally Chooser" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.heroAllyChooser}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.heroAllyChooser}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Adaptive Mode Information" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.adaptiveInfoUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding translatedUI.adaptiveInfoUC}"/>
 
 				<TextBlock Text="Choose Heroes Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding translatedUI.chooseHeroesHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding translatedUI.chooseHeroesHeading}" CharacterCasing="Upper"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -128,115 +128,115 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Settings Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.settingsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.settingsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Choose Mission" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.chooseMission}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.chooseMission}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="View Card Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.viewCardBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.viewCardBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Mission Info Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.missionInfoBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.missionInfoBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Threat Level Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.threatLevelHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.threatLevelHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Additional Threat Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.addtlThreatHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.addtlThreatHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.deploymentHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.deploymentHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Yes" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.yes}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.yes}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="No" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.no}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.no}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Back" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.back}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.back}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Difficulty" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.difficulty}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.difficulty}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Easy" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.easy}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.easy}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Normal" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.normal}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.normal}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Hard" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.hard}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.hard}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Imperials" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.imperials}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.imperials}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Mercenaries" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.mercenaries}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.mercenaries}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Adaptive" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.adaptive}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.adaptive}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Enemy Groups Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.groupsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.groupsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Choose" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.choose}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.choose}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Zoom" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.zoom}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.zoom}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Initial Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.initialHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.initialHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Reserved Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.reservedHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.reservedHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Villains Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.villainsHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.villainsHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Ignored Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.ignoredHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.ignoredHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Add Hero" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.addHero}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.addHero}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Add Ally" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.addAlly}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.addAlly}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Threat Cost Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.threatCostHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.threatCostHeading}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Cancel" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.cancel}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.cancel}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Continue Button" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.continueBtn}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.continueBtn}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Saved" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.saved}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.saved}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Loaded" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.loaded}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.loaded}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Selected" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.selected}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.selected}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Deployment Group Chooser" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.enemyChooser}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.enemyChooser}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Mission Chooser" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.missionChooser}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.missionChooser}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Hero and Ally Chooser" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.heroAllyChooser}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.heroAllyChooser}" CharacterCasing="Upper"/>
 
 				<TextBlock Text="Adaptive Mode Information" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.adaptiveInfoUC}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0"/>
+				<TextBox Text="{Binding sourceUI.adaptiveInfoUC}"/>
 
 				<TextBlock Text="Choose Heroes Heading" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding sourceUI.chooseHeroesHeading}" BorderThickness="2" Style="{StaticResource multi}" TabIndex="0" CharacterCasing="Lower"/>
+				<TextBox Text="{Binding sourceUI.chooseHeroesHeading}" CharacterCasing="Upper"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>
