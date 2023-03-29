@@ -21,6 +21,7 @@
 	public enum FigureSize { Small1x1, Medium1x2, Large2x2, Huge2x3 }
 	public enum GroupTraits { Trooper, Leader, HeavyWeapon, Guardian, Brawler, Droid, Vehicle, Hunter, Creature, Smuggler, Spy, ForceUser, Wookiee, Hero }
 	public enum RewardType { Campaign, General, HeroNumber, Personal }
+	public enum CharacterType { Hero, Ally, Imperial, Villain, Rebel }
 }
 
 public enum TranslateMode { Mission, UI, Supplemental, Cancel }

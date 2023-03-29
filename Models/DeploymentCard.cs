@@ -12,6 +12,7 @@ namespace Imperial_Commander_Editor
 		//== data from JSON
 		public string name { get; set; }
 		public string id { get; set; }
+		public CharacterType characterType;
 		public int tier;
 		public string faction;
 		public int priority;
@@ -38,6 +39,7 @@ namespace Imperial_Commander_Editor
 		public GroupTraits[] groupTraits;
 
 		//==other properties
+		//Imperial Commander app fills this in
 		public string mugShotPath;
 		//default deployment thumbnail outline color
 		public string deploymentOutlineColor = "Blue";
