@@ -37,6 +37,12 @@ namespace Imperial_Commander_Editor
 		public FigureSize miniSize;
 		public GroupTraits[] groupTraits;
 
+		//==other properties
+		public string mugShotPath;
+		//default deployment thumbnail outline color
+		public string deploymentOutlineColor = "Blue";
+		//==end other properties
+
 		public DeploymentCard()
 		{
 
