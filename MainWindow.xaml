@@ -69,6 +69,7 @@
 						<ComboBoxItem Content="Polski (PL)"/>
 						<ComboBoxItem Content="Russian (RU)"/>
 						<ComboBoxItem Content="Magyar (HU)"/>
+						<ComboBoxItem Content="Norwegian (NO)"/>
 					</ComboBox>
 				</StackPanel>
 
