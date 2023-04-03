@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Saga_Translator"
         mc:Ignorable="d"
-        Title="Source Switch" Width="500" SizeToContent="Height" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="{StaticResource WndBG}">
+        Title="Translation Reference" Width="500" SizeToContent="Height" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="{StaticResource WndBG}">
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -16,7 +16,7 @@
 		<StackPanel Margin="10">
 			<GroupBox BorderThickness="0">
 				<StackPanel>
-					<TextBlock Text="Choose which item you want to translate:" Foreground="White" FontSize="14"/>
+					<TextBlock Text="Choose which item you want to translate. The English version of the file will be loaded into the Explorer for you to use as a reference." TextWrapping="Wrap" Foreground="White" FontSize="14"/>
 					<ComboBox x:Name="fileCB" Margin="10" SelectionChanged="fileCB_SelectionChanged" FontSize="14" Padding="5"/>
 				</StackPanel>
 			</GroupBox>

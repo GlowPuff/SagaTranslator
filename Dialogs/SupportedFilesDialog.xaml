@@ -39,7 +39,7 @@
 
 			<Border Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left">
 				<StackPanel>
-					<TextBlock Text="Source File Name" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold"/>
+					<TextBlock Text="File Name" Foreground="White" Padding="0" FontSize="14" FontWeight="Bold"/>
 					<Separator/>
 					<TextBlock Text="ui.json" Foreground="White" Padding="2" FontSize="14"/>
 					<TextBlock Text="bonuseffects.json" Foreground="White" Padding="2" FontSize="14"/>

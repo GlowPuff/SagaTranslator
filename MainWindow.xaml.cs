@@ -58,7 +58,7 @@ namespace Saga_Translator
 
 			appModel = new( this, TranslateMode.Cancel, FileMode.Cancel );
 			translationObject = new WelcomePanel();
-			defaultSaveDir = $"● By default, files save to:\n{Path.Combine( MainWindow.appPath, "SavedTranslations" )}";
+			defaultSaveDir = $"● By default, new files will be saved to:\n{Path.Combine( MainWindow.appPath, "SavedTranslations" )}";
 
 			if ( NetworkInterface.GetIsNetworkAvailable() )
 				Task.Run( StartVersionCheck );
@@ -100,6 +100,7 @@ namespace Saga_Translator
 
 			translationObject = new WelcomePanel();
 			((WelcomePanel)translationObject).EnableTranslationDrop();
+			defaultSaveDir = $"● By default, new files will be saved to:\n{Path.Combine( MainWindow.appPath, "SavedTranslations" )}";
 
 			if ( NetworkInterface.GetIsNetworkAvailable() )
 				Task.Run( StartVersionCheck );

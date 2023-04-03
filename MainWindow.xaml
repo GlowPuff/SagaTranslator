@@ -22,7 +22,7 @@
 				<!--LEFT-->
 				<StackPanel Orientation="Horizontal" Background="{StaticResource MenuDarkBG}">
 					<!--MODE SWITCH-->
-					<Button x:Name="modeToggle" ToolTip="Translation Source" Click="modeToggle_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
+					<Button x:Name="modeToggle" ToolTip="Translation Reference" Click="modeToggle_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="5">
 						<Image Source="Assets/mode-toggle.png" Height="30"/>
 					</Button>
 					<!--OPEN SOURCE-->
@@ -31,7 +31,7 @@
 					</Button>-->
 					<!--FILENAME-->
 					<StackPanel VerticalAlignment="Center" Margin="25,0,0,0">
-						<TextBlock Text="SOURCE (English)" Foreground="White" FontWeight="Bold"/>
+						<TextBlock Text="Translation Reference (English)" Foreground="White" FontWeight="Bold"/>
 						<TextBlock x:Name="sourceText" Text="{Binding sourceMissionFilename}" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
 						<TextBlock x:Name="sourceUIText" Text="ui.json" Foreground="White" Visibility="Collapsed" Margin="0,0,0,0"/>
 					</StackPanel>
