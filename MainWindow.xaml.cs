@@ -569,9 +569,9 @@ namespace Saga_Translator
 				//parse JSON response
 				gitHubResponse = JsonConvert.DeserializeObject<GitHubResponse>( response );
 
-				if ( gitHubResponse.tag_name.Substring( 2 ) == appModel.AppVersion )//remove beginning "v."
+				if ( gitHubResponse.tag_name.Substring( 1 ) == appModel.AppVersion )//remove beginning "v."
 				{
-					Dispatcher.Invoke( () => updateCheck.Text = "Latest Version" );
+					Dispatcher.Invoke( () => updateCheck.Text = "Using Latest Version" );
 				}
 				else
 				{

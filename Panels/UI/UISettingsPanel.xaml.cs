@@ -23,15 +23,15 @@ namespace Saga_Translator
 
 		private void UserControl_Loaded( object sender, RoutedEventArgs e )
 		{
-			foreach ( var item in dataPanel.Children )
-			{
-				if ( item is TextBox && ((TextBox)item).CharacterCasing == CharacterCasing.Upper )
-				{
-					Clipboard.SetData( DataFormats.Text, ((TextBox)item).Text );
-					((TextBox)item).Text = "";
-					((TextBox)item).Paste();
-				}
-			}
+			//foreach ( var item in dataPanel.Children )
+			//{
+			//	if ( item is TextBox && ((TextBox)item).CharacterCasing == CharacterCasing.Upper )
+			//	{
+			//		Clipboard.SetData( DataFormats.Text, ((TextBox)item).Text );
+			//		((TextBox)item).Text = "";
+			//		((TextBox)item).Paste();
+			//	}
+			//}
 		}
 	}
 }
