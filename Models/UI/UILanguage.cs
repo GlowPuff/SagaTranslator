@@ -673,7 +673,7 @@ namespace Saga_Translator
 
 	public class UIExpansions : ObservableObject
 	{
-		private string _core, _twin, _hoth, _bespin, _jabba, _empire, _lothal, _other;
+		private string _core, _twin, _hoth, _bespin, _jabba, _empire, _lothal, _other, _figurepacks;
 
 		public string core
 		{
@@ -707,7 +707,10 @@ namespace Saga_Translator
 		{
 			get => _other; set => SetProperty( ref _other, value );
 		}
-
+		public string figurepacks
+		{
+			get => _figurepacks; set => SetProperty( ref _figurepacks, value );
+		}
 	}
 
 	public class UICampaign : ObservableObject
