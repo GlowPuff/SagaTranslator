@@ -25,6 +25,9 @@
 				<TextBlock Text="Vignette Option" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding translatedUI.vignette}" CharacterCasing="Upper"/>
 
+				<TextBlock Text="Camera Option" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.topdownView}" CharacterCasing="Upper"/>
+
 				<TextBlock Text="Ambient Option" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding translatedUI.ambient}" CharacterCasing="Upper"/>
 
@@ -39,6 +42,9 @@
 
 				<TextBlock Text="Quick Close Option" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding translatedUI.quickClose}" CharacterCasing="Upper"/>
+
+				<TextBlock Text="Zoom Buttons Option" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.zoomButtons}" CharacterCasing="Upper"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -60,6 +66,9 @@
 				<TextBlock Text="Vignette Option" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding sourceUI.vignette}"/>
 
+				<TextBlock Text="Camera Option" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.topdownView}"/>
+
 				<TextBlock Text="Ambient Option" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding sourceUI.ambient}"/>
 
@@ -74,6 +83,9 @@
 
 				<TextBlock Text="Quick Close Option" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding sourceUI.quickClose}"/>
+
+				<TextBlock Text="Zoom Buttons Option" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.zoomButtons}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

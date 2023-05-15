@@ -75,6 +75,9 @@
 
 				<TextBlock Text="Cannot Be Defeated" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding translatedUI.cannotDefeatUC}"/>
+
+				<TextBlock Text="Mission Log Title" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.missionLogTitle}" CharacterCasing="Upper"/>
 			</StackPanel>
 
 			<!--RIGHT-->
@@ -146,6 +149,9 @@
 
 				<TextBlock Text="Cannot Be Defeated" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding sourceUI.cannotDefeatUC}" CharacterCasing="Upper"/>
+
+				<TextBlock Text="Mission Log Title" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.missionLogTitle}" CharacterCasing="Upper"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

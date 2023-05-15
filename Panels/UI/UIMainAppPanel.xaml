@@ -130,6 +130,9 @@
 				<TextBlock Text="Tooltip: Fame" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding translatedUI.tooltipFameUC}"/>
 
+				<TextBlock Text="Tooltip: Dashboard" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.tooltipDashboardUC}"/>
+
 				<TextBlock Text="Confirm" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding translatedUI.confirm}" CharacterCasing="Upper"/>
 
@@ -320,6 +323,9 @@
 
 				<TextBlock Text="Tooltip: Fame" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding sourceUI.tooltipFameUC}"/>
+
+				<TextBlock Text="Tooltip: Dashboard" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.tooltipDashboardUC}"/>
 
 				<TextBlock Text="Confirm" Margin="0,10,0,5"/>
 				<TextBox Text="{Binding sourceUI.confirm}" CharacterCasing="Upper"/>

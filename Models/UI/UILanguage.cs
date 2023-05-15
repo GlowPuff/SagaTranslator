@@ -17,7 +17,7 @@ namespace Saga_Translator
 
 	public class UISettings : ObservableObject
 	{
-		private string _settingsHeading, _music, _sound, _bloom, _vignette, _quit, _returnBtn, _ok, _quickClose, _ambient;
+		private string _settingsHeading, _music, _sound, _bloom, _vignette, _quit, _returnBtn, _ok, _quickClose, _ambient, _zoomButtons, _topdownView;
 
 		public string settingsHeading
 		{
@@ -58,6 +58,14 @@ namespace Saga_Translator
 		public string ambient
 		{
 			get => _ambient; set => SetProperty( ref _ambient, value );
+		}
+		public string zoomButtons
+		{
+			get => _zoomButtons; set => SetProperty( ref _zoomButtons, value );
+		}
+		public string topdownView
+		{
+			get => _topdownView; set => SetProperty( ref _topdownView, value );
 		}
 	}
 
@@ -325,7 +333,7 @@ namespace Saga_Translator
 
 	public class SagaMainApp : ObservableObject
 	{
-		private string _tooltipHideUIUC, _roundIncreasedUC, _endOfMissionUC, _deployMessageUC, _noDPWarningUC, _mmAddTilesUC, _mmRemoveTilesUC, _mmAddEntitiesUC, _groupsReadyUC, _groupsExhaustUC, _repositionTargetUC, _doorsUC, _cratesUC, _terminalsUC, _tokensUC, _woundUC, _withdrawUC, _exhaustUC, _defeatUC, _imperialMenu, _medpacInfoUC, _cannotDefeatUC;
+		private string _tooltipHideUIUC, _roundIncreasedUC, _endOfMissionUC, _deployMessageUC, _noDPWarningUC, _mmAddTilesUC, _mmRemoveTilesUC, _mmAddEntitiesUC, _groupsReadyUC, _groupsExhaustUC, _repositionTargetUC, _doorsUC, _cratesUC, _terminalsUC, _tokensUC, _woundUC, _withdrawUC, _exhaustUC, _defeatUC, _imperialMenu, _medpacInfoUC, _cannotDefeatUC, _missionLogTitle;
 
 		public string tooltipHideUIUC
 		{
@@ -415,11 +423,15 @@ namespace Saga_Translator
 		{
 			get => _cannotDefeatUC; set => SetProperty( ref _cannotDefeatUC, value );
 		}
+		public string missionLogTitle
+		{
+			get => _missionLogTitle; set => SetProperty( ref _missionLogTitle, value );
+		}
 	}
 
 	public class UIMainApp : ObservableObject
 	{
-		private string _eliteUpgradeMsgUC, _eliteDowngradeMsgUC, _restoredMsgUC, _restoreErrorMsgUC, _pauseDepMsgUC, _unPauseDepMsgUC, _pauseThreatMsgUC, _UnPauseThreatMsgUC, _deploymentHeading, _reservedBtn, _allyBtn, _enemyBtn, _randomBtn, _modThreatHeading, _applyBtn, _roundHeading, _depTypeHeading, _eventHeading, _randomHeading, _maxThreatHeading, _endRoundBtn, _fameHeading, _awardsHeading, _fame1UC, _fameItem1UC, _fameItem2UC, _fame2UC, _continueBtn, _debugThreatUC, _debugDepModUC, _debugDepHandUC, _tooltipRulesUC, _tooltipInfoUC, _tooltipPauseDepUC, _tooltipPauseThreatUC, _tooltipOpDepUC, _tooltipSettingsUC, _tooltipImpHandUC, _tooltipActivateUC, _tooltipFameUC, _confirm, _cancel, _deploy, _threatIncreasedUC, _reinforceWarningUC, _deploymentWarningUC, _calmMessageUC, _close, _deployModeCalm, _deployModeReinforcements, _deployModeLanding, _deployModeOnslaught, _fameIncreasedUC, _noRandomMatchesUC, _depCostUC, _noAbilitiesUC, _ignoredAbilitiesUC, _noKeywordsUC, _noneUC, _rewardUC, _pageUC, _optionalDeployment;
+		private string _eliteUpgradeMsgUC, _eliteDowngradeMsgUC, _restoredMsgUC, _restoreErrorMsgUC, _pauseDepMsgUC, _unPauseDepMsgUC, _pauseThreatMsgUC, _UnPauseThreatMsgUC, _deploymentHeading, _reservedBtn, _allyBtn, _enemyBtn, _randomBtn, _modThreatHeading, _applyBtn, _roundHeading, _depTypeHeading, _eventHeading, _randomHeading, _maxThreatHeading, _endRoundBtn, _fameHeading, _awardsHeading, _fame1UC, _fameItem1UC, _fameItem2UC, _fame2UC, _continueBtn, _debugThreatUC, _debugDepModUC, _debugDepHandUC, _tooltipRulesUC, _tooltipInfoUC, _tooltipPauseDepUC, _tooltipPauseThreatUC, _tooltipOpDepUC, _tooltipSettingsUC, _tooltipImpHandUC, _tooltipActivateUC, _tooltipFameUC, _tooltipDashboardUC, _confirm, _cancel, _deploy, _threatIncreasedUC, _reinforceWarningUC, _deploymentWarningUC, _calmMessageUC, _close, _deployModeCalm, _deployModeReinforcements, _deployModeLanding, _deployModeOnslaught, _fameIncreasedUC, _noRandomMatchesUC, _depCostUC, _noAbilitiesUC, _ignoredAbilitiesUC, _noKeywordsUC, _noneUC, _rewardUC, _pageUC, _optionalDeployment;
 
 		public string eliteUpgradeMsgUC
 		{
@@ -580,6 +592,10 @@ namespace Saga_Translator
 		public string tooltipFameUC
 		{
 			get => _tooltipFameUC; set => SetProperty( ref _tooltipFameUC, value );
+		}
+		public string tooltipDashboardUC
+		{
+			get => _tooltipDashboardUC; set => SetProperty( ref _tooltipDashboardUC, value );
 		}
 		public string confirm
 		{
