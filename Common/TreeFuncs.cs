@@ -139,6 +139,12 @@ namespace Saga_Translator
 			uiItem.DataContext = translatedUI.uiMainApp;
 			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
 			mainTree.Items.Add( uiItem );
+
+			uiItem = new TreeViewItem();
+			uiItem.Header = "Mission Logger";
+			uiItem.DataContext = translatedUI.uiLogger;
+			uiItem.Padding = new Thickness( 3, 3, 3, 3 );
+			mainTree.Items.Add( uiItem );
 		}
 
 		public void PopulateDynamicTree( GenericType gtype )
@@ -372,6 +378,10 @@ namespace Saga_Translator
 				else if ( ((TreeViewItem)e.NewValue).DataContext is UIMainApp )
 				{
 					translationObject = new UIMainAppPanel( ((TreeViewItem)e.NewValue).DataContext as UIMainApp );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is UILogger )
+				{
+					translationObject = new UILoggerPanel( ((TreeViewItem)e.NewValue).DataContext as UILogger );
 				}
 
 				//DYNAMIC UI DATA

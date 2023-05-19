@@ -13,6 +13,7 @@ namespace Saga_Translator
 		public UIExpansions uiExpansions;
 		public SagaMainApp sagaMainApp;
 		public UICampaign uiCampaign;
+		public UILogger uiLogger;
 	}
 
 	public class UISettings : ObservableObject
@@ -888,6 +889,60 @@ namespace Saga_Translator
 		public string costUC
 		{
 			get => _costUC; set => SetProperty( ref _costUC, value );
+		}
+	}
+
+	public class UILogger : ObservableObject
+	{
+		private string _textLabel, _inputPromptLabel, _selectionPromptLabel, _selectionLabel, _groupActivationLabel, _groupDeployedLabel, _groupRemovedLabel, _groupDefeatedLabel, _deploymentEventLabel, _inputValueLabel;
+
+		public string textLabel
+		{
+			get => _textLabel; set => SetProperty( ref _textLabel, value );
+		}
+
+		public string inputPromptLabel
+		{
+			get => _inputPromptLabel; set => SetProperty( ref _inputPromptLabel, value );
+		}
+
+		public string selectionPromptLabel
+		{
+			get => _selectionPromptLabel; set => SetProperty( ref _selectionPromptLabel, value );
+		}
+
+		public string selectionLabel
+		{
+			get => _selectionLabel; set => SetProperty( ref _selectionLabel, value );
+		}
+
+		public string groupActivationLabel
+		{
+			get => _groupActivationLabel; set => SetProperty( ref _groupActivationLabel, value );
+		}
+
+		public string groupDeployedLabel
+		{
+			get => _groupDeployedLabel; set => SetProperty( ref _groupDeployedLabel, value );
+		}
+
+		public string groupRemovedLabel
+		{
+			get => _groupRemovedLabel; set => SetProperty( ref _groupRemovedLabel, value );
+		}
+
+		public string groupDefeatedLabel
+		{
+			get => _groupDefeatedLabel; set => SetProperty( ref _groupDefeatedLabel, value );
+		}
+
+		public string deploymentEventLabel
+		{
+			get => _deploymentEventLabel; set => SetProperty( ref _deploymentEventLabel, value );
+		}
+		public string inputValueLabel
+		{
+			get => _inputValueLabel; set => SetProperty( ref _inputValueLabel, value );
 		}
 	}
 }

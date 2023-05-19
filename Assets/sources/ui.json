@@ -222,5 +222,17 @@
     "xpUC": "XP",
     "costUC": "Cost"
   },
+  "uiLogger": {
+	"textLabel": "Text",
+	"inputPromptLabel": "Input Prompt",
+	"selectionPromptLabel": "Selection Prompt",
+	"selectionLabel": "Selection",
+	"groupActivationLabel": "Group Activation",
+	"groupDeployedLabel": "Group Deployed",
+	"groupRemovedLabel": "Group Removed",
+	"groupDefeatedLabel": "Group Defeated",
+	"deploymentEventLabel": "Deployment Event",
+    "inputValueLabel": "Input Value",
+  },
   "languageID": "English (EN)"
 }

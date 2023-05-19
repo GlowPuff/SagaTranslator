@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Saga_Translator.UILoggerPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saga_Translator"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<UniformGrid Columns="2" Style="{StaticResource whiteText}" Margin="10">
+			<!--LEFT-->
+			<StackPanel Margin="0,26,5,0" x:Name="dataPanel">
+				<TextBlock Text="Text Message Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.textLabel}"/>
+
+				<TextBlock Text="Input Prompt Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.inputPromptLabel}"/>
+
+				<TextBlock Text="Input Value Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.inputValueLabel}"/>
+
+				<TextBlock Text="Selection Prompt Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.selectionPromptLabel}"/>
+
+				<TextBlock Text="Selection Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.selectionLabel}"/>
+
+				<TextBlock Text="Group Activation Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.groupActivationLabel}"/>
+
+				<TextBlock Text="Group Deployed Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.groupDeployedLabel}"/>
+
+				<TextBlock Text="Group Removed Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.groupRemovedLabel}"/>
+
+				<TextBlock Text="Group Defeated Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.groupDefeatedLabel}"/>
+
+				<TextBlock Text="Deployment Event Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding translatedUI.deploymentEventLabel}"/>
+			</StackPanel>
+
+			<!--RIGHT-->
+			<StackPanel Margin="5,0,0,0" IsEnabled="False">
+				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
+
+				<TextBlock Text="Text Message Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.textLabel}"/>
+
+				<TextBlock Text="Input Prompt Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.inputPromptLabel}"/>
+
+				<TextBlock Text="Input Value Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.inputValueLabel}"/>
+
+				<TextBlock Text="Selection Prompt Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.selectionPromptLabel}"/>
+
+				<TextBlock Text="Selection Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.selectionLabel}"/>
+
+				<TextBlock Text="Group Activation Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.groupActivationLabel}"/>
+
+				<TextBlock Text="Group Deployed Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.groupDeployedLabel}"/>
+
+				<TextBlock Text="Group Removed Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.groupRemovedLabel}"/>
+
+				<TextBlock Text="Group Defeated Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.groupDefeatedLabel}"/>
+
+				<TextBlock Text="Deployment Event Label" Margin="0,10,0,5"/>
+				<TextBox Text="{Binding sourceUI.deploymentEventLabel}"/>
+			</StackPanel>
+		</UniformGrid>
+	</ScrollViewer>
+</UserControl>
