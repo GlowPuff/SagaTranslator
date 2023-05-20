@@ -223,7 +223,7 @@
     "costUC": "Cost"
   },
   "uiLogger": {
-	"textLabel": "Text",
+	"textLabel": "Text Message",
 	"inputPromptLabel": "Input Prompt",
 	"selectionPromptLabel": "Selection Prompt",
 	"selectionLabel": "Selection",
