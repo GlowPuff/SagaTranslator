@@ -5,15 +5,15 @@ namespace Saga_Translator
 	public class UILanguage
 	{
 		public string languageID { get; set; }
-		public UITitle uiTitle;
-		public UISetup uiSetup;
-		public SagaUISetup sagaUISetup;
-		public UIMainApp uiMainApp;
-		public UISettings uiSettings;
-		public UIExpansions uiExpansions;
-		public SagaMainApp sagaMainApp;
-		public UICampaign uiCampaign;
-		public UILogger uiLogger;
+		public UITitle uiTitle { get; set; }
+		public UISetup uiSetup { get; set; }
+		public SagaUISetup sagaUISetup { get; set; }
+		public UIMainApp uiMainApp { get; set; }
+		public UISettings uiSettings { get; set; }
+		public UIExpansions uiExpansions { get; set; }
+		public SagaMainApp sagaMainApp { get; set; }
+		public UICampaign uiCampaign { get; set; }
+		public UILogger uiLogger { get; set; }
 	}
 
 	public class UISettings : ObservableObject

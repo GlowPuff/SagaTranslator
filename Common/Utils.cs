@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Newtonsoft.Json;
 using Saga_Translator;
 
 namespace Imperial_Commander_Editor
@@ -112,6 +113,31 @@ namespace Imperial_Commander_Editor
 		{
 			return true;
 			//return mainWindow.mission.EntityExists( guid ) || guid == Utils.GUIDOne;
+		}
+
+		public static T UniqueCopy<T>( T copyFrom ) where T : class
+		{
+			string copy = JsonConvert.SerializeObject( copyFrom );
+			return JsonConvert.DeserializeObject<T>( copy );
+		}
+
+		/// <summary>
+		/// If a property value string is null/empty, set it to the English value
+		/// </summary>
+		public static void ValidateProperties<T>( T obj, string propName )
+		{
+			var props = typeof( T ).GetProperties();
+
+			foreach ( var prop in props )
+			{
+				if ( string.IsNullOrEmpty( (string)prop.GetValue( obj ) ) )
+				{
+					var sourceObject = typeof( UILanguage ).GetProperty( propName ).GetValue( Utils.mainWindow.sourceUI );
+					var sourceValue = props.Where( x => x.Name == prop.Name ).FirstOrDefault().GetValue( sourceObject );
+
+					typeof( T ).GetProperty( prop.Name ).SetValue( obj, sourceValue );
+				}
+			}
 		}
 
 		///EXTENSIONS

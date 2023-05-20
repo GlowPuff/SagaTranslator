@@ -70,6 +70,7 @@
 						<ComboBoxItem Content="Russian (RU)"/>
 						<ComboBoxItem Content="Magyar (HU)"/>
 						<ComboBoxItem Content="Norwegian (NO)"/>
+						<ComboBoxItem Content="Dutch (NL)"/>
 					</ComboBox>
 				</StackPanel>
 

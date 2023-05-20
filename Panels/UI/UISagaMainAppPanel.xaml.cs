@@ -18,19 +18,8 @@ namespace Saga_Translator
 
 			translatedUI = ui;
 			sourceUI = Utils.mainWindow.sourceUI.sagaMainApp;
-		}
 
-		private void UserControl_Loaded( object sender, System.Windows.RoutedEventArgs e )
-		{
-			//foreach ( var item in dataPanel.Children )
-			//{
-			//	if ( item is TextBox && ((TextBox)item).CharacterCasing == CharacterCasing.Upper )
-			//	{
-			//		Clipboard.SetData( DataFormats.Text, ((TextBox)item).Text );
-			//		((TextBox)item).Text = "";
-			//		((TextBox)item).Paste();
-			//	}
-			//}
+			Utils.ValidateProperties( translatedUI, "sagaMainApp" );
 		}
 	}
 }

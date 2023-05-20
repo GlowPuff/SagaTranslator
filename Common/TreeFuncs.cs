@@ -92,6 +92,8 @@ namespace Saga_Translator
 		{
 			mainTree.Items.Clear();
 
+			ValidateProperties();
+
 			TreeViewItem uiItem = new TreeViewItem();
 			uiItem.Header = "Settings";
 			uiItem.DataContext = translatedUI.uiSettings;
@@ -390,6 +392,51 @@ namespace Saga_Translator
 					translationObject = new GenericUIPanel( ((TreeViewItem)e.NewValue).DataContext as DynamicContext );
 				}
 			}
+		}
+
+		/// <summary>
+		/// If any translated model objects are null, copy the English data over
+		/// </summary>
+		private void ValidateProperties()
+		{
+			//first, validate the root UILanguage objects
+			if ( translatedUI.uiSettings == null )
+				translatedUI.uiSettings = Utils.UniqueCopy( Utils.mainWindow.sourceUI.uiSettings );
+
+			if ( translatedUI.uiTitle == null )
+				translatedUI.uiTitle = Utils.UniqueCopy( Utils.mainWindow.sourceUI.uiTitle );
+
+			if ( translatedUI.sagaUISetup == null )
+				translatedUI.sagaUISetup = Utils.UniqueCopy( Utils.mainWindow.sourceUI.sagaUISetup );
+
+			if ( translatedUI.uiExpansions == null )
+				translatedUI.uiExpansions = Utils.UniqueCopy( Utils.mainWindow.sourceUI.uiExpansions );
+
+			if ( translatedUI.sagaMainApp == null )
+				translatedUI.sagaMainApp = Utils.UniqueCopy( Utils.mainWindow.sourceUI.sagaMainApp );
+
+			if ( translatedUI.uiSetup == null )
+				translatedUI.uiSetup = Utils.UniqueCopy( Utils.mainWindow.sourceUI.uiSetup );
+
+			if ( translatedUI.uiCampaign == null )
+				translatedUI.uiCampaign = Utils.UniqueCopy( Utils.mainWindow.sourceUI.uiCampaign );
+
+			if ( translatedUI.uiMainApp == null )
+				translatedUI.uiMainApp = Utils.UniqueCopy( Utils.mainWindow.sourceUI.uiMainApp );
+
+			if ( translatedUI.uiLogger == null )
+				translatedUI.uiLogger = Utils.UniqueCopy( Utils.mainWindow.sourceUI.uiLogger );
+
+			//then validate all the properties under the root objects
+			Utils.ValidateProperties( translatedUI.uiSettings, "uiSettings" );
+			Utils.ValidateProperties( translatedUI.uiTitle, "uiTitle" );
+			Utils.ValidateProperties( translatedUI.sagaUISetup, "sagaUISetup" );
+			Utils.ValidateProperties( translatedUI.uiExpansions, "uiExpansions" );
+			Utils.ValidateProperties( translatedUI.sagaMainApp, "sagaMainApp" );
+			Utils.ValidateProperties( translatedUI.uiSetup, "uiSetup" );
+			Utils.ValidateProperties( translatedUI.uiCampaign, "uiCampaign" );
+			Utils.ValidateProperties( translatedUI.uiMainApp, "uiMainApp" );
+			Utils.ValidateProperties( translatedUI.uiLogger, "uiLogger" );
 		}
 	}
 }
