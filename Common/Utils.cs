@@ -15,7 +15,7 @@ namespace Imperial_Commander_Editor
 	public static class Utils
 	{
 		public const string formatVersion = "21";
-		public const string appVersion = "2.7";
+		public const string appVersion = "2.8";
 
 		public static List<DeploymentCard> allyData;
 		public static List<DeploymentCard> enemyData;
@@ -126,17 +126,23 @@ namespace Imperial_Commander_Editor
 		/// </summary>
 		public static void ValidateProperties<T>( T obj, string propName )
 		{
-			var props = typeof( T ).GetProperties();
-
-			foreach ( var prop in props )
+			try
 			{
-				if ( string.IsNullOrEmpty( (string)prop.GetValue( obj ) ) )
+				var props = typeof( T ).GetProperties();
+				foreach ( var prop in props )
 				{
-					var sourceObject = typeof( UILanguage ).GetProperty( propName ).GetValue( Utils.mainWindow.sourceUI );
-					var sourceValue = props.Where( x => x.Name == prop.Name ).FirstOrDefault().GetValue( sourceObject );
+					if ( string.IsNullOrEmpty( (string)prop.GetValue( obj ) ) )
+					{
+						var sourceObject = typeof( UILanguage ).GetProperty( propName ).GetValue( Utils.mainWindow.sourceUI );
+						var sourceValue = props.Where( x => x.Name == prop.Name ).FirstOrDefault().GetValue( sourceObject );
 
-					typeof( T ).GetProperty( prop.Name ).SetValue( obj, sourceValue );
+						typeof( T ).GetProperty( prop.Name ).SetValue( obj, sourceValue );
+					}
 				}
+			}
+			catch ( Exception e )
+			{
+				MessageBox.Show( $"ValidateProperties()::Could not validate {propName}.\n{e.Message}", "App Exception", MessageBoxButton.OK, MessageBoxImage.Error );
 			}
 		}
 
