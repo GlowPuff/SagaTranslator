@@ -296,7 +296,7 @@ namespace Saga_Translator
 
 	public class SagaUISetup : ObservableObject
 	{
-		private string _groupsText, _villainsBtn, _tilesBtn, _setupStartBtn, _officialBtn, _customBtn, _missionCardBtn, _campaignJournalUC;
+		private string _groupsText, _villainsBtn, _tilesBtn, _setupStartBtn, _officialBtn, _customBtn, _missionCardBtn, _campaignJournalUC, _importBtn;
 
 		public string groupsText
 		{
@@ -329,6 +329,10 @@ namespace Saga_Translator
 		public string campaignJournalUC
 		{
 			get => _campaignJournalUC; set => SetProperty( ref _campaignJournalUC, value );
+		}
+		public string importBtn
+		{
+			get => _importBtn; set => SetProperty( ref _importBtn, value );
 		}
 	}
 
