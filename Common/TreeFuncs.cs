@@ -82,6 +82,19 @@ namespace Saga_Translator
 			}
 			mainTree.Items.Add( initGroups );
 
+			//CUSTOM CHARACTERS
+			TreeViewItem customToons = new TreeViewItem();
+			customToons.Header = "Custom Characters";
+			foreach ( var item in translatedMission.customCharacters )
+			{
+				var tvi = new TreeViewItem();
+				tvi.Header = item.cardName;
+				tvi.DataContext = item;
+				tvi.Padding = new Thickness( 3, 3, 3, 3 );
+				customToons.Items.Add( tvi );
+			}
+			mainTree.Items.Add( customToons );
+
 			//set first item to mission props
 			missionProps.IsSelected = true;
 
@@ -346,6 +359,10 @@ namespace Saga_Translator
 					EnemyGroupData item = (EnemyGroupData)((TreeViewItem)e.NewValue).DataContext;
 
 					translationObject = new InitGroupPanel( item );
+				}
+				else if ( ((TreeViewItem)e.NewValue).DataContext is CustomToon )
+				{
+					translationObject = new CustomToonPanel( ((TreeViewItem)e.NewValue).DataContext as CustomToon );
 				}
 
 				//UI

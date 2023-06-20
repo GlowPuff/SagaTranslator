@@ -21,7 +21,7 @@
 				<TextBlock Text="English Source" Margin="0,0,0,5" FontSize="16" FontWeight="Bold"/>
 
 				<TextBlock Text="Custom Instructions" Margin="0,10,0,5"/>
-				<TextBox Text="{Binding source.theText}" Style="{StaticResource multi}"/>
+				<TextBox Text="{Binding source.customText}" Style="{StaticResource multi}"/>
 			</StackPanel>
 		</UniformGrid>
 	</ScrollViewer>

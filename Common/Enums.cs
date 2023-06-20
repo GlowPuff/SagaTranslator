@@ -22,6 +22,7 @@
 	public enum GroupTraits { Trooper, Leader, HeavyWeapon, Guardian, Brawler, Droid, Vehicle, Hunter, Creature, Smuggler, Spy, ForceUser, Wookiee, Hero }
 	public enum RewardType { Campaign, General, HeroNumber, Personal }
 	public enum CharacterType { Hero, Ally, Imperial, Villain, Rebel }
+	public enum Factions { Imperial, Mercenary }
 }
 
 public enum TranslateMode { Mission, UI, Supplemental, Cancel }

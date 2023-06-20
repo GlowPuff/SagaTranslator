@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -217,5 +218,36 @@ namespace Imperial_Commander_Editor
 			assetName = aname;
 			comboBoxTitle = displayName;
 		}
+	}
+
+	public class CampaignSkill
+	{
+		public string owner;
+		public string id;
+		public string name;
+		public int cost;
+	}
+
+	public class Thumbnail
+	{
+		public string Name { get; set; }//full name of icon's character
+		public string ID { get; set; }//basically the filename
+	}
+
+	public class BonusEffect
+	{
+		public string bonusID;
+		public List<string> effects;
+	}
+
+	public class CardInstruction
+	{
+		public string instName, instID;
+		public List<InstructionOption> content;
+	}
+
+	public class InstructionOption
+	{
+		public List<string> instruction;
 	}
 }
