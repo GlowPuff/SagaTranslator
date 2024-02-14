@@ -1,5 +1,2 @@
-# Saga Translator
-Simplify the translation of Imperial Commander 2 Saga language files. Every language file used by Imperial Commander 2 is supported by this Translator app.
-
-### Download (Windows only)
-[Download Current Release](https://github.com/GlowPuff/SagaTranslator/releases/latest)
+# This project is deprecated, use the new Translator app instead:
+[Saga Translator V2](https://github.com/GlowPuff/SagaTranslatorV2)
