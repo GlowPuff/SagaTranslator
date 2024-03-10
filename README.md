@@ -1,2 +1,2 @@
 # This project is deprecated, use the new Translator app instead:
-[Saga Translator V2](https://github.com/GlowPuff/SagaTranslatorModern)
+[Saga Translator Modern](https://github.com/GlowPuff/SagaTranslatorModern)
